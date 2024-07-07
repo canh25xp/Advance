@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(mini_project)
+project(DSA)
 
 # Generate Clangd compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
