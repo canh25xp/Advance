@@ -23,12 +23,12 @@ int main(int argc, char *argv[]) {
     cin >> T;
 
     for (size_t tc = 0; tc < T; tc++) {
-        unsigned int N;
+        int N;
         cin >> N;
         Graph g(N);
 
-        for (size_t i = 0; i < N; i++)
-            for (size_t j = 0; j < N; j++)
+        for (int i = 0; i < N; i++)
+            for (int j = 0; j < N; j++)
                 cin >> g(i, j);
 
         cout << "" << endl;
@@ -39,8 +39,8 @@ int main(int argc, char *argv[]) {
 
 Graph::Graph(int size) {
     this->size = size;
-    for (size_t i = 0; i < this->size; i++)
-        for (size_t j = 0; j < this->size; j++)
+    for (int i = 0; i < this->size; i++)
+        for (int j = 0; j < this->size; j++)
             data[i][j] = 0;
 }
 
