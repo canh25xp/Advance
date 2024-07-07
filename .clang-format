@@ -1,0 +1,6 @@
+# https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+# https://www.gnu.org/prep/standards/standards.html
+BasedOnStyle: LLVM
+AccessModifierOffset: -4
+IndentWidth: 4
+ColumnLimit: 0
