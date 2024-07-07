@@ -16,21 +16,23 @@ private:
 public:
     Graph(int size);
 
-    int& operator()(int i, int j);
+    int &operator()(int i, int j);
     int operator()(int i, int j) const;
 
     int primMST();
 };
 
-int main(int argc, char* argv[]) {
+int main(int argc, char *argv[]) {
     ios::sync_with_stdio(false);
-    const char* input = argv[1];
+    const char *input = argv[1];
     freopen(input, "r", stdin);
 
-    int T; cin >> T;
+    int T;
+    cin >> T;
 
     for (int tc = 0; tc < T; tc++) {
-        int N; cin >> N;
+        int N;
+        cin >> N;
 
         Graph g(N);
 
@@ -40,13 +42,14 @@ int main(int argc, char* argv[]) {
 
         int mst = g.primMST();
 
-        cout << "Case #" << tc + 1 << "\n" << mst << endl;
+        cout << "Case #" << tc + 1 << "\n"
+             << mst << endl;
     }
 
     return 0;
 }
 
-int& Graph::operator()(int i, int j) {
+int &Graph::operator()(int i, int j) {
     return adj[i][j];
 }
 

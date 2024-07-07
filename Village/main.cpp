@@ -12,17 +12,19 @@ private:
 public:
     Graph(int size);
 
-    int& operator()(int i, int j);
+    int &operator()(int i, int j);
     int operator()(int i, int j) const;
 };
 
-int main(int argc, char* argv[]) {
-    const char* input = argv[1];
-    FILE* fp = freopen(input, "r", stdin);
-    unsigned int T; cin >> T;
+int main(int argc, char *argv[]) {
+    const char *input = argv[1];
+    FILE *fp = freopen(input, "r", stdin);
+    unsigned int T;
+    cin >> T;
 
     for (size_t tc = 0; tc < T; tc++) {
-        unsigned int N; cin >> N;
+        unsigned int N;
+        cin >> N;
         Graph g(N);
 
         for (size_t i = 0; i < N; i++)
@@ -42,7 +44,7 @@ Graph::Graph(int size) {
             data[i][j] = 0;
 }
 
-int& Graph::operator()(int i, int j) {
+int &Graph::operator()(int i, int j) {
     return data[i][j];
 }
 
