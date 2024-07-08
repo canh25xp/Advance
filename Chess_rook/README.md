@@ -49,7 +49,6 @@ X.X
 ....
 ```
 
-
 ## Output
 
 For each test case, output one line containing the maximum number of rooks that can be placed on the board in a legal configuration.
@@ -68,3 +67,4 @@ Case #4
 Case #5
 4
 ```
+

@@ -1,4 +1,6 @@
 ﻿# Airplane Game
+> Level 3
+
 Time limit 5s.
 
 Một máy bay di chuyển trong một bản đồ game map có kích thước chiều ngang cố định là  n = 5 và chiều dài 5 <= m <= 25.

@@ -1,4 +1,5 @@
 # Game with numbers
+> Level ?
 
 We have a game for you to play with a computer (Com).
 Your goal is picking numbers from a given array of even length to get maximum scores with the following rules:

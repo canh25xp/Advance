@@ -1,7 +1,5 @@
 # Làng mạc
-
-- Level: 3
-- Tag: Graph, Minimum Spanning Tree.
+> Level: 3
 
 Cho bản đồ mạng lưới giao thông giữa các làng mạc.
 Một vùng được định nghĩa là một tập hợp các làng mà từ bất kỳ một làng nào trong vùng đều có thể đi đến một làng khác trong vùng.

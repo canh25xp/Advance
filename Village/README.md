@@ -1,7 +1,5 @@
 # Village
-
-- Level: 3
-- Tag: Graph, Minimum Spanning Tree.
+> Level: 3
 
 Given a map of the transportation network between villages.
 A region is defined as a set of villages from which any village in the region can reach another village in the region.

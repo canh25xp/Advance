@@ -1,7 +1,5 @@
-﻿# Problem Description
-
-- Name: Hugo Đào Vàng 2
-- Level: 4
+﻿# Hugo Đào Vàng 2
+> Level: 4
 
 Sau khi ăn trộm được mật của chị ong nâu và say sưa thưởng thức mật ngọt say đắm thì bất ngờ Hugo bị chị ong nâu phát hiện.
 Mặc dù đã thành khẩn nhận lỗi và xin lỗi chị ong nâu nhưng do đã đánh chén gần hết số mật đã ăn chộm nên chị ong nâu vẫn bắt Hugo phải bồi thường số mật đó.

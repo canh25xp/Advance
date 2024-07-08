@@ -7,7 +7,7 @@
 - [ ] Battle_City
 - [ ] Bipartition_Cities
 - [x] Block_Dropping
-- [x] [Bridge](./Bridge/README.md)
+- [x] [Bridge](./Bridge/README_vi.md)
 - [x] Calculator_1
 - [x] Calculator_2
 - [x] Capture_Knight
@@ -17,13 +17,13 @@
 - [x] Cryptogram_3
 - [x] Cutting_Paper
 - [x] Earning_Money_2
-- [ ] [Farm_Protect](./Farm_Protect/README.md)
+- [ ] [Farm_Protect](./Farm_Protect/README_vi.md)
 - [x] Find_Cycle
 - [x] Finding_Mode
 - [x] Flatten
 - [ ] [Game_with_numbers](./Game_with_numbers/README.md)
 - [x] GNS
-- [ ] [Hugo_Gold_Miner_2](./Hugo_Gold_Miner_2/README.md)
+- [ ] [Hugo_Gold_Miner_2](./Hugo_Gold_Miner_2/README_vi.md)
 - [x] Involution
 - [x] Ladder_1
 - [x] Ladder_2

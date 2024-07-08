@@ -1,4 +1,5 @@
 ﻿# Bảo vệ nông trang
+> Level 4
 
 Nông trang có rất nhiều ngọn đồi núi, để bảo vệ nông trang nông dân John muốn đặt người canh gác trên các ngọn đồi này.
 
