@@ -1,29 +1,29 @@
 # Data Structures and Algorithms Exercises
 
-- [ ] 8_Queen
-- [x] Airplane_Game
+- [ ] ![8_Queen](./8_Queen/README.md)
+- [x] [Airplane_Game](./Airplane_Game/README.md)
 - [ ] Assimilation_of_String
 - [ ] Attacking_the_Citadel
 - [ ] Battle_City
 - [ ] Bipartition_Cities
 - [x] Block_Dropping
-- [x] Bridge
+- [x] [Bridge](./Bridge/README.md)
 - [x] Calculator_1
 - [x] Calculator_2
 - [x] Capture_Knight
-- [ ] Chess_rook
+- [ ] [Chess_rook](./Chess_rook/README.md)
 - [x] Cryptogram_1
 - [x] Cryptogram_2
 - [x] Cryptogram_3
 - [x] Cutting_Paper
 - [x] Earning_Money_2
-- [ ] Farm_Protect
+- [ ] [Farm_Protect](./Farm_Protect/README.md)
 - [x] Find_Cycle
 - [x] Finding_Mode
 - [x] Flatten
-- [ ] Game_with_numbers
+- [ ] [Game_with_numbers](./Game_with_numbers/README.md)
 - [x] GNS
-- [ ] Hugo_Gold_Miner_2
+- [ ] [Hugo_Gold_Miner_2](./Hugo_Gold_Miner_2/README.md)
 - [x] Involution
 - [x] Ladder_1
 - [x] Ladder_2
@@ -41,10 +41,10 @@
 - [x] Password
 - [x] Password_Generator
 - [x] Path_Finding
-- [ ] Point_of_Balance_2
+- [ ] [Point_of_Balance_2](./Point_of_Balance_2/README.md)
 - [x] Princess
 - [x] Route_Finding
-- [ ] Seawater
+- [ ] [Seawater](./Seawater/README.md)
 - [x] Sky_Map
 - [x] Stock_Exchange
 - [x] String
@@ -52,6 +52,5 @@
 - [ ] The_Frog
 - [ ] Uniform_Distribution
 - [x] View
-- [ ] Village
+- [ ] [Village](./Village/README.md)
 - [x] Well_Project
-
