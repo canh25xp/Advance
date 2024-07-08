@@ -1,4 +1,3 @@
-// Brige; Level 4; DFS, Recursive. 
 #define _CRT_SECURE_NO_WARNINGS // Suppress Warning	C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead.
 #include <iostream>
 using namespace std;
