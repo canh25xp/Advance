@@ -21,6 +21,7 @@ target_compile_features(compiler_flags INTERFACE cxx_std_11)
 
 # include_directories(${CMAKE_SOURCE_DIR}/shared)
 
+add_subdirectory(8_Queen)
 add_subdirectory(Village)
 add_subdirectory(Well_Project)
 
