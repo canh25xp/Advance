@@ -1,6 +1,6 @@
 # Data Structures and Algorithms Exercises
 
-- [ ] ![8_Queen](./8_Queen/README.md)
+- [ ] [8_Queen](./8_Queen/README.md)
 - [x] [Airplane_Game](./Airplane_Game/README.md)
 - [ ] Assimilation_of_String
 - [ ] Attacking_the_Citadel
