@@ -11,6 +11,8 @@ endif()
 
 # Generate Clangd compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+
+# Avoid MSBuild putting Debug and Release in seperate folder
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG "${OUTPUT_DIRECTORY}")
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE "${OUTPUT_DIRECTORY}")
 
