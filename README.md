@@ -1,0 +1,61 @@
+# Data Structures and Algorithms Exercises
+
+
+| Status       | Name | Level    |
+|------------|-----------|--|
+|[ ]|8_Queen | 4 |
+|[ ]|Airplane_Game | 4 |
+|[ ]|Assimilation_of_String | 4 |
+|[ ]|Attacking_the_Citadel | 4 |
+|[ ]|Battle_City | 4 |
+|[ ]|Bipartition_Cities | 4 |
+|[ ]|Block_Dropping | 4 |
+|[ ]|Bridge | 4 |
+|[ ]|build | 4 |
+|[ ]|Calculator_1 | 4 |
+|[ ]|Calculator_2 | 4 |
+|[ ]|Capture_Knight | 4 |
+|[ ]|Chess_rook | 4 |
+|[ ]|Cryptogram_1 | 4 |
+|[ ]|Cryptogram_2 | 4 |
+|[ ]|Cryptogram_3 | 4 |
+|[ ]|Cutting_Paper | 4 |
+|[ ]|Earning_Money_2 | 4 |
+|[ ]|Farm_Protect | 4 |
+|[ ]|Find_Cycle | 4 |
+|[ ]|Finding_Mode | 4 |
+|[ ]|Flatten | 4 |
+|[ ]|Game_with_numbers | 4 |
+|[ ]|GNS | 4 |
+|[ ]|Hugo_Gold_Miner_2 | 4 |
+|[ ]|Involution | 4 |
+|[ ]|Ladder_1 | 4 |
+|[ ]|Ladder_2 | 4 |
+|[ ]|Laughing_Bomb | 4 |
+|[ ]|Magnetic | 4 |
+|[ ]|Matrix_Product | 4 |
+|[ ]|Matrix_Sum | 4 |
+|[ ]|Maze_1 | 4 |
+|[ ]|Maze_2 | 4 |
+|[ ]|Move_Cow | 4 |
+|[ ]|Palindrome_1 | 4 |
+|[ ]|Palindrome_2 | 4 |
+|[ ]|Paring_Parentheses | 4 |
+|[ ]|Partition_1 | 4 |
+|[ ]|Password | 4 |
+|[ ]|Password_Generator | 4 |
+|[ ]|Path_Finding | 4 |
+|[ ]|Point_of_Balance_2 | 4 |
+|[ ]|Princess | 4 |
+|[ ]|README | 4 |.md
+|[ ]|Route_Finding | 4 |
+|[ ]|Seawater | 4 |
+|[ ]|Sky_Map | 4 |
+|[ ]|Stock_Exchange | 4 |
+|[ ]|String | 4 |
+|[ ]|Sudoku_1 | 4 |
+|[ ]|The_Frog | 4 |
+|[ ]|Uniform_Distribution | 4 |
+|[ ]|View | 4 |
+|[ ]|Village | 4 |
+|[ ]|Well_Project | 4 |
