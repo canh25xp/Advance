@@ -34,7 +34,7 @@
 - [x] Matrix_Sum
 - [x] Maze_1
 - [x] Maze_2
-- [x] [Move_Cow](./Move_Cow/README.md)
+- [x] [Move_Cow](./Move_Cow/README_vi.md)
 - [x] [Painting](./Painting/README.md)
 - [x] Palindrome_1
 - [x] Palindrome_2
