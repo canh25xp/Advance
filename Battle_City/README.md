@@ -1,7 +1,8 @@
 # Battle City
+>
 > Level 4
 
-Many of us had played the game "Battle city" in our childhood, and some people (like me) even often play it on computer now. 
+Many of us had played the game "Battle city" in our childhood, and some people (like me) even often play it on computer now.
 
 ![1](1.png)
 
@@ -72,3 +73,4 @@ Case #4
 Case #5
 13
 ```
+

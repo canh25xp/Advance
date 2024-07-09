@@ -1,8 +1,9 @@
 # Matrix Product
+>
 > Level 3
 
 We need time proportional to $$N^3$$ to multiply two $$N*N$$ matrices.
-We are going to compute $$A^M$$ for a given matrix $$A$$. 
+We are going to compute $$A^M$$ for a given matrix $$A$$.
 If we simply conduct matrix multiplication $$M-1$$ times, we need time proportional to $$(M-1)*N^3$$.
 We may need huge time in this way.
 You should speed up this job.
@@ -11,12 +12,13 @@ $$A^M \mod q$$ means the matrix in which each element has the remainder after di
 For instance, $$\mod 6$$ is . (This is just for avoiding overflow by too big integers. You only have to conduct $$x*y \mod q$$ for any $$x*y$$)
 In this problem, the most important thing is the running time.
 If time limit passes, you got points for the cases that your program has completed.
-The input will be provided in the increasing order of problem sizes; so an inefficient program may successfully run only some small cases. 
+The input will be provided in the increasing order of problem sizes; so an inefficient program may successfully run only some small cases.
 If you try the most naive way, we guess you would have about 30% of the total scores.
 
 Time limit: 2 seconds.
 
 ## Input
+
 There can be more than one test case in the input file.
 The first line has $$C$$, the # of test cases.
 Then the totally $$C$$ test cases are provided in the following lines.
@@ -51,3 +53,4 @@ Case #2
 63 1 121
 121 0 243
 ```
+

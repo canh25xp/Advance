@@ -1,4 +1,5 @@
 # Sudoku
+>
 > Level 3
 
 Sudoku is a number-placement puzzle.
@@ -20,6 +21,7 @@ grid = [['.', '.', '.', '1', '4', '.', '.', '2', '.'],
         ['.', '.', '.', '.', '.', '7', '.', '.', '.'],
         ['.', '.', '.', '5', '.', '.', '.', '7', '.']]
 ```
+
 the output should be `1`;
 
 ```
@@ -33,6 +35,7 @@ grid = [['.', '.', '.', '.', '2', '.', '.', '9', '.'],
         ['.', '1', '.', '2', '.', '.', '.', '.', '.'],
         ['.', '2', '.', '.', '3', '.', '.', '.', '.']]
 ```
+
 the output should be `0`;
 
 The given grid is not correct because there are two 1s in the second column.
@@ -68,3 +71,4 @@ Each column, each row, and each `3 x 3` subgrid can only contain the numbers 1 t
 #1 1
 #2 0
 ```
+

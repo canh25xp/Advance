@@ -1,7 +1,9 @@
 # Princess
+>
 > Level 3
 
 The maze is a `NxN` matrix (`N <= 200`). Each cell contains either 1 of the 3 values:
+
 - 0 : trap
 - 1 : path
 - 2 : princess
@@ -29,6 +31,7 @@ Entrance
             |
            Exit    
 ```
+
 -> Requires at lease 8 steps to save the princess and exit the maze.
 Print out `8`
 
@@ -45,6 +48,7 @@ Entrance
             |
            Exit    
 ```
+
 -> Requires at lease 10 steps to save the princess and exit the maze:
 4 steps to move from entrance to the princess and 6 steps to the exit.
 Print out `10`
@@ -63,13 +67,16 @@ Entrance
               |
              Exit    
 ```
+
 -> There are no posible solution to this. Print out `-1`
 
 ## Input
+
 The first line is the total number of test cases `T` (`T <= 10`)
 The following lines is `T` test cases.
 E
 ach test cases consists of:
+
 - The first line is `N` (`N <= 200`)
 - Next `N` lines is a matrix `NxN` that describes the maze
 
@@ -105,3 +112,4 @@ Print out `T` lines, each line print out the minimum steps required for each tes
 10
 -1
 ```
+

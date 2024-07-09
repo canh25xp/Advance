@@ -1,4 +1,5 @@
 # Capture Knight
+>
 > Level 4
 
 There is a mobile piece (a Knight) and a stationary piece on the N×M chessboard.
@@ -43,10 +44,10 @@ Output the minimum number of movements to catch a defending piece at the first l
 
 Print `Case #tn` before each answer where `tn` is test case number.
 
-
 ```
 Case #1
 2
 Case #2
 5
 ```
+

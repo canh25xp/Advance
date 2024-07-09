@@ -1,9 +1,10 @@
 ﻿# Bipartitioning Cities
+>
 > Level 4
 
 You are given a network of roads between N cities.
 The following is an example.
-Here a vertex means a city and an edge means a bidirectional road between a pair of cities. 
+Here a vertex means a city and an edge means a bidirectional road between a pair of cities.
 
 ![1](1.jpg)
 
@@ -14,7 +15,7 @@ There is no road connecting two cities in the same group.
 The following is an example partitioning with the above graph.
 The cities are partitioned into those in the top level and those in the bottom level.
 You can see that there is no road between cities in the same group.
-Here, the city 6 can belong to any of the two groups. 
+Here, the city 6 can belong to any of the two groups.
 
 ![2](2.jpg)
 
@@ -60,3 +61,4 @@ All numbers in a line are each separated by a space.
 #2 -1
 ...
 ```
+

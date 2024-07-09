@@ -1,4 +1,5 @@
 ﻿# Airplane Game
+>
 > Level 3
 
 Time limit 5s.
@@ -21,7 +22,8 @@ Luật chơi:
 
 Yêu cầu: tìm số coin lớn nhất mà máy bay có thể thu đc khi đi từ vị trí xuất phát đến hết game map.
 
-## Input:
+## Input
+
 ```
 1
 12
@@ -40,6 +42,7 @@ Yêu cầu: tìm số coin lớn nhất mà máy bay có thể thu đc khi đi t
 ```
 
 ## Output
+
 ```
 #1 9
 ```

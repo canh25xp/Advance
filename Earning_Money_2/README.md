@@ -1,21 +1,27 @@
 # Earning Biggest Prize Money 2
+>
 > Level 4
 
 The winner in a quiz contest will be given an opportunity to earn bonus prize money.
-Among the given number cards, the winner can choose two number cards and exchange their positions as many times as the set number. 
+Among the given number cards, the winner can choose two number cards and exchange their positions as many times as the set number.
 
 For example, let's assume five number cards `3, 2, 8, 8, 8` are given as follows and the number of exchange is set to `2`.
 
 Before exchange
+
 ```
 3 2 8 8 8
 ```
+
 For a first time, positions of 3 in the first card and 8 in the fourth card were switched and the order of the cards became `8, 2, 8, 3, 8`
+
 ```
 3 2 8 8 8
 ^     ^
 ```
+
 Next, positions of 2 in the second card and 8 in the last card were switched and the order of the cards became `8, 8, 8, 3, 2`.
+
 ```
 8 8 8 3 2
   ^     ^
@@ -27,9 +33,11 @@ When the order of the cards becomes `8,8,8,3,2` as shown in the example above, t
 
 Note that switch must be made as many times as the set number, and the switch of the same positions switched can take place.
 In the following case, the number of exchange is set to 1, so switch must occur once to get 49 as the result.
+
 ```
 9 4 ---Switch once---> 4 9
 ```
+
 In case of 94, when switch is made twice, the order goes back to the original number which is 94.
 
 Now, compute the biggest amount of prize money the winner can get when number cards are switched as many times as the set number.
@@ -52,7 +60,7 @@ Number of exchange is less than or equal to `10`.
 ## Output
 
 Print `Case #C` in the first line for each test case with `C` being the case number.
-The next line print the biggest amount of prize money the winner can receive after exchange in the same line. 
+The next line print the biggest amount of prize money the winner can receive after exchange in the same line.
 
 ```
 Case #1
@@ -62,11 +70,3 @@ Case #2
 Case #3
 88832
 ```
-
-
-
-
-
-
-
-

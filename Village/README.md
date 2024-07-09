@@ -1,4 +1,5 @@
 # Village
+>
 > Level: 3
 
 Given a map of the transportation network between villages.
@@ -10,6 +11,7 @@ and the number of roads that act as "Bridges" between the two regions
 (if this road is removed, the number of regions increases up 1).
 
 ## Input
+
 The first line has a number `T` which is the number of tests in the input file.
 
 Each test is arranged as follows: the first line is a positive integer `N`, the number of villages (`N <= 300`), followed by a matrix `A[i, j]` in which `A[i][j]` has the value of 1 means there is a road from village `i` to village `j` and 0 if there is none.
@@ -35,6 +37,7 @@ The data ensures that if there is a road from village `i` to village `j`, there 
 ```
 
 ## Output
+
 For each test, print out the number of regions on the map, the number of isolated villages, and the number of roads serving as bridges.
 
 ```

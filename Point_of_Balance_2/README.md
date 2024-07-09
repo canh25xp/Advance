@@ -1,6 +1,7 @@
 ﻿# Point of Balance 2
+>
 > Level 4
-	
+ 
 There exist `n` magnetic materials in a gravity-free space.
 The center of each magnetic material is the location, i.e., the spatial coordinate `(x,y,z)`.
 Coordinates `y` and `z` of n magnetic materials are the same, and only the coordinates of x are different.
@@ -26,6 +27,7 @@ Point of balance: where both forces become the same: Pulling force of left magne
 Note that errors of the coordinate values must be less than $$10^{-9}(1e-9)$$.
 
 ## Input
+
 A total of 10 test cases are given. For each test case, the number of magnetic materials N is written. In the next line, N x coordinate values, and N mass values are input sequentially. The number (N) of magnetic materials comes between 2 and 10 (2 ≤ N ≤ 10).
 
 ```
@@ -35,7 +37,6 @@ A total of 10 test cases are given. For each test case, the number of magnetic m
 1 2 1 1000
 ```
 
-
 ## Output
 
 For each test case, print “#C” in the first line with C being case number. Leave a blank space and print out x coordinate values of the points of balance in the same line. If the coordinate value has 10 or more digits after the decimal point, print only up to10 digits.
@@ -44,3 +45,4 @@ For each test case, print “#C” in the first line with C being case number. L
 #1 1.5000000000
 #2 1.0306534300
 ```
+

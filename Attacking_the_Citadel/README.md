@@ -1,4 +1,5 @@
 ﻿# Tấn Công Thành Trì
+>
 > Level 4
 
 Sau một thời gian dài dưỡng thương ở Hán Trung, Khổng Minh đã bình phục và quyết định tấn công vào vào biên giới nước Ngụy để hoàn thành chí nguyện Bắc phạt của mình.
@@ -17,7 +18,7 @@ Theo tính toán của Khổng Minh, để đảm bảo phá được một thà
 
 Ví dụ: nếu thành trì `A` có 5 máy bắn đá, thành trì `B` có 3 máy bắn đá, để phá được thành lũy nối thành trì `A` và thành trì `B`, đội quân của Khổng Minh cần sử dụng ít nhất `5+3=8` máy bắn đá.
 
-![Sample](Sample.png)
+![Figure 1](./figure1.png)
 
 Hình vẽ minh họa cho một hệ thống các thành trì và thành lũy của quân Ngụy.
 Muốn phá các thành lũy liên kết giữa ba cặp thành trì (7, 8), (0, 1) và (1, 4) thì số lượng máy bắn đá ít nhất phải dùng là (1+1)+( (1+1)+(1 + 1) = 6 cái.
@@ -25,13 +26,13 @@ Khi đó, không còn đội quân nào của Ngụy được bao bọc kín b�
 
 Hãy giúp Khổng Minh tính toán xem cần sử dụng ít nhất bao nhiêu máy bắn đá để thực hiện được bước 1 của chiến dịch trong chí nguyện Bắc phạt của mình.
 
-## Input:
+## Input
 
 - Dòng đầu tiên là số lượng bộ test `T`
 - Mỗi test gồm được biễu diễn như sau:
-    - Dòng đầu tiên gồm số nguyên `M` (`2 <= M <= 100`)  là số thành trì của quân Ngụy, các thành trì được đánh số từ 0 đến M-1.
-    - Tiếp theo là mô tả `M` thành trì, mỗi thành trì được mô tả trên 2 dòng: dòng thứ nhất gồm 3 số nguyên dương `i` (`0 <= i <= M-1`), `u_i` (`1 <= u_i <= 50`), `c_i` (`1 <= c_i <= M-1`) lần lượt là số hiệu của thành trì, số máy bắn đá của quân Ngụy có trong thành trì và số lượng thành lũy liên kết tới các thành trì khác.
-      Dòng thứ hai gồm `c_i` số, thể hiện các thành trì có thành lũy liên kết tới thành trì `i`.
+  - Dòng đầu tiên gồm số nguyên `M` (`2 <= M <= 100`)  là số thành trì của quân Ngụy, các thành trì được đánh số từ 0 đến M-1.
+  - Tiếp theo là mô tả `M` thành trì, mỗi thành trì được mô tả trên 2 dòng: dòng thứ nhất gồm 3 số nguyên dương `i` (`0 <= i <= M-1`), `u_i` (`1 <= u_i <= 50`), `c_i` (`1 <= c_i <= M-1`) lần lượt là số hiệu của thành trì, số máy bắn đá của quân Ngụy có trong thành trì và số lượng thành lũy liên kết tới các thành trì khác.
+    Dòng thứ hai gồm `c_i` số, thể hiện các thành trì có thành lũy liên kết tới thành trì `i`.
 
 ```
 3
@@ -68,7 +69,7 @@ Hãy giúp Khổng Minh tính toán xem cần sử dụng ít nhất bao nhiêu 
 1 2
 ```
 
-## Output:
+## Output
 
 Với mỗi test, in ra tổng số máy bắn đá ít nhất cần sử dụng để thực hiện bước 1 của chiến dịch.
 
@@ -77,3 +78,4 @@ Với mỗi test, in ra tổng số máy bắn đá ít nhất cần sử dụng
 4
 9
 ```
+

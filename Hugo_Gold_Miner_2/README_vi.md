@@ -1,4 +1,5 @@
 ﻿# Hugo Đào Vàng 2
+>
 > Level: 4
 
 Sau khi ăn trộm được mật của chị ong nâu và say sưa thưởng thức mật ngọt say đắm thì bất ngờ Hugo bị chị ong nâu phát hiện.
@@ -73,7 +74,7 @@ Mỗi TC :
 1 1 1 0 0 1 0 0 1 1
 1 1 1 1 1 1 1 1 1 1
 ```
- 
+
 ## Output
 
 In ra chi phí nhỏ nhất để đi từ trại tới điểm đào vàng xa nhất. Nếu không thể tiếp cận tất cả các mỏ vàng, in ra -1

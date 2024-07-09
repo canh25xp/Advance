@@ -1,4 +1,5 @@
 # Calculator 2
+>
 > Level 2
 
 Create a program which converts a character string of calculation formula to a postfix expression and calculates it.
@@ -7,7 +8,7 @@ For example, a character string `"3+4+5*6+7"` can be converted to a postfix expr
 
 The calculation should yield 44.
 
-The operators used in the formula are `+`` and `*`.
+The operators used in the formula are `+` and`*`.
 The operands are the integers between `0 ~ 9`.
 
 ## Input
@@ -33,3 +34,4 @@ It is followed by a space, and then the answer.
 #2 195767
 ...
 ```
+

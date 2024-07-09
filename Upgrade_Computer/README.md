@@ -1,6 +1,7 @@
 # Nâng cấp máy tính
+>
 > Level 4
-> 
+>
 > Time limit: 1 giây với C/C++, 2 giây với Java.
 >
 > Submission limit: 5 lần.
@@ -22,6 +23,7 @@ Hãy giúp anh Kim mua được đủ `L` thiết bị cần thiết với tổn
 Dòng đầu tiên là số lượng test case `T` (`T <= 50`).
 
 Mỗi test case gồm các thông tin sau:
+
 - Dòng đầu tiên là số nguyên dương `N` (`1 <= N <= 20`) là số lượng thiết bị chính của máy tính.
 - Dòng thứ 2 bao gồm `N` số, số thứ `i` tương ứng là giá của thiết bị thứ `i` được bán ở chợ Trời.
 - Dòng thứ 3 là số nguyên dương `M` (`0 <= M <= 30`) là số lượng gói ưu đãi có trên mạng.
@@ -45,9 +47,9 @@ Mỗi test case gồm các thông tin sau:
 
 Bắt đầu mỗi test case là `#x` với `x` là số thứ tự của test case (bắt đầu từ 1), tiếp theo là một dấu cách và giá thành nhỏ nhất mà anh Kim cần bỏ ra để mua đủ những thiết bị anh cần.
 
-
 ```
 #1  48
 ```
 
 Giải thích: Để mua được 3 thiết bị 2, 4, 5 với giá rẻ nhất, ta sẽ mua gói giá rẻ 1 gồm 1, 2, 5 với giá 30 và mua thiết bị 4 ở chợ Trời với giá 18, tổng là 30 + 18 = 48.
+

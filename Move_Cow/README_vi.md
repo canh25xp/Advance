@@ -1,4 +1,5 @@
 ﻿# Di chuyển bò
+>
 > Level 3
 
 Toản có một đàn bò, Toản muốn di chuyển đàn bò đi nơi khác bằng một chiếc xe tải có tải trọng (`300kg < C < 3000kg`).
@@ -30,3 +31,4 @@ Với mỗi trường hợp gồm `#` và số trường hợp test và kết qu
 #1 358
 #2 259
 ```
+

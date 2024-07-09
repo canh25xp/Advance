@@ -1,9 +1,10 @@
 # Sky map
+>
 > Level 3
 
 You are making "sky map" to represent constellation (group of starts) in the sky.
 
-In each element, 1 means star, 0 means empty. And in a constellation, each start should have at least one connection with others via left/right/up/bottom. 
+In each element, 1 means star, 0 means empty. And in a constellation, each start should have at least one connection with others via left/right/up/bottom.
 
 If two starts are located via diagonal, then
 
@@ -51,4 +52,3 @@ For each test case, you should print the number of constellation and the number 
 4 8
 1 3
 ```
-

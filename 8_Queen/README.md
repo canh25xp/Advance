@@ -1,4 +1,5 @@
 # 8-Queen: Maximum Score
+>
 > Level 4
 
 The King of Narnia has no children, so he has decided that the country will be split into up to `k` separate parts on his death and each part will be inherited by whoever performs best at some test.
@@ -53,7 +54,7 @@ There will never be more than `20` boards.
 
 ## Output
 
-Output will consist of `k` numbers consisting of your `k` scores, each score on a separate line. 
+Output will consist of `k` numbers consisting of your `k` scores, each score on a separate line.
 Note that first output line of each test case should be `Case #tn`, where `tn` is the test case number.
 
 ```
@@ -63,3 +64,4 @@ Case #2
 260
 260
 ```
+

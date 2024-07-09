@@ -1,5 +1,6 @@
 # Tree Set 2
-> Level 5 
+>
+> Level 5
 
 Xây dựng tập `ts` có các hàm sau:
 
@@ -12,13 +13,12 @@ Xây dựng tập `ts` có các hàm sau:
 
 ## Input
 
-Dòng đầu tiên chứa số lượng test case 
+Dòng đầu tiên chứa số lượng test case
 
 Mỗi test case, dòng đầu tiên là số lượng lệnh cần thực hiện không vượt quá `105`.
 
 Dữ liệu cho là các số nguyên không vượt quá `32 bit`
 
- 
 ```
 1
 11
@@ -44,3 +44,4 @@ In các kết quả trên cùng một dòng
 Case #1
 3 3 3 null true 1
 ```
+
