@@ -39,7 +39,7 @@ The indices of cities are `1` through `N`.
 All adjacent numbers in a line are each separated by a space.
 
 ```
-9 8 
+9 8
 4 1 1 2 2 3 7 2 1 5 8 4 5 8 8 9
 7 10
 1 2 2 3 1 6 4 6 2 4 2 7 2 5 6 7 3 5 5
@@ -61,4 +61,3 @@ All numbers in a line are each separated by a space.
 #2 -1
 ...
 ```
-

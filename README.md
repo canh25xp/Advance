@@ -2,7 +2,7 @@
 
 - [ ] [8_Queen](./8_Queen/README.md)
 - [x] [Airplane_Game](./Airplane_Game/README.md)
-- [ ] [Attacking_the_Citadel](./Attacking_the_Citadel/README.md)
+- [ ] [Attacking_the_Citadel](./Attacking_the_Citadel/README_vi.md)
 - [ ] [Battle_City](./Battle_City/README.md)
 - [ ] [Bipartitioning_Cities](./Bipartitioning_Cities/README.md)
 - [x] Block_Dropping
