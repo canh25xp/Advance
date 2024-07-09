@@ -2,55 +2,59 @@
 
 - [ ] [8_Queen](./8_Queen/README.md)
 - [x] [Airplane_Game](./Airplane_Game/README.md)
-- [ ] Assimilation_of_String
-- [ ] Attacking_the_Citadel
-- [ ] Battle_City
-- [ ] Bipartition_Cities
+- [ ] [Attacking_the_Citadel](./Attacking_the_Citadel/README.md)
+- [ ] [Battle_City](./Battle_City/README.md)
+- [ ] [Bipartitioning_Cities](./Bipartitioning_Cities/README.md)
 - [x] Block_Dropping
 - [x] [Bridge](./Bridge/README_vi.md)
-- [x] Calculator_1
-- [x] Calculator_2
-- [x] Capture_Knight
+- [x] [Calculator_1](./Calculator_1/README.md)
+- [x] [Calculator_2](./Calculator_2/README.md)
+- [x] [Calculator_3](./Calculator_3/README.md)
+- [x] [Capture_Knight](./Capture_Knight/README.md)
 - [ ] [Chess_rook](./Chess_rook/README.md)
 - [x] Cryptogram_1
 - [x] Cryptogram_2
 - [x] Cryptogram_3
 - [x] Cutting_Paper
-- [x] Earning_Money_2
+- [x] [Earning_Money_2](./Earning_Money_2/README.md)
 - [ ] [Farm_Protect](./Farm_Protect/README_vi.md)
-- [x] Find_Cycle
+- [x] [Find_Cycle](./Find_Cycle/README.md)
 - [x] Finding_Mode
 - [x] Flatten
 - [ ] [Game_with_numbers](./Game_with_numbers/README.md)
 - [x] GNS
 - [ ] [Hugo_Gold_Miner_2](./Hugo_Gold_Miner_2/README_vi.md)
+- [x] [Ice_Cave](./Ice_Cave/README.md)
 - [x] Involution
 - [x] Ladder_1
 - [x] Ladder_2
 - [x] Laughing_Bomb
 - [x] Magnetic
-- [x] Matrix_Product
+- [x] [Matrix_Product](./Matrix_Product/README.md)
 - [x] Matrix_Sum
 - [x] Maze_1
 - [x] Maze_2
-- [x] Move_Cow
+- [x] [Move_Cow](./Move_Cow/README.md)
+- [x] [Painting](./Painting/README.md)
 - [x] Palindrome_1
 - [x] Palindrome_2
 - [ ] Paring_Parentheses
-- [ ] Partition_1
+- [x] Partition_1
 - [x] Password
 - [x] Password_Generator
 - [x] Path_Finding
 - [ ] [Point_of_Balance_2](./Point_of_Balance_2/README.md)
-- [x] Princess
+- [x] [Princess](./Princess/README.md)
 - [x] Route_Finding
 - [ ] [Seawater](./Seawater/README.md)
-- [x] Sky_Map
+- [x] [Sky_Map](./Sky_Map/README.md)
 - [x] Stock_Exchange
 - [x] String
-- [ ] Sudoku_1
-- [ ] The_Frog
-- [ ] Uniform_Distribution
+- [x] [Sudoku_1](./Sudoku_1/README.md)
+- [ ] [The_Frog](./The_Frog/README.md)
+- [ ] [Turn_Over_Game](./Turn_Over_Game/README.md)
+- [x] Uniform_Distribution
 - [x] View
+- [ ] [Upgrade_Computer](./Upgrade_Computer/README.md)
 - [ ] [Village](./Village/README.md)
-- [x] Well_Project
+- [x] [Well_Project](./Well_Project/README.md)

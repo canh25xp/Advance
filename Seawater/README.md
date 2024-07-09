@@ -31,6 +31,23 @@ Dòng cuối cùng của input chứa 2 số 0
 4 1 2 1 3
 7 1 0 0 4
 7 3 4 4 4
+4 4
+5 5 5 7
+4 2 1 4
+4 1 0 3
+7 3 4 4
+5 5
+3 4 3 0 0
+3 5 5 4 3
+3 1 1 4 3
+1 3 3 7 0
+1 2 1 0 0
+5 5
+0 10 10 0 10
+0 20 10 30 10
+0 10 10 0 10
+0 10 0 10 10
+0 10 10 0 10
 0 0
 ```
 
@@ -47,4 +64,7 @@ Hoặc
 ```
 Case 1: Island never splits.
 Case 2: Island splits when ocean rises 3 feet.
+Case 3: Island splits when ocean rises 3 feet.
+Case 4: Island splits when ocean rises 4 feet.
+Case 5: Island splits when ocean rises 10 feet.
 ```
