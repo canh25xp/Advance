@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-    freopen("input_small", "r", stdin);
+    freopen("input.txt", "r", stdin);
     
     return 0;
 }
