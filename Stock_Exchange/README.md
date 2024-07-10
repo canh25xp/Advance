@@ -24,7 +24,7 @@ In the test case, there are `40%` with `3 <= N <= 10`, `40%` with `10 < N <= 20`
 
 If he has the information of price in the next 4 days is `8, 5, 1, 10`, then he can buy stock in the first 3 day with total prices is 14, and he sell them in the last day to get 30
 
-So total money he can earn is $$30 - 14 = 16$$.
+So total money he can earn is $30 - 14 = 16$.
 
 ## Input
 
