@@ -9,12 +9,12 @@ Now we should assign partitions for each group.
 
 The time for assigning partition is proportional to size of space.
 For example, if the size of space is 1000, it spends time of 1000 to partition it
-(It spends same time if we partition it as $$300+700$$ or $$500+500$$.)
+(It spends same time if we partition it as $300+700$ or $500+500$.)
 
 The total time depends on the order of partitioning.
 For example, in case the size of total space is 800, and each size for groups is 100, 200, and 500.
-If partitioning $$100 + 700$$ first, partitioning $$200 + 500$$ later, then the total time is $$800 + 700 = 1500$$
-But, if partitioning $$500 + 300$$ first, partitioning $$100 + 200$$ later, then the total time is $$800 + 300 = 1100$$
+If partitioning $100 + 700$ first, partitioning $200 + 500$ later, then the total time is $800 + 700 = 1500$
+But, if partitioning $500 + 300$ first, partitioning $100 + 200$ later, then the total time is $800 + 300 = 1100$
 
 Write program to print the minimum time to partition for all groups.
 

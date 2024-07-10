@@ -2,7 +2,7 @@
 >
 > Level 3
 
-We need time proportional to $N^3$ to multiply two $N*N$ matrices.
+We need time proportional to $N^3$ to multiply two $N \times N$ matrices.
 We are going to compute $A^M$ for a given matrix $A$.
 If we simply conduct matrix multiplication $M-1$ times, we need time proportional to $(M-1)*N^3$.
 We may need huge time in this way.
