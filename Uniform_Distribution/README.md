@@ -2,7 +2,7 @@
 >
 > Level 3
 
-An uniform distribution of an `n x n` square array of cells is a partition of the $$n*n$$ cells in the array inexactly $$n$$ sets, each one with $$n$$ contiguous cells.
+An uniform distribution of an `n x n` square array of cells is a partition of the $n*n$ cells in the array inexactly $n$ sets, each one with $n$ contiguous cells.
 Two cells are contiguous when they have a common side.
 
 A good uniform distribution is composed of contiguous regions. The figures show a good and a wrong uniform distribution for a 5 x 5 square:
