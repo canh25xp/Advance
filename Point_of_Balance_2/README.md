@@ -14,7 +14,7 @@ Formula for calculating the gravitational force acting from a magnetic material 
 
 $$F = \frac{G \times m_1 \times m_2} { d^2 },$$
 
-$$G$$ is a positive constant.
+$G$ is a positive constant.
 
 ![1](1.png)
 
@@ -24,22 +24,27 @@ Between the magnetic materials on the left and those on the right, the object mo
 
 Point of balance: where both forces become the same: Pulling force of left magnetic materials = Pulling force of right magnetic materials.
 
-Note that errors of the coordinate values must be less than $$10^{-9}(1e-9)$$.
+Note that errors of the coordinate values must be less than $10^{-9}(1e-9)$.
 
 ## Input
 
-A total of 10 test cases are given. For each test case, the number of magnetic materials N is written. In the next line, N x coordinate values, and N mass values are input sequentially. The number (N) of magnetic materials comes between 2 and 10 (2 ≤ N ≤ 10).
+A total of 10 test cases are given.
+For each test case, the number of magnetic materials `N` is written.
+In the next line, `N` `x` coordinate values, and N mass values are input sequentially.
+The number `N` of magnetic materials comes between 2 and 10 ($2 \leq N \leq 10$).
 
 ```
 2           <-- test case #1 starts, number of magnetic materials
-1 2 1 1     <-- Each magnetic material’s x coordinate values, and mass values (coordinate coordinate mass mass).
+1 2 1 1     <-- Each magnetic material's x coordinate values, and mass values (coordinate coordinate mass mass).
 2           <-- test case #2 starts, number of magnetic materials
 1 2 1 1000
 ```
 
 ## Output
 
-For each test case, print “#C” in the first line with C being case number. Leave a blank space and print out x coordinate values of the points of balance in the same line. If the coordinate value has 10 or more digits after the decimal point, print only up to10 digits.
+For each test case, print `#C` in the first line with `C` being case number.
+Leave a blank space and print out `x` coordinate values of the points of balance in the same line.
+If the coordinate value has 10 or more digits after the decimal point, print only up to10 digits.
 
 ```
 #1 1.5000000000
