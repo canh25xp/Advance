@@ -1,6 +1,6 @@
 # Data Structures and Algorithms Exercises
 
-- [ ] [8_Queen](./8_Queen/README.md)
+- [x] [8_Queen](./8_Queen/README.md)
 - [x] [Airplane_Game](./Airplane_Game/README.md)
 - [ ] [Array_Game](./Array_Game/README.md)
 - [ ] [Attacking_the_Citadel](./Attacking_the_Citadel/README_vi.md)

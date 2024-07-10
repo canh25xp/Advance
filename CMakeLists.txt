@@ -24,4 +24,5 @@ target_compile_features(compiler_flags INTERFACE cxx_std_11)
 add_subdirectory(8_Queen)
 add_subdirectory(Village)
 add_subdirectory(Well_Project)
+add_subdirectory(Map_Coloring)
 
