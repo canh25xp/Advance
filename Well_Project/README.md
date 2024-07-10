@@ -1,6 +1,6 @@
 ﻿# Well Project
 
-![Example](Example.png)
+![](example.png)
 
 Our company planned to help dig a well in a place in Africa which suffers from lack of water.
 After lots of research, we could dig the well full of water.
