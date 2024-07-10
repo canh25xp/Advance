@@ -12,7 +12,6 @@ As the below shows the location of the bomb and affected people, and shows conta
 In order to protect the city from the epidemic, create a program that figures out when the city will be contaminated by the bomb for the last.
 
 ![Figure1](Figure1.png)
-
 ![Figure2](Figure2.png)
 
 Time limit: 1 second (java: 2 seconds)
