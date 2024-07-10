@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-const int SIZE = 8;       // Size of a chess board
+const int SIZE = 8;        // Size of a chess board
 const int MAX_BOARDS = 20; // Maximum number of chess boards in a test case
 
 int solve(const int (&board)[SIZE][SIZE]);
@@ -9,10 +9,10 @@ int solve(const int (&board)[SIZE][SIZE]);
 void BackTracking(const int (&board)[SIZE][SIZE], int (&map)[SIZE][SIZE], int &max_score, int i = 0, int score = 0);
 
 // Check if the horizontal and vertical direction already contains a queen
-bool CheckOrthogonal(const int (&map)[SIZE][SIZE], int i, int j);
+bool CheckOrthogonal(const int (&map)[SIZE][SIZE], int row, int col);
 
 // Check if the diagonal direction already contains a queen
-bool CheckDiagonal(const int (&map)[SIZE][SIZE], int i, int j);
+bool CheckDiagonal(const int (&map)[SIZE][SIZE], int row, int col);
 
 int main(int argc, char *argv[]) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
@@ -66,45 +66,22 @@ void BackTracking(const int (&board)[SIZE][SIZE], int (&map)[SIZE][SIZE], int &m
     }
 }
 
-bool CheckOrthogonal(const int (&map)[SIZE][SIZE], int i, int j) {
+bool CheckOrthogonal(const int (&map)[SIZE][SIZE], int row, int col) {
     for (int x = 0; x < 8; x++)
-        if (map[i][x] || map[x][j])
+        if (map[row][x] || map[x][col])
             return false;
 
     return true;
 }
 
-bool CheckDiagonal(const int (&map)[SIZE][SIZE], int i, int j) {
-    int x = i, y = j;
-    while (x >= 0 && x < 8 && y >= 0 && y < 8) {
-        if (map[x][y])
+bool CheckDiagonal(const int (&map)[SIZE][SIZE], int row, int col) {
+    for (int i = 0; i < row; ++i) {
+        if (col - (row - i) >= 0 && map[i][col - (row - i)]) {
             return false;
-        x--;
-        y--;
-    }
-    x = i + 1;
-    y = j + 1;
-    while (x >= 0 && x < 8 && y >= 0 && y < 8) {
-        if (map[x][y])
+        }
+        if (col + (row - i) < SIZE && map[i][col + (row - i)]) {
             return false;
-        x++;
-        y++;
-    }
-    x = i - 1;
-    y = j + 1;
-    while (x >= 0 && x < 8 && y >= 0 && y < 8) {
-        if (map[x][y])
-            return false;
-        x--;
-        y++;
-    }
-    x = i + 1;
-    y = j - 1;
-    while (x >= 0 && x < 8 && y >= 0 && y < 8) {
-        if (map[x][y])
-            return false;
-        x++;
-        y--;
+        }
     }
     return true;
 }
