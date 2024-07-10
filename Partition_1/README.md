@@ -37,7 +37,7 @@ The next line enumerates `N` integers each separated by a blank; each integer me
 4
 30 40 10 20
 ```
- 
+
 # Output
 
 For each test case, you should print your answer in two line.
