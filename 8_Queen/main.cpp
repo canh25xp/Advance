@@ -59,10 +59,10 @@ void BackTracking(const int (&board)[SIZE][SIZE], int (&map)[SIZE][SIZE], int &m
         if (CheckOrthogonal(map, i, j) && CheckDiagonal(map, i, j)) {
             map[i][j] = 1;
             score += board[i][j];
-            BackTracking(board, map, max_score, i+1, score);
+            BackTracking(board, map, max_score, i + 1, score);
             map[i][j] = 0;
             score -= board[i][j];
-        }           
+        }
     }
 }
 
