@@ -5,6 +5,7 @@
 The King of Narnia has no children, so he has decided that the country will be split into up to `k` separate parts on his death and each part will be inherited by whoever performs best at some test.
 It is possible for any individual to inherit more than one or indeed all of the portions.
 To ensure that only highly intelligent people eventually become his successors, the King has devised an ingenious test.
+
 In a large hall filled there are `k` chess boards placed.
 Each chessboard has numbers in the range `1` to `99` written on each square and is supplied with `8` chess queens.
 The task facing each potential successor is to place the `8` queens on the chess board in such a way that no queen threatens another one, and so that the numbers on the squares thus selected sum to a number at least as high as one already chosen by the King.
