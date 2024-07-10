@@ -26,6 +26,7 @@
 - [x] [Flatten](./Flatten/README.md)
 - [ ] [Game_with_numbers](./Game_with_numbers/README.md)
 - [x] GNS
+- [ ] [Hugo](./Hugo/README.md)
 - [ ] [Hugo_Gold_Miner_2](./Hugo_Gold_Miner_2/README_vi.md)
 - [x] [Ice_Cave](./Ice_Cave/README.md)
 - [x] Involution
@@ -33,6 +34,7 @@
 - [x] Ladder_2
 - [x] [Laughing_Bomb](./Laughing_Bomb/README.md)
 - [x] Magnetic
+- [ ] [Map_Coloring](./Map_Coloring/README.md)
 - [x] [Matrix_Product](./Matrix_Product/README.md)
 - [x] Matrix_Sum
 - [x] Maze_1
