@@ -50,29 +50,29 @@ struct Point {
     Point();
     Point(int x, int y);
 
-    bool operator==(const Point& rhs) const;
-    bool operator!=(const Point& rhs) const;
+    bool operator==(const Point &rhs) const;
+    bool operator!=(const Point &rhs) const;
 
-    Point operator+(const Point& rhs) const;
-    void operator+=(const Point& rhs);
-    void operator+=(const int& rhs);
+    Point operator+(const Point &rhs) const;
+    void operator+=(const Point &rhs);
+    void operator+=(const int &rhs);
     void operator++();
 
-    Point operator-(const Point& rhs) const;
-    void operator-=(const Point& rhs);
-    void operator-=(const int& rhs);
+    Point operator-(const Point &rhs) const;
+    void operator-=(const Point &rhs);
+    void operator-=(const int &rhs);
     void operator--();
 
     int x, y;
 };
 
-void Print(const int& N, const int& M, const Point& A, const Point& D);
+void Print(const int &N, const int &M, const Point &A, const Point &D);
 
-int BFS(const int& N, const int& M, const Point& A, const Point& D);
+int BFS(const int &N, const int &M, const Point &A, const Point &D);
 
 /////////////////////////////////////MAIN//////////////////////////////////////
 int main() {
-    //freopen("eval_input.txt", "r", stdin);
+    // freopen("eval_input.txt", "r", stdin);
     int T; // Number of Test cases
     cin >> T;
 
@@ -101,9 +101,9 @@ int main() {
 }
 /////////////////////////////////////MAIN//////////////////////////////////////
 
-int BFS(const int& N, const int& M, const Point& A, const Point& D) {
-    static const int dx[8] = {-2, -1,  1,  2, -2, -1, 1, 2};
-    static const int dy[8] = {-1, -2, -2, -1,  1,  2, 2, 1};
+int BFS(const int &N, const int &M, const Point &A, const Point &D) {
+    static const int dx[8] = {-2, -1, 1, 2, -2, -1, 1, 2};
+    static const int dy[8] = {-1, -2, -2, -1, 1, 2, 2, 1};
 
     static Queue<Point, QUEUE_SIZE> q;
     static int visited[MAX_N][MAX_M] = {};
@@ -131,7 +131,7 @@ int BFS(const int& N, const int& M, const Point& A, const Point& D) {
     return -1;
 }
 
-void Print(const int& N, const int& M, const Point& A, const Point& D) {
+void Print(const int &N, const int &M, const Point &A, const Point &D) {
     system("cls");
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
@@ -148,7 +148,7 @@ void Print(const int& N, const int& M, const Point& A, const Point& D) {
 }
 
 template <typename T, unsigned int MAX>
-Queue<T, MAX>::Queue() :front(-1), rear(-1) {}
+Queue<T, MAX>::Queue() : front(-1), rear(-1) {}
 
 template <typename T, unsigned int MAX>
 Queue<T, MAX>::~Queue() {}
@@ -191,28 +191,28 @@ T Queue<T, MAX>::deQueue() {
     return item;
 }
 
-Point::Point() :x(0), y(0) {}
+Point::Point() : x(0), y(0) {}
 
-Point::Point(int x, int y) :x(x), y(y) {}
+Point::Point(int x, int y) : x(x), y(y) {}
 
-bool Point::operator==(const Point& rhs) const {
+bool Point::operator==(const Point &rhs) const {
     if (this->x == rhs.x && this->y == rhs.y)
         return true;
     return false;
 }
 
-bool Point::operator!=(const Point& rhs) const {
+bool Point::operator!=(const Point &rhs) const {
     if (this->x == rhs.x && this->y == rhs.y)
         return false;
     return true;
 }
 
-void Point::operator+=(const Point& rhs) {
+void Point::operator+=(const Point &rhs) {
     this->x += rhs.x;
     this->y += rhs.y;
 }
 
-void Point::operator+=(const int& rhs) {
+void Point::operator+=(const int &rhs) {
     this->x += rhs;
     this->y += rhs;
 }
@@ -222,21 +222,21 @@ void Point::operator++() {
     this->y++;
 }
 
-void Point::operator-=(const Point& rhs) {
+void Point::operator-=(const Point &rhs) {
     this->x -= rhs.x;
     this->y -= rhs.y;
 }
 
-void Point::operator-=(const int& rhs) {
+void Point::operator-=(const int &rhs) {
     this->x -= rhs;
     this->y -= rhs;
 }
 
-Point Point::operator+(const Point& rhs) const {
+Point Point::operator+(const Point &rhs) const {
     return Point(this->x + rhs.x, this->y + rhs.y);
 }
 
-Point Point::operator-(const Point& rhs) const {
+Point Point::operator-(const Point &rhs) const {
     return Point(this->x - rhs.x, this->y - rhs.y);
 }
 
