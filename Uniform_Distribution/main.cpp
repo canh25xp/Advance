@@ -35,9 +35,9 @@ int contiguous_count(const int(&matrix)[max_size][max_size], const int& value, c
 const int dx[] = {1, -1, 0, 0};
 const int dy[] = {0, 0, 1, -1};
 
-int main(){
-	FILE *input;
-	errno_t error = freopen_s(&input, "input.txt", "r", stdin);
+int main(int argc, char **argv) {
+  const char *input = (argc > 1) ? argv[1] : "input.txt";
+  freopen(input, "r", stdin);
 
 	int TEST_CASE = DEFAULT_TEST_CASE;
 	cin >> TEST_CASE;
