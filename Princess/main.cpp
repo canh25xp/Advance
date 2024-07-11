@@ -1,4 +1,7 @@
+#include "point.hpp"
+#include "queue.hpp"
 #include <iostream>
+
 using namespace std;
 
 const int TEST_CASE = 10;
@@ -10,35 +13,6 @@ const int PRICESS = 2;
 // Direction : right down, left, up
 int dx[4] = {-1, 0, 1, 0};
 int dy[4] = {0, 1, 0, -1};
-
-template <typename T, unsigned int MAX>
-class Queue {
-public:
-    Queue();
-    ~Queue();
-
-    bool isFull();
-    bool isEmpty();
-    void enQueue(T item);
-    T deQueue();
-
-    T peek();
-    int size();
-
-private:
-    T items[MAX];
-    int front, rear, count;
-};
-
-struct Point {
-    Point();
-    Point(int _x, int _y);
-
-    bool operator!=(const Point &rhs) const;
-    bool operator==(const Point &rhs) const;
-
-    int x, y;
-};
 
 int BFS(Point srt, Point dst, int maze[MAX_SIZE][MAX_SIZE], int size);
 
@@ -73,7 +47,7 @@ int main(int argc, char **argv) {
 
         cout << Step << endl;
     }
-    // fclose(input);
+
     return 0;
 }
 // END MAIN
@@ -99,90 +73,4 @@ int BFS(Point srt, Point dst, int maze[MAX_SIZE][MAX_SIZE], int size) {
     }
 
     return -1;
-}
-
-template <typename T, unsigned int MAX>
-Queue<T, MAX>::Queue() {
-    front = -1;
-    rear = -1;
-    count = 0;
-}
-
-template <typename T, unsigned int MAX>
-Queue<T, MAX>::~Queue() {
-}
-
-template <typename T, unsigned int MAX>
-bool Queue<T, MAX>::isEmpty() {
-    if (front == rear)
-        return true;
-    else
-        return false;
-}
-
-template <typename T, unsigned int MAX>
-bool Queue<T, MAX>::isFull() {
-    if (front == 0 && rear == MAX - 1)
-        return true;
-    else
-        return false;
-}
-
-template <typename T, unsigned int MAX>
-void Queue<T, MAX>::enQueue(T item) {
-    if (isFull())
-        return;
-    rear++;
-    count++;
-    items[rear] = item;
-}
-
-template <typename T, unsigned int MAX>
-T Queue<T, MAX>::deQueue() {
-    T item;
-    if (isEmpty())
-        return item;
-
-    front++;
-    count--;
-    item = this->items[front];
-    return item;
-}
-
-template <typename T, unsigned int MAX>
-T Queue<T, MAX>::peek() {
-    T item;
-    if (isEmpty())
-        return item;
-    item = this->items[front];
-    return item;
-}
-
-template <typename T, unsigned int MAX>
-int Queue<T, MAX>::size() {
-    return count;
-}
-
-Point::Point() {
-    x = 0;
-    y = 0;
-}
-
-Point::Point(int _x, int _y) {
-    x = _x;
-    y = _y;
-}
-
-bool Point::operator!=(const Point &rhs) const {
-    if (this->x == rhs.x && this->y == rhs.y)
-        return false;
-    else
-        return true;
-}
-
-bool Point::operator==(const Point &rhs) const {
-    if (this->x == rhs.x && this->y == rhs.y)
-        return true;
-    else
-        return false;
 }
