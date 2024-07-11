@@ -28,6 +28,7 @@
 - [x] GNS
 - [ ] [Hugo](./Hugo/README.md)
 - [ ] [Hugo_Gold_Miner_2](./Hugo_Gold_Miner_2/README_vi.md)
+- [ ] [Hugo_Sells_Oil](./Hugo_Sells_Oil/README.md)
 - [x] [Ice_Cave](./Ice_Cave/README.md)
 - [x] Involution
 - [x] Ladder_1
