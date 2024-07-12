@@ -3,7 +3,7 @@
 > Level 4
 
 There is a mobile piece (a Knight) and a stationary piece on the N×M chessboard.
-The available moves of the mobile piece are the same as set out in the image below.
+The available moves of the mobile piece are the same as set out in the figure below:
 
 ```
 | |x| |x| |
@@ -50,4 +50,3 @@ Case #1
 Case #2
 5
 ```
-

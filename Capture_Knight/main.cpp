@@ -1,5 +1,5 @@
-// Capture Knignt; Level 4; BFS.
 /******************************************************************************
+Capture Knignt
 A Mobile piece (a Knight, Move like an L shape), called the Attack Piece (A)
 A Stationary Piece, called the Defend piece (D)
 NxM chessboard
