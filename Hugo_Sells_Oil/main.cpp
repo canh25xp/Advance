@@ -1,4 +1,4 @@
-#pragma warning(disable:4996)
+#pragma warning(disable : 4996)
 #include <iostream>
 using namespace std;
 
@@ -7,8 +7,8 @@ const int M_MAX = 50;
 const int QUEUE_SIZE = 2500;
 
 // Direction: Up-Down, Left-Right
-const int di[4] = {-1,1,0,0};
-const int dj[4] = {0,0,-1,1};
+const int di[4] = {-1, 1, 0, 0};
+const int dj[4] = {0, 0, -1, 1};
 
 // Pipe type
 const int p[8][4] = {
@@ -42,9 +42,9 @@ private:
 struct Point {
     int i, j;
 
-    Point() :i(0), j(0) {}
+    Point() : i(0), j(0) {}
 
-    Point(int i, int j) :i(i), j(j) {}
+    Point(int i, int j) : i(i), j(j) {}
 
     bool BoundaryCheck(int N, int M) {
         return !(i < 0 || j < 0 || i >= N || j >= M);
@@ -57,7 +57,7 @@ int Check(int x, int y, int k);
 int BFS(const int (&mat)[N_MAX][M_MAX], const int &N, const int &M, const Point &start, const int &steps);
 
 /////////////////////////////////////MAIN//////////////////////////////////////
-int main(int argc, char* argv[]){
+int main(int argc, char *argv[]) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     const char *output = (argc > 2) ? argv[2] : "stdout.txt";
     freopen(input, "r", stdin);
@@ -79,39 +79,39 @@ int main(int argc, char* argv[]){
         Point hugo(r, c);
 
         cout << "Case #" << t + 1 << endl
-            << BFS(mat, N, M, hugo, P) << endl;
+             << BFS(mat, N, M, hugo, P) << endl;
     }
     return 0;
 }
 /////////////////////////////////////MAIN//////////////////////////////////////
 
-int Check(int p1, int p2, int d) {    
+int Check(int p1, int p2, int d) {
     // bitwise XOR operator: 0^1 = 1
     //                       1^1 = 0
     //                       2^1 = 3
     //                       3^1 = 2
-    return p[p1][d] && p[p2][d^1];
+    return p[p1][d] && p[p2][d ^ 1];
 
-    //switch (d) {
-    //case 0:
-    //    return p[p1][d] && p[p2][1];
-    //    break;
-    //case 1:
-    //    return p[p1][d] && p[p2][0];
-    //    break;
-    //case 2:
-    //    return p[p1][d] && p[p2][3];
-    //    break;
-    //case 3:
-    //    return p[p1][d] && p[p2][2];
-    //    break;
-    //default:
-    //    return 0;
-    //    break;
-    //}
+    // switch (d) {
+    // case 0:
+    //     return p[p1][d] && p[p2][1];
+    //     break;
+    // case 1:
+    //     return p[p1][d] && p[p2][0];
+    //     break;
+    // case 2:
+    //     return p[p1][d] && p[p2][3];
+    //     break;
+    // case 3:
+    //     return p[p1][d] && p[p2][2];
+    //     break;
+    // default:
+    //     return 0;
+    //     break;
+    // }
 }
 
-int BFS(const int (&mat)[N_MAX][M_MAX], const int &N, const int &M, const Point &start, const int &steps){
+int BFS(const int (&mat)[N_MAX][M_MAX], const int &N, const int &M, const Point &start, const int &steps) {
     int count = 0; // Count the number of pipes
     int vst[N_MAX][M_MAX] = {};
 
@@ -141,7 +141,7 @@ int BFS(const int (&mat)[N_MAX][M_MAX], const int &N, const int &M, const Point 
 }
 
 template <typename T, unsigned int MAX>
-Queue<T, MAX>::Queue() :front(-1), rear(-1) {}
+Queue<T, MAX>::Queue() : front(-1), rear(-1) {}
 
 template <typename T, unsigned int MAX>
 Queue<T, MAX>::~Queue() {}
