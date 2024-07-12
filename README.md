@@ -32,7 +32,7 @@
 |GNS||&check;||&check;
 |[Hugo](./Hugo/README.md)|&check;|&check;|&check;|&check;
 |[Hugo_Advertising](./Hugo_Advertising/README.md)|&check;|&check;|&check;
-|[Hugo_Gold_Miner](./Hugo_Gold_Miner/README.md)|&check;|&check;|&check;
+|[Hugo_Gold_Miner](./Hugo_Gold_Miner/README_vi.md)|&check;|&check;|&check;
 |[Hugo_Gold_Miner_2](./Hugo_Gold_Miner_2/README_vi.md)|&check;|&check;|&check;
 |[Hugo_Homecoming](./Hugo_Homecoming/README.md)|&check;|&check;|&check;
 |[Hugo_Marathon](./Hugo_Marathon/README.md)|&check;|&check;|&check;
