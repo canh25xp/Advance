@@ -17,7 +17,7 @@ int dy[4] = {0, 1, 0, -1};
 int BFS(Point srt, Point dst, int maze[MAX_SIZE][MAX_SIZE], int size);
 
 // MAIN
-int main(int argc, char **argv) {
+int main(int argc, char *argv[]) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
 
