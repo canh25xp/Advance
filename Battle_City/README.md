@@ -4,10 +4,12 @@
 
 Many of us had played the game "Battle city" in our childhood, and some people (like me) even often play it on computer now.
 
+![1](1.jpg)
+
 What we are discussing is a simple edition of this game. Given a map that consists of empty spaces, rivers, steel walls and brick walls only.
 Your task is to get a bonus as soon as possible suppose that no enemies will disturb you (See the following picture).
 
-![2](2.png)
+![2](2.jpg)
 
 Your tank can't move through rivers or walls, but it can destroy brick walls by shooting.
 A brick wall will be turned into empty spaces when you hit it, however, if your shot hit a steel wall, there will be no damage to the wall.
@@ -71,4 +73,3 @@ Case #4
 Case #5
 13
 ```
-
