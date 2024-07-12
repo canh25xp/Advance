@@ -25,6 +25,7 @@
 |[Dominos](./Dominos/README.md)|&check;|&check;|&check;
 |[Earning_Money_2](./Earning_Money_2/README.md)|&check;|&check;|&check;|&check;
 |[Farm_Protect](./Farm_Protect/README_vi.md)|&check;|&check;|&check;
+|[Fast_robot](./Fast_robot/README.md)
 |[Find_Cycle](./Find_Cycle/README.md)|&check;|&check;|&check;|&check;
 |Finding_Mode||&check;||&check;
 |[Flatten](./Flatten/README.md)|&check;|&check;|&check;|&check;
@@ -60,6 +61,7 @@
 |Password||&check;||&check;
 |Password_Generator||&check;||&check;
 |[Path_Finding](./Path_Finding/README.md)|&check;|&check;|&check;|&check;
+|[Pizza_Location](./Pizza_Location/README.md)|&check;|&check;|&check;
 |[Point_of_Balance_2](./Point_of_Balance_2/README.md)|&check;|&check;|&check;
 |[Princess](./Princess/README.md)|&check;|&check;|&check;|&check;
 |[Route_Finding](./Route_Finding/README.md)|&check;|&check;|&check;|&check;
