@@ -4,8 +4,8 @@
 
 using namespace std;
 
-const int TEST_CASE = 10;
-const int MAX_SIZE = 201;
+const int SIZE = 201;
+
 const int PATH = 1;
 const int TRAP = 0;
 const int PRICESS = 2;
@@ -14,34 +14,34 @@ const int PRICESS = 2;
 int dx[4] = {-1, 0, 1, 0};
 int dy[4] = {0, 1, 0, -1};
 
-int BFS(Point srt, Point dst, int maze[MAX_SIZE][MAX_SIZE], int size);
+int BFS(Point srt, Point dst, int maze[SIZE][SIZE], int size);
 
 // MAIN
 int main(int argc, char *argv[]) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
 
-    int test_case = TEST_CASE;
-    cin >> test_case;
-    for (int case_index = 0; case_index < test_case; case_index++) {
-        int maze_size = 0;
-        cin >> maze_size;
-        int maze[MAX_SIZE][MAX_SIZE] = {};
+    int T;
+    cin >> T;
+    for (int case_index = 0; case_index < T; case_index++) {
+        int N = 0; // Size of the maze
+        cin >> N;
+        int maze[SIZE][SIZE] = {};
 
         Point Princess;
         Point Entrance(0, 0);
-        Point Exit(maze_size - 1, maze_size - 1);
+        Point Exit(N - 1, N - 1);
 
-        for (int i = 0; i < maze_size; i++) {
-            for (int j = 0; j < maze_size; j++) {
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
                 cin >> maze[i][j];
                 if (maze[i][j] == PRICESS)
                     Princess = Point(j, i);
             }
         }
 
-        int Found_Princess = BFS(Entrance, Princess, maze, maze_size);
-        int Found_Exit = BFS(Princess, Exit, maze, maze_size);
+        int Found_Princess = BFS(Entrance, Princess, maze, N);
+        int Found_Exit = BFS(Princess, Exit, maze, N);
 
         int Step = (Found_Princess == -1 || Found_Exit == -1) ? -1 : (Found_Princess + Found_Exit);
 
@@ -52,11 +52,11 @@ int main(int argc, char *argv[]) {
 }
 // END MAIN
 
-int BFS(Point srt, Point dst, int maze[MAX_SIZE][MAX_SIZE], int size) {
+int BFS(Point srt, Point dst, int maze[SIZE][SIZE], int size) {
     Queue<Point, 50000> queue;
     queue.enQueue(srt);
 
-    int visited[MAX_SIZE][MAX_SIZE] = {};
+    int visited[SIZE][SIZE] = {};
 
     while (!queue.isEmpty()) {
         Point current = queue.deQueue();
