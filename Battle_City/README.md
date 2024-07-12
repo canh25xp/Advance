@@ -4,8 +4,6 @@
 
 Many of us had played the game "Battle city" in our childhood, and some people (like me) even often play it on computer now.
 
-![1](1.png)
-
 What we are discussing is a simple edition of this game. Given a map that consists of empty spaces, rivers, steel walls and brick walls only.
 Your task is to get a bonus as soon as possible suppose that no enemies will disturb you (See the following picture).
 
