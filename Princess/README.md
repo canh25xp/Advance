@@ -29,7 +29,7 @@ Entrance
     1 0 1 0 1
             ^
             |
-           Exit    
+           Exit
 ```
 
 -> Requires at lease 8 steps to save the princess and exit the maze.
@@ -46,7 +46,7 @@ Entrance
     1 0 1 1 1
             ^
             |
-           Exit    
+           Exit
 ```
 
 -> Requires at lease 10 steps to save the princess and exit the maze:
@@ -65,7 +65,7 @@ Entrance
     1 1 1 1 0 1
               ^
               |
-             Exit    
+             Exit
 ```
 
 -> There are no posible solution to this. Print out `-1`
@@ -112,4 +112,3 @@ Print out `T` lines, each line print out the minimum steps required for each tes
 10
 -1
 ```
-
