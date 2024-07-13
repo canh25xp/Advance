@@ -12,7 +12,11 @@ int main() {
     s.push(3);
     s.push(4);
     int a = s.peek();
+    int c = s.size();
     int b = s.pop();
+    int d = s.size();
+    bool e = s.has(2);
+    bool f = s.has(5);
 
     return 0;
 }
