@@ -81,7 +81,7 @@ int Stack<T, MAX>::size() const {
 
 template <typename T, int MAX>
 bool Stack<T, MAX>::has(const T &item) const {
-    for (int i = 0; i <= this->top; i++) {
+    for (int i = 0; i < this->size(); i++) {
         if (this->items[i] == item) {
             return true;
         }
