@@ -9,8 +9,9 @@ const int MAX_N = 4; // Should be 30
 int MinHard(const int (&num)[MAX_N], int (&hard)[MAX_N][MAX_N], int i, int j);
 int MaxHard(const int (&num)[MAX_N], int (&hard)[MAX_N][MAX_N], int i, int j);
 
-int main() {
-    freopen("eval_input_small.txt", "r", stdin);
+int main(int argc, char **argv) {
+    const char *input = (argc > 1) ? argv[1] : "input.txt";
+    freopen(input, "r", stdin);
     int T;
     cin >> T;
     for (int tc = 0; tc < T; tc++) {
