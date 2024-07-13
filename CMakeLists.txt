@@ -92,5 +92,8 @@ add_subdirectory(Village)
 # add_subdirectory(Wedding)
 add_subdirectory(Well_Project)
 
+# For testing
+add_subdirectory(shared/Stack)
+
 
 
