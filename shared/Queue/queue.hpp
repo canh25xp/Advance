@@ -18,6 +18,7 @@ public:
     bool isEmpty() const;
     int size() const;
     bool has(const T &item) const;
+    void clear();
 };
 
 template <typename T, unsigned int MAX>
@@ -85,4 +86,11 @@ bool Queue<T, MAX>::has(const T &item) const {
         }
     }
     return false;
+}
+
+template <typename T, unsigned int MAX>
+void Queue<T, MAX>::clear() {
+    this->front = -1;
+    this->rear = -1;
+    this->count = 0;
 }
