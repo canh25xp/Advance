@@ -21,12 +21,12 @@ int main(int argc, char *argv[]) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
 
-    int T{};
+    int T = {};
     cin >> T;
     for (int case_index = 0; case_index < T; case_index++) {
         int N = 0; // Size of the maze
         cin >> N;
-        int maze[SIZE][SIZE] {};
+        int maze[SIZE][SIZE] = {};
 
         Point Princess;
         Point Entrance(0, 0);
@@ -62,7 +62,7 @@ int BFS(Point srt, Point dst, int maze[SIZE][SIZE], int size) {
         Point current = q.deQueue();
         for (int d = 0; d < 4; d++) {
             Point next(current.i + dx[d], current.j + dy[d]);
-            if (next.j >= 0 && next.j < size && next.i >= 0 && next.i < size && !visited[next.i][next.j] && maze[next.i][next.j] != TRAP) {
+            if (next.isValid(size, size) && !visited[next.i][next.j] && maze[next.i][next.j] != TRAP) {
                 visited[next.i][next.j] = visited[current.i][current.j] + 1;
                 if (next == dst) {
                     return visited[next.i][next.j];
