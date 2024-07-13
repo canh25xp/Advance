@@ -5,12 +5,44 @@ struct Point {
 
     Point(int r, int c) : r(r), c(c) {}
 
+    bool operator>(const int &rhs) const {
+        return r > rhs && c > rhs;
+    }
+
+    bool operator>=(const int &rhs) const {
+        return r >= rhs && c >= rhs;
+    }
+
+    bool operator<(const int &rhs) const {
+        return r < rhs && c < rhs;
+    }
+
+    bool operator<=(const int &rhs) const {
+        return r <= rhs && c <= rhs;
+    }
+
+    bool operator<(const Point &rhs) const {
+        return r < rhs.r && c < rhs.c;
+    }
+
+    bool operator<=(const Point &rhs) const {
+        return r <= rhs.r && c <= rhs.c;
+    }
+
+    bool operator>(const Point &rhs) const {
+        return r > rhs.r && c > rhs.c;
+    }
+
+    bool operator>=(const Point &rhs) const {
+        return r >= rhs.r && c >= rhs.c;
+    }
+
     bool operator==(const Point &rhs) const {
         return r == rhs.r && c == rhs.c;
     }
 
     bool operator!=(const Point &rhs) const {
-        return !(*this == rhs);
+        return r != rhs.r || c != rhs.c;
     }
 
     Point operator+(const Point &rhs) const {
