@@ -6,19 +6,19 @@ struct Point {
     Point(int r, int c) : r(r), c(c) {}
 
     bool operator==(const Point &rhs) const {
-        if (r == rhs.r && c == rhs.c)
-            return true;
-        return false;
+        return this->r == rhs.r && this->c == rhs.c;
     }
 
     bool operator!=(const Point &rhs) const {
-        if (r == rhs.r && c == rhs.c)
-            return false;
-        return true;
+        return !(*this == rhs);
     }
 
     Point operator+(const Point &rhs) const {
         return Point(r + rhs.r, c + rhs.c);
+    }
+
+    Point operator-(const Point &rhs) const {
+        return Point(r - rhs.r, c - rhs.c);
     }
 
     void operator+=(const Point &rhs) {
@@ -26,28 +26,24 @@ struct Point {
         c += rhs.c;
     }
 
-    void operator+=(const int &rhs) {
-        r += rhs;
-        c += rhs;
-    }
-
-    void operator++() {
-        r++;
-        c++;
-    }
-
-    Point operator-(const Point &rhs) const {
-        return Point(r - rhs.r, c - rhs.c);
-    }
-
     void operator-=(const Point &rhs) {
         r -= rhs.r;
         c -= rhs.c;
     }
 
+    void operator+=(const int &rhs) {
+        r += rhs;
+        c += rhs;
+    }
+
     void operator-=(const int &rhs) {
         r -= rhs;
         c -= rhs;
+    }
+
+    void operator++() {
+        r++;
+        c++;
     }
 
     void operator--() {
