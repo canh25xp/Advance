@@ -52,8 +52,8 @@ int main(int argc, char **argv) {
 
         cin >> R >> C >> S >> K;
 
-        Point A(C, R);
-        Point D(K, S);
+        Point A(R, C);
+        Point D(S, K);
 
         // Reset Pieces position to 0-based index
         --A;
@@ -69,8 +69,8 @@ int main(int argc, char **argv) {
 /////////////////////////////////////MAIN//////////////////////////////////////
 
 int BFS(const int &N, const int &M, const Point &A, const Point &D) {
-    static const int dx[8] = {-2, -1, 1, 2, -2, -1, 1, 2};
-    static const int dy[8] = {-1, -2, -2, -1, 1, 2, 2, 1};
+    static const int dr[8] = {-2, -1, 1, 2, -2, -1, 1, 2};
+    static const int dc[8] = {-1, -2, -2, -1, 1, 2, 2, 1};
 
     static Queue<Point, QUEUE_SIZE> q;
     static int visited[MAX_N][MAX_M] = {};
@@ -85,11 +85,11 @@ int BFS(const int &N, const int &M, const Point &A, const Point &D) {
     while (!q.isEmpty()) {
         Point current = q.deQueue();
         for (int d = 0; d < 8; d++) {
-            Point next(current.x + dx[d], current.y + dy[d]);
-            if (next.y >= 0 && next.y < N && next.x >= 0 && next.x < M && !visited[next.y][next.x]) {
-                visited[next.y][next.x] = visited[current.y][current.x] + 1;
+            Point next(current.r + dr[d], current.c + dc[d]);
+            if (next.r >= 0 && next.r < N && next.c >= 0 && next.c < M && !visited[next.r][next.c]) {
+                visited[next.r][next.c] = visited[current.r][current.c] + 1;
                 if (next == D)
-                    return visited[next.y][next.x];
+                    return visited[next.r][next.c];
                 q.enQueue(next);
             }
         }
@@ -103,9 +103,9 @@ void Print(const int &N, const int &M, const Point &A, const Point &D) {
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
             cout << "|";
-            if (A == Point(j, i))
+            if (A == Point(i, j))
                 cout << "A";
-            else if (D == Point(j, i))
+            else if (D == Point(i, j))
                 cout << "D";
             else
                 cout << " ";

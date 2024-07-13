@@ -1,57 +1,57 @@
 struct Point {
-    int x, y;
+    int r, c;
 
-    Point() : x(0), y(0) {}
+    Point() : r(0), c(0) {}
 
-    Point(int x, int y) : x(x), y(y) {}
+    Point(int r, int c) : r(r), c(c) {}
 
     bool operator==(const Point &rhs) const {
-        if (this->x == rhs.x && this->y == rhs.y)
+        if (r == rhs.r && c == rhs.c)
             return true;
         return false;
     }
 
     bool operator!=(const Point &rhs) const {
-        if (this->x == rhs.x && this->y == rhs.y)
+        if (r == rhs.r && c == rhs.c)
             return false;
         return true;
     }
 
     Point operator+(const Point &rhs) const {
-        return Point(this->x + rhs.x, this->y + rhs.y);
+        return Point(r + rhs.r, c + rhs.c);
     }
 
     void operator+=(const Point &rhs) {
-        this->x += rhs.x;
-        this->y += rhs.y;
+        r += rhs.r;
+        c += rhs.c;
     }
 
     void operator+=(const int &rhs) {
-        this->x += rhs;
-        this->y += rhs;
+        r += rhs;
+        c += rhs;
     }
 
     void operator++() {
-        this->x++;
-        this->y++;
+        r++;
+        c++;
     }
 
     Point operator-(const Point &rhs) const {
-        return Point(this->x - rhs.x, this->y - rhs.y);
+        return Point(r - rhs.r, c - rhs.c);
     }
 
     void operator-=(const Point &rhs) {
-        this->x -= rhs.x;
-        this->y -= rhs.y;
+        r -= rhs.r;
+        c -= rhs.c;
     }
 
     void operator-=(const int &rhs) {
-        this->x -= rhs;
-        this->y -= rhs;
+        r -= rhs;
+        c -= rhs;
     }
 
     void operator--() {
-        this->x--;
-        this->y--;
+        r--;
+        c--;
     }
 };

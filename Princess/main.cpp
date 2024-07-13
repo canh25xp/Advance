@@ -21,12 +21,12 @@ int main(int argc, char *argv[]) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
 
-    int T;
+    int T{};
     cin >> T;
     for (int case_index = 0; case_index < T; case_index++) {
         int N = 0; // Size of the maze
         cin >> N;
-        int maze[SIZE][SIZE] = {};
+        int maze[SIZE][SIZE] {};
 
         Point Princess;
         Point Entrance(0, 0);
@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
             for (int j = 0; j < N; j++) {
                 cin >> maze[i][j];
                 if (maze[i][j] == PRICESS)
-                    Princess = Point(j, i);
+                    Princess = Point(i, j);
             }
         }
 
@@ -53,21 +53,21 @@ int main(int argc, char *argv[]) {
 // END MAIN
 
 int BFS(Point srt, Point dst, int maze[SIZE][SIZE], int size) {
-    Queue<Point, 50000> queue;
-    queue.enQueue(srt);
+    Queue<Point, 50000> q;
+    q.enQueue(srt);
 
     int visited[SIZE][SIZE] = {};
 
-    while (!queue.isEmpty()) {
-        Point current = queue.deQueue();
+    while (!q.isEmpty()) {
+        Point current = q.deQueue();
         for (int d = 0; d < 4; d++) {
-            Point next(current.x + dx[d], current.y + dy[d]);
-            if (next.y >= 0 && next.y < size && next.x >= 0 && next.x < size && !visited[next.y][next.x] && maze[next.y][next.x] != TRAP) {
-                visited[next.y][next.x] = visited[current.y][current.x] + 1;
+            Point next(current.r + dx[d], current.c + dy[d]);
+            if (next.c >= 0 && next.c < size && next.r >= 0 && next.r < size && !visited[next.r][next.c] && maze[next.r][next.c] != TRAP) {
+                visited[next.r][next.c] = visited[current.r][current.c] + 1;
                 if (next == dst) {
-                    return visited[next.y][next.x];
+                    return visited[next.r][next.c];
                 }
-                queue.enQueue(next);
+                q.enQueue(next);
             }
         }
     }
