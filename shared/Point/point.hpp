@@ -1,87 +1,87 @@
 struct Point {
-    int r, c;
+    int i, j;
 
-    Point() : r(0), c(0) {}
+    Point() : i(0), j(0) {}
 
-    Point(int r, int c) : r(r), c(c) {}
+    Point(int i, int j) : i(i), j(j) {}
 
     bool operator>(const int &rhs) const {
-        return r > rhs && c > rhs;
+        return i > rhs && j > rhs;
     }
 
     bool operator>=(const int &rhs) const {
-        return r >= rhs && c >= rhs;
+        return i >= rhs && j >= rhs;
     }
 
     bool operator<(const int &rhs) const {
-        return r < rhs && c < rhs;
+        return i < rhs && j < rhs;
     }
 
     bool operator<=(const int &rhs) const {
-        return r <= rhs && c <= rhs;
+        return i <= rhs && j <= rhs;
     }
 
     bool operator<(const Point &rhs) const {
-        return r < rhs.r && c < rhs.c;
+        return i < rhs.i && j < rhs.j;
     }
 
     bool operator<=(const Point &rhs) const {
-        return r <= rhs.r && c <= rhs.c;
+        return i <= rhs.i && j <= rhs.j;
     }
 
     bool operator>(const Point &rhs) const {
-        return r > rhs.r && c > rhs.c;
+        return i > rhs.i && j > rhs.j;
     }
 
     bool operator>=(const Point &rhs) const {
-        return r >= rhs.r && c >= rhs.c;
+        return i >= rhs.i && j >= rhs.j;
     }
 
     bool operator==(const Point &rhs) const {
-        return r == rhs.r && c == rhs.c;
+        return i == rhs.i && j == rhs.j;
     }
 
     bool operator!=(const Point &rhs) const {
-        return r != rhs.r || c != rhs.c;
+        return i != rhs.i || j != rhs.j;
     }
 
     Point operator+(const Point &rhs) const {
-        return Point(r + rhs.r, c + rhs.c);
+        return Point(i + rhs.i, j + rhs.j);
     }
 
     Point operator-(const Point &rhs) const {
-        return Point(r - rhs.r, c - rhs.c);
+        return Point(i - rhs.i, j - rhs.j);
     }
 
     void operator+=(const Point &rhs) {
-        r += rhs.r;
-        c += rhs.c;
+        i += rhs.i;
+        j += rhs.j;
     }
 
     void operator-=(const Point &rhs) {
-        r -= rhs.r;
-        c -= rhs.c;
+        i -= rhs.i;
+        j -= rhs.j;
     }
 
     void operator+=(const int &rhs) {
-        r += rhs;
-        c += rhs;
+        i += rhs;
+        j += rhs;
     }
 
     void operator-=(const int &rhs) {
-        r -= rhs;
-        c -= rhs;
+        i -= rhs;
+        j -= rhs;
     }
 
     Point &operator++() { // Prefix
-        ++r;
-        ++c;
+        ++i;
+        ++j;
         return *this;
     }
 
     Point &operator--() { // Prefix
-        --r;
-        --c;
+        --i;
+        --j;
         return *this;
     }
 

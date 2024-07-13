@@ -61,11 +61,11 @@ int BFS(Point srt, Point dst, int maze[SIZE][SIZE], int size) {
     while (!q.isEmpty()) {
         Point current = q.deQueue();
         for (int d = 0; d < 4; d++) {
-            Point next(current.r + dx[d], current.c + dy[d]);
-            if (next.c >= 0 && next.c < size && next.r >= 0 && next.r < size && !visited[next.r][next.c] && maze[next.r][next.c] != TRAP) {
-                visited[next.r][next.c] = visited[current.r][current.c] + 1;
+            Point next(current.i + dx[d], current.j + dy[d]);
+            if (next.j >= 0 && next.j < size && next.i >= 0 && next.i < size && !visited[next.i][next.j] && maze[next.i][next.j] != TRAP) {
+                visited[next.i][next.j] = visited[current.i][current.j] + 1;
                 if (next == dst) {
-                    return visited[next.r][next.c];
+                    return visited[next.i][next.j];
                 }
                 q.enQueue(next);
             }
