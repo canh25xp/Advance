@@ -1,4 +1,4 @@
-# pragma once
+#pragma once
 #include <iostream>
 template <typename T = int, int MAX = 10000>
 class Stack {
@@ -46,13 +46,16 @@ T Stack<T, MAX>::pop() {
 }
 
 template <typename T, int MAX>
-inline T Stack<T, MAX>::peek() {
+T Stack<T, MAX>::peek() {
     T item{};
     if (isEmpty()) {
-        std::cerr << "Stack Underflow \n";
+        std::cerr << "Stack empty";
         return item;
     }
-    return T();
+
+    item = this->items[this->top];
+
+    return item;
 }
 
 template <typename T, int MAX>

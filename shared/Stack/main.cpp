@@ -11,8 +11,8 @@ int main() {
     s.push(2);
     s.push(3);
     s.push(4);
-
-    int a = s.pop();
+    int a = s.peek();
+    int b = s.pop();
 
     return 0;
 }
