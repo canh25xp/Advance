@@ -94,6 +94,7 @@ add_subdirectory(Well_Project)
 
 # For testing
 add_subdirectory(shared/Stack)
+add_subdirectory(shared/Point)
 
 
 

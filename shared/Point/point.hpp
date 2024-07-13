@@ -6,7 +6,7 @@ struct Point {
     Point(int r, int c) : r(r), c(c) {}
 
     bool operator==(const Point &rhs) const {
-        return this->r == rhs.r && this->c == rhs.c;
+        return r == rhs.r && c == rhs.c;
     }
 
     bool operator!=(const Point &rhs) const {
@@ -41,13 +41,27 @@ struct Point {
         c -= rhs;
     }
 
-    void operator++() {
-        r++;
-        c++;
+    Point &operator++() { // Prefix
+        ++r;
+        ++c;
+        return *this;
     }
 
-    void operator--() {
-        r--;
-        c--;
+    Point &operator--() { // Prefix
+        --r;
+        --c;
+        return *this;
+    }
+
+    Point operator++(int) { // Postfix
+        Point temp = *this;
+        ++(*this);
+        return temp;
+    }
+
+    Point operator--(int) { // Postfix
+        Point temp = *this;
+        --(*this);
+        return temp;
     }
 };
