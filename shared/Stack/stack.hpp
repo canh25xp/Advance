@@ -12,9 +12,10 @@ public:
 
     void push(T item);
     T pop();
-    T peek();
-    bool isFull();
-    bool isEmpty();
+    T peek() const;
+    bool isFull() const;
+    bool isEmpty() const;
+    int size() const;
 };
 
 template <typename T, int MAX>
@@ -46,7 +47,7 @@ T Stack<T, MAX>::pop() {
 }
 
 template <typename T, int MAX>
-T Stack<T, MAX>::peek() {
+T Stack<T, MAX>::peek() const {
     T item{};
     if (isEmpty()) {
         std::cerr << "Stack empty";
@@ -59,14 +60,19 @@ T Stack<T, MAX>::peek() {
 }
 
 template <typename T, int MAX>
-bool Stack<T, MAX>::isEmpty() {
+bool Stack<T, MAX>::isEmpty() const {
     return (this->top < 0);
 }
 
 template <typename T, int MAX>
-bool Stack<T, MAX>::isFull() {
+bool Stack<T, MAX>::isFull() const {
     if (this->top >= (MAX - 1))
         return true;
     else
         return false;
+}
+
+template <typename T, int MAX>
+int Stack<T, MAX>::size() const {
+    return this->top + 1;
 }
