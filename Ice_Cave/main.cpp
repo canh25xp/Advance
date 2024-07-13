@@ -5,22 +5,20 @@ using namespace std;
 const int N_MAX = 500; // Should be 500
 const int M_MAX = 500; // Should be 500
 
-const int di[4] = {0,-1,1,0};
-const int dj[4] = {-1,0,0,1};
-
+const int di[4] = {0, -1, 1, 0};
+const int dj[4] = {-1, 0, 0, 1};
 
 class Point {
 public:
     int i, j;
 
-    Point ();
-    Point (int i, int j);
-    bool operator==(const Point& rhs) const;
+    Point();
+    Point(int i, int j);
+    bool operator==(const Point &rhs) const;
 };
 
-template <typename T=int, unsigned int MAX=500>
-class Queue
-{
+template <typename T = int, unsigned int MAX = 500>
+class Queue {
 public:
     Queue();
     ~Queue();
@@ -41,7 +39,7 @@ private:
 bool playable(int (&mat)[N_MAX][M_MAX], int n, int m, Point src, Point dst);
 bool BFS(int (&mat)[N_MAX][M_MAX], int n, int m, Point src, Point dst);
 
-int main(){
+int main() {
     freopen("input.txt", "r", stdin);
     int T;
     cin >> T;
@@ -58,7 +56,7 @@ int main(){
         Point start(r1, c1);
         Point exit(r2, c2);
 
-        if(playable(mat, n, m, start, exit))
+        if (playable(mat, n, m, start, exit))
             cout << "YES" << endl;
         else
             cout << "NO" << endl;
@@ -74,20 +72,20 @@ bool playable(int (&mat)[N_MAX][M_MAX], int n, int m, Point src, Point dst) {
         int ni = dst.i + di[d];
         int nj = dst.j + dj[d];
         if (ni >= 0 && ni < n && nj >= 0 && nj < m && mat[ni][nj] == 1)
-            count ++;
+            count++;
     }
 
-    if (count >= 2 || (count >= 1 && mat[dst.i][dst.j] == 0) ) {
-        if(BFS(mat, n, m, src, dst))
+    if (count >= 2 || (count >= 1 && mat[dst.i][dst.j] == 0)) {
+        if (BFS(mat, n, m, src, dst))
             return true;
         else
             return false;
     }
-    
+
     return false;
 }
 
-bool BFS(int (&mat)[N_MAX][M_MAX], int n, int m, Point src, Point dst){
+bool BFS(int (&mat)[N_MAX][M_MAX], int n, int m, Point src, Point dst) {
     Queue<Point> q;
     q.enQueue(src);
 
@@ -97,8 +95,8 @@ bool BFS(int (&mat)[N_MAX][M_MAX], int n, int m, Point src, Point dst){
             int ni = t.i + di[d];
             int nj = t.j + dj[d];
             Point next(ni, nj);
-            if (ni >= 0 && ni < n && nj >= 0 && nj < m){
-                if (mat[ni][nj] == 1){
+            if (ni >= 0 && ni < n && nj >= 0 && nj < m) {
+                if (mat[ni][nj] == 1) {
                     mat[ni][nj]--;
                     q.enQueue(next);
                 }
@@ -111,29 +109,27 @@ bool BFS(int (&mat)[N_MAX][M_MAX], int n, int m, Point src, Point dst){
     return false;
 }
 
-Point ::Point () : i(0), j(0) {}
+Point ::Point() : i(0), j(0) {}
 
-Point ::Point (int i, int j) : i(i), j(j) {}
+Point ::Point(int i, int j) : i(i), j(j) {}
 
-bool Point::operator==(const Point& rhs) const{
+bool Point::operator==(const Point &rhs) const {
     return (this->i == rhs.i && this->j == rhs.j);
 }
 
 template <typename T, unsigned int MAX>
-Queue<T, MAX>::Queue()
-{
+Queue<T, MAX>::Queue() {
     front = -1;
     rear = -1;
     count = 0;
 }
 
 template <typename T, unsigned int MAX>
-Queue<T, MAX>::~Queue()
-{
+Queue<T, MAX>::~Queue() {
 }
 
 template <typename T, unsigned int MAX>
-bool Queue<T, MAX>::isEmpty(){
+bool Queue<T, MAX>::isEmpty() {
     if (front == rear)
         return true;
     else
@@ -141,7 +137,7 @@ bool Queue<T, MAX>::isEmpty(){
 }
 
 template <typename T, unsigned int MAX>
-bool Queue<T, MAX>::isFull(){
+bool Queue<T, MAX>::isFull() {
     if (front == 0 && rear == MAX - 1)
         return true;
     else
@@ -149,7 +145,7 @@ bool Queue<T, MAX>::isFull(){
 }
 
 template <typename T, unsigned int MAX>
-void Queue<T, MAX>::enQueue(T item){
+void Queue<T, MAX>::enQueue(T item) {
     if (isFull())
         return;
     rear++;
@@ -158,7 +154,7 @@ void Queue<T, MAX>::enQueue(T item){
 }
 
 template <typename T, unsigned int MAX>
-T Queue<T, MAX>::deQueue(){
+T Queue<T, MAX>::deQueue() {
     T item;
     if (isEmpty())
         return item;
@@ -170,7 +166,7 @@ T Queue<T, MAX>::deQueue(){
 }
 
 template <typename T, unsigned int MAX>
-T Queue<T, MAX>::peek(){
+T Queue<T, MAX>::peek() {
     T item;
     if (isEmpty())
         return item;
