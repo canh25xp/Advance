@@ -22,6 +22,8 @@ That is, the location of the upper left most is (1,1)
 ******************************************************************************/
 
 #define _CRT_SECURE_NO_WARNINGS // Suppress Warning	C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead.
+#include "point.hpp"
+#include "queue.hpp"
 #include <iostream>
 using namespace std;
 
@@ -29,50 +31,15 @@ const int MAX_N = 1000;
 const int MAX_M = MAX_N;
 const int QUEUE_SIZE = MAX_M * MAX_N;
 
-template <typename T, unsigned int MAX>
-class Queue {
-public:
-    Queue();
-    ~Queue();
-
-    void reset();
-    bool isFull();
-    bool isEmpty();
-    void enQueue(T item);
-    T deQueue();
-
-private:
-    T items[MAX];
-    int front, rear;
-};
-
-struct Point {
-    Point();
-    Point(int x, int y);
-
-    bool operator==(const Point &rhs) const;
-    bool operator!=(const Point &rhs) const;
-
-    Point operator+(const Point &rhs) const;
-    void operator+=(const Point &rhs);
-    void operator+=(const int &rhs);
-    void operator++();
-
-    Point operator-(const Point &rhs) const;
-    void operator-=(const Point &rhs);
-    void operator-=(const int &rhs);
-    void operator--();
-
-    int x, y;
-};
-
 void Print(const int &N, const int &M, const Point &A, const Point &D);
 
 int BFS(const int &N, const int &M, const Point &A, const Point &D);
 
 /////////////////////////////////////MAIN//////////////////////////////////////
-int main() {
-    // freopen("eval_input.txt", "r", stdin);
+int main(int argc, char **argv) {
+    const char *input = (argc > 1) ? argv[1] : "input.txt";
+    freopen(input, "r", stdin);
+
     int T; // Number of Test cases
     cin >> T;
 
@@ -108,7 +75,6 @@ int BFS(const int &N, const int &M, const Point &A, const Point &D) {
     static Queue<Point, QUEUE_SIZE> q;
     static int visited[MAX_N][MAX_M] = {};
 
-    q.reset();
     q.enQueue(A);
 
     for (int i = 0; i < N; i++)
@@ -145,102 +111,4 @@ void Print(const int &N, const int &M, const Point &A, const Point &D) {
         }
         cout << "|" << endl;
     }
-}
-
-template <typename T, unsigned int MAX>
-Queue<T, MAX>::Queue() : front(-1), rear(-1) {}
-
-template <typename T, unsigned int MAX>
-Queue<T, MAX>::~Queue() {}
-
-template <typename T, unsigned int MAX>
-void Queue<T, MAX>::reset() {
-    front = -1;
-    rear = -1;
-}
-
-template <typename T, unsigned int MAX>
-bool Queue<T, MAX>::isEmpty() {
-    if (front == rear)
-        return true;
-    return false;
-}
-
-template <typename T, unsigned int MAX>
-bool Queue<T, MAX>::isFull() {
-    if (front == 0 && rear == MAX - 1)
-        return true;
-    return false;
-}
-
-template <typename T, unsigned int MAX>
-void Queue<T, MAX>::enQueue(T item) {
-    if (isFull())
-        return;
-    rear++;
-    items[rear] = item;
-}
-
-template <typename T, unsigned int MAX>
-T Queue<T, MAX>::deQueue() {
-    T item;
-    if (isEmpty())
-        return item;
-    front++;
-    item = this->items[front];
-    return item;
-}
-
-Point::Point() : x(0), y(0) {}
-
-Point::Point(int x, int y) : x(x), y(y) {}
-
-bool Point::operator==(const Point &rhs) const {
-    if (this->x == rhs.x && this->y == rhs.y)
-        return true;
-    return false;
-}
-
-bool Point::operator!=(const Point &rhs) const {
-    if (this->x == rhs.x && this->y == rhs.y)
-        return false;
-    return true;
-}
-
-void Point::operator+=(const Point &rhs) {
-    this->x += rhs.x;
-    this->y += rhs.y;
-}
-
-void Point::operator+=(const int &rhs) {
-    this->x += rhs;
-    this->y += rhs;
-}
-
-void Point::operator++() {
-    this->x++;
-    this->y++;
-}
-
-void Point::operator-=(const Point &rhs) {
-    this->x -= rhs.x;
-    this->y -= rhs.y;
-}
-
-void Point::operator-=(const int &rhs) {
-    this->x -= rhs;
-    this->y -= rhs;
-}
-
-Point Point::operator+(const Point &rhs) const {
-    return Point(this->x + rhs.x, this->y + rhs.y);
-}
-
-Point Point::operator-(const Point &rhs) const {
-    return Point(this->x - rhs.x, this->y - rhs.y);
-}
-
-void Point::operator--() {
-    this->x--;
-    this->y--;
 }
