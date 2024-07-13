@@ -96,4 +96,8 @@ struct Point {
         --(*this);
         return temp;
     }
+
+    bool isValid(const int &R, const int &C) const {
+        return i >= 0 && j >= 0 && i < R && j < C;
+    }
 };

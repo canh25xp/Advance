@@ -86,7 +86,7 @@ int BFS(const int &N, const int &M, const Point &A, const Point &D) {
         Point current = q.deQueue();
         for (int d = 0; d < 8; d++) {
             Point next(current.i + dr[d], current.j + dc[d]);
-            if (next >= 0 && next < Point(N, M) && !visited[next.i][next.j]) {
+            if (next.isValid(N, M) && !visited[next.i][next.j]) {
                 visited[next.i][next.j] = visited[current.i][current.j] + 1;
                 if (next == D)
                     return visited[next.i][next.j];
