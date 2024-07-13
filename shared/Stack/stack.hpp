@@ -1,4 +1,4 @@
-template <typename T, int MAX>
+template <typename T = int, int MAX = 10000>
 class Stack {
 private:
     int top;
