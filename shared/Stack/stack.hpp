@@ -10,12 +10,13 @@ public:
     Stack();
     ~Stack();
 
-    void push(T item);
-    T pop();
-    T peek() const;
-    bool isFull() const;
-    bool isEmpty() const;
-    int size() const;
+    void push(const T &item);      // Add an item to the Stack
+    T pop();                       // Remove an item from the Stack
+    T peek() const;                // Get an item from the Stack without remove it
+    bool isFull() const;           // Check if the Stack if Full
+    bool isEmpty() const;          // Check if the Stack if Empty
+    int size() const;              // Get the current number of items in the Stack
+    bool has(const T &item) const; // Check if the Stack has an item.
 };
 
 template <typename T, int MAX>
@@ -25,7 +26,7 @@ template <typename T, int MAX>
 Stack<T, MAX>::~Stack() {}
 
 template <typename T, int MAX>
-void Stack<T, MAX>::push(T item) {
+void Stack<T, MAX>::push(const T &item) {
     if (this->isFull()) {
         std::cerr << "Stack Overflow \n";
         return;
@@ -75,4 +76,14 @@ bool Stack<T, MAX>::isFull() const {
 template <typename T, int MAX>
 int Stack<T, MAX>::size() const {
     return this->top + 1;
+}
+
+template <typename T, int MAX>
+bool Stack<T, MAX>::has(const T &item) const {
+    for (int i = 0; i <= this->top; i++) {
+        if (this->items[i] == item) {
+            return true;
+        }
+    }
+    return false;
 }
