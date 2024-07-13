@@ -75,6 +75,7 @@ int BFS(const int &N, const int &M, const Point &A, const Point &D) {
     static Queue<Point, QUEUE_SIZE> q;
     static int visited[MAX_N][MAX_M] = {};
 
+    q.clear();
     q.enQueue(A);
 
     for (int i = 0; i < N; i++)
