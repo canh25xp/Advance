@@ -4,7 +4,7 @@
 
 using namespace std;
 
-const int SIZE = 201;
+const int SIZE = 200;
 
 const int PATH = 1;
 const int TRAP = 0;
