@@ -4,7 +4,7 @@ template <typename T = int, int MAX = 10000>
 class Stack {
 private:
     int top;
-    T items[MAX];
+    T items[MAX] = {};
 
 public:
     Stack();
@@ -12,6 +12,7 @@ public:
 
     void push(T item);
     T pop();
+    T peek();
     bool isFull();
     bool isEmpty();
 };
@@ -42,6 +43,16 @@ T Stack<T, MAX>::pop() {
     item = this->items[this->top];
     this->top--;
     return item;
+}
+
+template <typename T, int MAX>
+inline T Stack<T, MAX>::peek() {
+    T item{};
+    if (isEmpty()) {
+        std::cerr << "Stack Underflow \n";
+        return item;
+    }
+    return T();
 }
 
 template <typename T, int MAX>
