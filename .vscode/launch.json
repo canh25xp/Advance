@@ -42,7 +42,7 @@
             // Resolved by CMake Tools:
             "program": "${command:cmake.launchTargetPath}",
             "args": [
-                "input.txt"
+                "input_small.txt"
             ],
             "stopAtEntry": false,
             "cwd": "${command:cmake.getLaunchTargetDirectory}",
@@ -58,6 +58,7 @@
                     "value": "Something something"
                 }
             ],
+            "console": "integratedTerminal"
         }
     ]
 }

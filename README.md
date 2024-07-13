@@ -29,7 +29,7 @@
 |[Find_Cycle](./Find_Cycle/README.md)|&check;|&check;|&check;|&check;
 |Finding_Mode||&check;||&check;
 |[Flatten](./Flatten/README.md)|&check;|&check;|&check;|&check;
-|[Game_with_numbers](./Game_with_numbers/README.md)|&check;|&check;|&check;
+|[Game_with_numbers](./Game_with_numbers/README.md)|&check;|&check;|&check;|&check;
 |GNS||&check;||&check;
 |[Hugo](./Hugo/README.md)|&check;|&check;|&check;|&check;
 |[Hugo_Advertising](./Hugo_Advertising/README.md)|&check;|&check;|&check;
