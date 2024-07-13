@@ -79,5 +79,10 @@ int Queue<T, MAX>::size() const {
 
 template <typename T, unsigned int MAX>
 bool Queue<T, MAX>::has(const T &item) const {
+    for (int i = 0; i < this->size(); ++i) {
+        if (this->items[(this->front + i) % MAX] == item) {
+            return true;
+        }
+    }
     return false;
 }
