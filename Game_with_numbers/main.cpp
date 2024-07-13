@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
             cin >> nums[i];
 
         cout << "Case #" << t + 1 << endl
-             << EasyLevel(nums, N) << " " 
+             << EasyLevel(nums, N) << " "
              << HardLevel(nums, N) << endl;
     }
 
@@ -49,7 +49,7 @@ int EasyLevel(const int (&nums)[N_MAX], int (&easy)[N_MAX][N_MAX], int N, int le
     int s2 = nums[left] + EasyLevel(nums, easy, N, left + 2, right);
     int s3 = nums[right] + EasyLevel(nums, easy, N, left + 1, right - 1);
     int s4 = nums[right] + EasyLevel(nums, easy, N, left, right - 2);
-    
+
     easy[left][right] = MAX(MAX(s1, s2), MAX(s3, s4));
 
     return easy[left][right];
