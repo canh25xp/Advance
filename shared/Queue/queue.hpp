@@ -1,35 +1,33 @@
-template <typename T, unsigned int MAX>
+#pragma once
+#include <iostream>
+
+template <typename T = int, unsigned int MAX = 10000>
 class Queue {
+private:
+    int front, rear, count;
+    T items[MAX] = {};
+
 public:
     Queue();
     ~Queue();
 
-    bool isFull();
-    bool isEmpty();
-    void enQueue(T item);
+    void enQueue(const T &item);
     T deQueue();
-
-    T peek();
-    int size();
-
-private:
-    T items[MAX];
-    int front, rear, count;
+    T peek() const;
+    bool isFull() const;
+    bool isEmpty() const;
+    int size() const;
+    bool has(const T &item) const;
 };
 
 template <typename T, unsigned int MAX>
-Queue<T, MAX>::Queue() {
-    front = -1;
-    rear = -1;
-    count = 0;
-}
+Queue<T, MAX>::Queue() : front(-1), rear(-1), count(0) {}
 
 template <typename T, unsigned int MAX>
-Queue<T, MAX>::~Queue() {
-}
+Queue<T, MAX>::~Queue() {}
 
 template <typename T, unsigned int MAX>
-bool Queue<T, MAX>::isEmpty() {
+bool Queue<T, MAX>::isEmpty() const {
     if (front == rear)
         return true;
     else
@@ -37,7 +35,7 @@ bool Queue<T, MAX>::isEmpty() {
 }
 
 template <typename T, unsigned int MAX>
-bool Queue<T, MAX>::isFull() {
+bool Queue<T, MAX>::isFull() const {
     if (front == 0 && rear == MAX - 1)
         return true;
     else
@@ -45,7 +43,7 @@ bool Queue<T, MAX>::isFull() {
 }
 
 template <typename T, unsigned int MAX>
-void Queue<T, MAX>::enQueue(T item) {
+void Queue<T, MAX>::enQueue(const T &item) {
     if (isFull())
         return;
     rear++;
@@ -66,7 +64,7 @@ T Queue<T, MAX>::deQueue() {
 }
 
 template <typename T, unsigned int MAX>
-T Queue<T, MAX>::peek() {
+T Queue<T, MAX>::peek() const {
     T item;
     if (isEmpty())
         return item;
@@ -75,6 +73,11 @@ T Queue<T, MAX>::peek() {
 }
 
 template <typename T, unsigned int MAX>
-int Queue<T, MAX>::size() {
+int Queue<T, MAX>::size() const {
     return count;
+}
+
+template <typename T, unsigned int MAX>
+bool Queue<T, MAX>::has(const T &item) const {
+    return false;
 }

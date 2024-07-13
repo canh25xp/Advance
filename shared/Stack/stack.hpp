@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+
 template <typename T = int, int MAX = 10000>
 class Stack {
 private:
