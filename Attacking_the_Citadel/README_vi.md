@@ -31,8 +31,9 @@ Hãy giúp Khổng Minh tính toán xem cần sử dụng ít nhất bao nhiêu 
 - Dòng đầu tiên là số lượng bộ test `T`
 - Mỗi test gồm được biễu diễn như sau:
   - Dòng đầu tiên gồm số nguyên `M` (`2 <= M <= 100`)  là số thành trì của quân Ngụy, các thành trì được đánh số từ 0 đến M-1.
-  - Tiếp theo là mô tả `M` thành trì, mỗi thành trì được mô tả trên 2 dòng: dòng thứ nhất gồm 3 số nguyên dương `i` (`0 <= i <= M-1`), `u_i` (`1 <= u_i <= 50`), `c_i` (`1 <= c_i <= M-1`) lần lượt là số hiệu của thành trì, số máy bắn đá của quân Ngụy có trong thành trì và số lượng thành lũy liên kết tới các thành trì khác.
-    Dòng thứ hai gồm `c_i` số, thể hiện các thành trì có thành lũy liên kết tới thành trì `i`.
+  - Tiếp theo là mô tả `M` thành trì, mỗi thành trì được mô tả trên 2 dòng:
+    - Dòng thứ nhất gồm 3 số nguyên dương `i` (`0 <= i <= M-1`), `u_i` (`1 <= u_i <= 50`), `c_i` (`1 <= c_i <= M-1`) lần lượt là số hiệu của thành trì, số máy bắn đá của quân Ngụy có trong thành trì và số lượng thành lũy liên kết tới các thành trì khác.
+    - Dòng thứ hai gồm `c_i` số, thể hiện các thành trì có thành lũy liên kết tới thành trì `i`.
 
 ```
 3
