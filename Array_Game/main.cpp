@@ -5,7 +5,7 @@ const int N_MAX = 20000;
 
 int solve(const int (&arr)[N_MAX], const int &N);
 
-int findMid(const int (&arr)[N_MAX], int left, int right, long long int halfSum);
+int findMid(const int (&arr)[N_MAX], int left, long long int halfSum);
 
 int backTrack(const int (&arr)[N_MAX], int left, int right, long long int sum, int score, int &maxScore);
 
@@ -44,8 +44,8 @@ int solve(const int (&arr)[N_MAX], const int &N) {
     return maxScore;
 }
 
-int findMid(const int (&arr)[N_MAX], int left, int right, long long int halfSum) {
-    long long int temp = 0; //
+int findMid(const int (&arr)[N_MAX], int left, long long int halfSum) {
+    long long int temp = 0;
     for (int mid = left;; mid++) {
         temp += arr[mid];
         if (temp == halfSum)
@@ -64,7 +64,7 @@ int backTrack(const int (&arr)[N_MAX], int left, int right, long long int sum, i
     }
 
     // Find the mid point where the left sum is equals sum/2
-    int mid = findMid(arr, left, right, sum / 2);
+    int mid = findMid(arr, left, sum / 2);
 
     if (mid == -1) { // nếu không thể chia được
         if (score > maxScore)
