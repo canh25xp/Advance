@@ -8,7 +8,7 @@ using namespace std;
 const int N_MAX = 20;
 const int STACK_SIZE = 100000;
 
-bool solve(Point start_point, Point end_point, int matrix[N_MAX][N_MAX], const int &N);
+bool solve(const int (&mat)[N_MAX][N_MAX], const int &N);
 
 int main(int argc, char **argv) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
@@ -26,10 +26,7 @@ int main(int argc, char **argv) {
             }
         }
 
-        Point start_point(0, 0);
-        Point end_point(N - 1, N - 1);
-
-        bool flag = solve(start_point, end_point, matrix, N);
+        bool flag = solve(matrix, N);
 
         if (flag == 1)
             cout << "YES";
@@ -41,32 +38,33 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-bool solve(Point start_point, Point end_point, int matrix[N_MAX][N_MAX], const int &N) {
-    // up, right, down, left
-    const int dx[] = {0, 1, 0, -1};
-    const int dy[] = {-1, 0, 1, 0};
-    Stack<Point, STACK_SIZE> stack;
-    stack.push(start_point);
-    bool checked[N_MAX][N_MAX] = {};
+bool solve(const int (&mat)[N_MAX][N_MAX], const int &N) {
+    // Direction: up, right, down, left
+    const int di[] = {0, 1, 0, -1};
+    const int dj[] = {-1, 0, 1, 0};
 
-    while (!stack.isEmpty()) {
-        Point current_point = stack.pop();
+    Point src(0, 0);
+    Point dst(N - 1, N - 1);
 
-        if (current_point == end_point)
+    Stack<Point, STACK_SIZE> s;
+    s.push(src);
+    bool vst[N_MAX][N_MAX] = {}; // visited
+
+    while (!s.isEmpty()) {
+        Point t = s.pop(); // The current Point
+
+        if (t == src)
             return true;
 
-        int row = current_point.i;
-        int col = current_point.j;
-        int distance = matrix[row][col];
-        checked[row][col] = 1;
+        int distance = mat[t.i][t.i];
+        vst[t.i][t.j] = 1;
 
-        for (int direction = 0; direction < 4; direction++) {
-            int new_col = col + distance * dx[direction];
-            int new_row = row + distance * dy[direction];
-
-            if (new_row < N && new_row >= 0 && new_col < N && new_col >= 0 && checked[new_row][new_col] == 0) {
-                stack.push(Point(new_row, new_col));
-            }
+        for (int d = 0; d < 4; d++) {
+            int ni = t.i + distance * di[d];
+            int nj = t.j + distance * dj[d];
+            Point n(ni, nj); // Next Point
+            if (n.isValid(N, N) && vst[n.i][n.j] == 0)
+                s.push(n);
         }
     }
     return false;
