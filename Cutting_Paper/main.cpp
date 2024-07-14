@@ -41,7 +41,7 @@ int main(int argc, char **argv) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     const char *output = "output.txt";
     freopen(input, "r", stdin);
-    freopen(output, "r", stdout);
+    freopen(output, "w", stdout);
 
     int T;
     cin >> T;
