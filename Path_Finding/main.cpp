@@ -36,8 +36,10 @@ struct Point {
 
 bool solveMaze(Point start_point, Point end_point, int matrix[MATRIX_SIZE][MATRIX_SIZE]);
 
-int main() {
-    freopen("eval_input.txt", "r", stdin);
+int main(int argc, char **argv) {
+    const char *input = (argc > 1) ? argv[1] : "input.txt";
+    freopen(input, "r", stdin);
+
     cin >> TEST_CASE;
     for (int case_index = 0; case_index < TEST_CASE; case_index++) {
         cin >> N;
