@@ -99,9 +99,11 @@ bool isSplit() {
     return true;
 }
 
-int main() {
+int main(int argc, char **argv) {
+    const char *input = (argc > 1) ? argv[1] : "input.txt";
+    freopen(input, "r", stdin);
+
     int tc = 0;
-    freopen("nuocbien_input.txt", "r", stdin);
     int lowest, highest;
     while (true) {
         scanf("%d%d", &N, &M);
