@@ -2,13 +2,16 @@
 #include "queue.hpp"
 #include <iostream>
 
+#define INT_MAX 2147483647
+
 template <typename T = int, int MAX = 10000>
 class Graph {
 private:
     int size;
-    int adj[MAX][MAX]; // adjacent matrix
+    T adj[MAX][MAX]; // adjacent matrix
 
     bool DFS(int vertex, int target, int (&vst)[MAX]);
+    int minKey(int (&key)[MAX], bool (&mstSet)[MAX]);
 
 public:
     Graph(int n);
@@ -18,6 +21,7 @@ public:
     void add_edge(int u, int v);
     bool DFS(int start, int target);
     bool BFS(int start, int target);
+    int primMST();
 };
 
 template <typename T, int MAX>
@@ -60,6 +64,17 @@ bool Graph<T, MAX>::DFS(int vertex, int target, int (&visited)[MAX]) {
 }
 
 template <typename T, int MAX>
+int Graph<T, MAX>::minKey(int (&key)[MAX], bool (&mstSet)[MAX]) {
+    int min = INT_MAX, min_index;
+
+    for (int i = 0; i < size; i++)
+        if (!mstSet[i] && key[i] < min)
+            min = key[i], min_index = i;
+
+    return min_index;
+}
+
+template <typename T, int MAX>
 bool Graph<T, MAX>::DFS(int start, int target) {
     int visited[MAX] = {};
     return DFS(start, target, visited);
@@ -86,4 +101,37 @@ bool Graph<T, MAX>::BFS(int start, int target) {
     }
 
     return false;
+}
+
+template <typename T, int MAX>
+int Graph<T, MAX>::primMST() {
+    int parent[MAX] = {};
+
+    int key[MAX] = {};
+
+    bool mstSet[MAX] = {};
+
+    for (int i = 0; i < size; i++)
+        key[i] = INT_MAX, mstSet[i] = false;
+
+    key[0] = 0;
+
+    parent[0] = -1;
+
+    for (int count = 0; count < size - 1; count++) {
+        int u = minKey(key, mstSet);
+
+        mstSet[u] = true;
+
+        for (int v = 0; v < size; v++) {
+            if (u != v && mstSet[v] == false && adj[u][v] < key[v])
+                parent[v] = u, key[v] = adj[u][v];
+        }
+    }
+
+    int sum = 0;
+    for (int i = 0; i < size; i++)
+        sum += key[i];
+
+    return sum;
 }
