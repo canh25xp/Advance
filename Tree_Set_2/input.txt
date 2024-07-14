@@ -1,4 +1,16 @@
-5
+6
+11
+add 1
+add 3
+add 5
+size
+add 5
+size
+lower 4
+lower 1
+contains 5
+remove 3
+lower 4
 19
 add 7
 add 7
