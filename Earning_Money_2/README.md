@@ -51,7 +51,8 @@ The information on the number cards will be given in integer-type numbers, and t
 Number of exchange is less than or equal to `10`.
 
 ```
-3
+4
+321 1
 123 1
 2737 1
 32888 2
@@ -64,9 +65,11 @@ The next line print the biggest amount of prize money the winner can receive aft
 
 ```
 Case #1
-321
+312
 Case #2
-7732
+321
 Case #3
+7732
+Case #4
 88832
 ```

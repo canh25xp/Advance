@@ -16,8 +16,12 @@ bool CheckInsert(int num, int swaps);
 
 int checked[MAX_DIGITS][MAX] = {};
 
-int main() {
-    freopen("eval_input.txt", "r", stdin);
+int main(int argc, char **argv) {
+    const char *input = (argc > 1) ? argv[1] : "input.txt";
+    const char *output = "output.txt";
+    freopen(input, "r", stdin);
+    freopen(output, "w", stdout);
+
     int T;
     cin >> T;
     for (int tc = 0; tc < T; tc++) {
