@@ -1,20 +1,22 @@
 Case #1
-38
+8
 Case #2
-37
+38
 Case #3
-52
+37
 Case #4
--1
+52
 Case #5
-78
+-1
 Case #6
-43
+78
 Case #7
-28
+43
 Case #8
-3
+28
 Case #9
-54
+3
 Case #10
+54
+Case #11
 50
