@@ -1,6 +1,6 @@
 # Array Game
-
- Level 4
+>
+> Level 4
 
 Có 1 trò chơi với dãy gồm `N` số như sau
 

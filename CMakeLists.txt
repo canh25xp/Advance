@@ -26,7 +26,7 @@ include_directories(${CMAKE_SOURCE_DIR}/shared/Point)
 
 add_subdirectory(8_Queen)
 # add_subdirectory(Airplane_Game)
-# add_subdirectory(Array_Game)
+add_subdirectory(Array_Game)
 # add_subdirectory(Attacking_the_Citadel)
 # add_subdirectory(Battle_City)
 # add_subdirectory(Bipartitioning_Cities)
