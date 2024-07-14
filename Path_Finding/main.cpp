@@ -1,4 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
+#include "stack.hpp"
+#include "point.hpp"
 #include <iostream>
 
 using namespace std;
@@ -8,31 +10,6 @@ using namespace std;
 
 int TEST_CASE = 0;
 int N = 0;
-
-template <class T>
-class Stack {
-public:
-    Stack();
-    bool push(T k);
-    T pop();
-    T topElement();
-    bool isFull();
-    bool isEmpty();
-
-private:
-    int top;
-    T st[SIZE];
-};
-
-struct Point {
-    Point();
-    Point(int _row, int _col);
-
-    bool operator!=(const Point &rhs) const;
-    bool operator==(const Point &rhs) const;
-
-    int row, col;
-};
 
 bool solveMaze(Point start_point, Point end_point, int matrix[MATRIX_SIZE][MATRIX_SIZE]);
 
@@ -79,8 +56,8 @@ bool solveMaze(Point start_point, Point end_point, int matrix[MATRIX_SIZE][MATRI
         if (current_point == end_point)
             return true;
 
-        int row = current_point.row;
-        int col = current_point.col;
+        int row = current_point.i;
+        int col = current_point.j;
         int distance = matrix[row][col];
         checked[row][col] = 1;
 
@@ -94,73 +71,4 @@ bool solveMaze(Point start_point, Point end_point, int matrix[MATRIX_SIZE][MATRI
         }
     }
     return false;
-}
-
-Point::Point() {
-    row = 0;
-    col = 0;
-}
-
-Point::Point(int _row, int _col) {
-    row = _row;
-    col = _col;
-}
-
-bool Point::operator!=(const Point &rhs) const {
-    if (row == rhs.row && col == rhs.col)
-        return false;
-    else
-        return true;
-}
-
-bool Point::operator==(const Point &rhs) const {
-    if (row == rhs.row && col == rhs.col)
-        return true;
-    else
-        return false;
-}
-
-template <class T>
-Stack<T>::Stack() {
-    top = -1;
-}
-
-template <class T>
-bool Stack<T>::push(T k) {
-
-    if (isFull()) {
-        return 1;
-    }
-    top++;
-    st[top] = k;
-    return 0;
-}
-
-template <class T>
-bool Stack<T>::isEmpty() {
-    if (top == -1)
-        return 1;
-    else
-        return 0;
-}
-
-template <class T>
-bool Stack<T>::isFull() {
-    if (top == (SIZE - 1))
-        return 1;
-    else
-        return 0;
-}
-
-template <class T>
-T Stack<T>::pop() {
-    T popped_element = st[top];
-    top--;
-    return popped_element;
-}
-
-template <class T>
-T Stack<T>::topElement() {
-    T top_element = st[top];
-    return top_element;
 }
