@@ -56,14 +56,14 @@ bool solve(const int (&mat)[N_MAX][N_MAX], const int &N) {
         if (t == dst)
             return true;
 
-        int distance = mat[t.i][t.i];
+        int distance = mat[t.i][t.j];
         vst[t.i][t.j] = 1;
 
         for (int d = 0; d < 4; d++) {
             int ni = t.i + distance * di[d];
             int nj = t.j + distance * dj[d];
             Point n(ni, nj); // Next Point
-            if (n.isValid(N, N) && vst[n.i][n.j] == 0)
+            if (n.isValid(N, N) && !vst[n.i][n.j])
                 s.push(n);
         }
     }
