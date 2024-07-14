@@ -53,7 +53,7 @@ bool solve(const int (&mat)[N_MAX][N_MAX], const int &N) {
     while (!s.isEmpty()) {
         Point t = s.pop(); // The current Point
 
-        if (t == src)
+        if (t == dst)
             return true;
 
         int distance = mat[t.i][t.i];
