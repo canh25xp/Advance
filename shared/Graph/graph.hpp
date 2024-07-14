@@ -62,7 +62,7 @@ bool Graph<T, MAX>::DFS(int vertex, int target, int (&visited)[MAX]) {
 template <typename T, int MAX>
 bool Graph<T, MAX>::DFS(int start, int target) {
     int visited[MAX] = {};
-    return DFS(start, target, visites);
+    return DFS(start, target, visited);
 }
 
 template <typename T, int MAX>
@@ -74,11 +74,11 @@ bool Graph<T, MAX>::BFS(int start, int target) {
 
     while (!q.isEmpty()) {
         int t = q.deQueue();
+        if (t == 99)
+            return true;
         visited[t] = 1;
         for (int i = 0; i < size; i++) {
             if (adj[t][i] && !visited[i]) {
-                if (i == 99)
-                    return true;
                 visited[i] = 1;
                 q.enQueue(i);
             }
