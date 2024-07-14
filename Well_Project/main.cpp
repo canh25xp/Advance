@@ -24,7 +24,7 @@ public:
 
 int main(int argc, char *argv[]) {
     ios::sync_with_stdio(false);
-    const char *input = argv[1];
+    const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
 
     int T;
