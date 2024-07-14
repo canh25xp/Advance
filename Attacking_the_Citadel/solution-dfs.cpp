@@ -12,40 +12,8 @@ int ret;
 bool hasCycle;
 int cnt;
 int st[MAX_N];
-void DFS(int v) {
-    if (hasCycle)
-        return;
-    for (int i = 0; i < N; ++i) {
-        if (adjMap[v][i]) {
-            if (visited[i]) {
-                if (i == parent[v])
-                    continue;
 
-                hasCycle = true;
-                parent[i] = v;
-
-                int k = i, minVal = adjMap[v][i];
-                int curr = v;
-                while (curr != i) {
-                    if (adjMap[curr][parent[curr]] < minVal) {
-                        k = curr;
-                        minVal = adjMap[curr][parent[curr]];
-                    }
-                    curr = parent[curr];
-                }
-                ret += adjMap[k][parent[k]];
-                adjMap[k][parent[k]] = adjMap[parent[k]][k] = 0;
-                return;
-            } else {
-                visited[i] = true;
-                parent[i] = v;
-                DFS(i);
-            }
-            if (hasCycle)
-                break;
-        }
-    }
-}
+void DFS(int v);
 
 int main() {
     int T;
@@ -88,4 +56,39 @@ int main() {
     }
 
     return 0;
+}
+
+void DFS(int v) {
+    if (hasCycle)
+        return;
+    for (int i = 0; i < N; ++i) {
+        if (adjMap[v][i]) {
+            if (visited[i]) {
+                if (i == parent[v])
+                    continue;
+
+                hasCycle = true;
+                parent[i] = v;
+
+                int k = i, minVal = adjMap[v][i];
+                int curr = v;
+                while (curr != i) {
+                    if (adjMap[curr][parent[curr]] < minVal) {
+                        k = curr;
+                        minVal = adjMap[curr][parent[curr]];
+                    }
+                    curr = parent[curr];
+                }
+                ret += adjMap[k][parent[k]];
+                adjMap[k][parent[k]] = adjMap[parent[k]][k] = 0;
+                return;
+            } else {
+                visited[i] = true;
+                parent[i] = v;
+                DFS(i);
+            }
+            if (hasCycle)
+                break;
+        }
+    }
 }
