@@ -39,8 +39,10 @@ private:
 bool playable(int (&mat)[N_MAX][M_MAX], int n, int m, Point src, Point dst);
 bool BFS(int (&mat)[N_MAX][M_MAX], int n, int m, Point src, Point dst);
 
-int main() {
-    freopen("input.txt", "r", stdin);
+int main(int argc, char **argv) {
+    const char *input = (argc > 1) ? argv[1] : "input.txt";
+    freopen(input, "r", stdin);
+
     int T;
     cin >> T;
     for (int tc = 0; tc < T; tc++) {
