@@ -1,4 +1,5 @@
 #pragma once
+#include "queue.hpp"
 #include <iostream>
 
 template <typename T = int, int MAX = 10000>
@@ -16,6 +17,7 @@ public:
 
     void add_edge(int u, int v);
     bool DFS(int start, int target);
+    bool BFS(int start, int target);
 };
 
 template <typename T, int MAX>
@@ -59,6 +61,29 @@ bool Graph<T, MAX>::DFS(int vertex, int target, int (&visited)[MAX]) {
 
 template <typename T, int MAX>
 bool Graph<T, MAX>::DFS(int start, int target) {
-    int vst[MAX] = {};
-    return DFS(start, target, vst);
+    int visited[MAX] = {};
+    return DFS(start, target, visites);
+}
+
+template <typename T, int MAX>
+bool Graph<T, MAX>::BFS(int start, int target) {
+    int visited[MAX] = {};
+    Queue<int, 100> q;
+
+    q.enQueue(start);
+
+    while (!q.isEmpty()) {
+        int t = q.deQueue();
+        visited[t] = 1;
+        for (int i = 0; i < size; i++) {
+            if (adj[t][i] && !visited[i]) {
+                if (i == 99)
+                    return true;
+                visited[i] = 1;
+                q.enQueue(i);
+            }
+        }
+    }
+
+    return false;
 }
