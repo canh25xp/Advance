@@ -25,9 +25,7 @@ int main(int argc, char *argv[]) {
             g.add_edge(u, v);
         }
 
-        bool found = g.DFS(0, 99);
-
-        cout << "#" << t + 1 << " " << found << endl;
+        cout << "#" << t + 1 << " " << g.DFS(0, 99) << endl;
     }
 
     return 0;
