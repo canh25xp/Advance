@@ -22,6 +22,7 @@ public:
 
     void add_edge(int u, int v);
     bool DFS(int start, int target);
+    bool DFS_Stack(int start, int target);
     bool BFS(int start, int target);
     int primMST();
     bool hasCycle();
@@ -90,6 +91,30 @@ template <typename T, int MAX>
 bool Graph<T, MAX>::DFS(int start, int target) {
     int visited[MAX] = {};
     return DFS(start, target, visited);
+}
+
+template <typename T, int MAX>
+bool Graph<T, MAX>::DFS_Stack(int start, int target) {
+    int visited[MAX] = {};
+    Stack<int, MAX> s;
+
+    visited[start] = 1;
+
+    s.push(start);
+    while (!s.isEmpty()) {
+        int t = s.pop();
+        if (t == target)
+            return true;
+
+        for (int i = 0; i < size; i++) {
+            if (adj[t][i] && !visited[i]) {
+                visited[i] = 1;
+                s.push(i);
+            }
+        }
+    }
+
+    return false;
 }
 
 template <typename T, int MAX>
