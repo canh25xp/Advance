@@ -29,7 +29,7 @@ Stack<T, MAX>::~Stack() {}
 template <typename T, int MAX>
 void Stack<T, MAX>::push(const T &item) {
     if (this->isFull()) {
-        std::cerr << "Stack Overflow \n";
+        std::cerr << "Stack Overflow\n";
         return;
     }
     this->top++;
@@ -40,7 +40,7 @@ template <typename T, int MAX>
 T Stack<T, MAX>::pop() {
     T item{};
     if (isEmpty()) {
-        std::cerr << "Stack Underflow \n";
+        std::cerr << "Stack Underflow\n";
         return item;
     }
     item = this->items[this->top];
@@ -52,7 +52,7 @@ template <typename T, int MAX>
 T Stack<T, MAX>::peek() const {
     T item{};
     if (isEmpty()) {
-        std::cerr << "Stack empty";
+        std::cerr << "Stack empty\n";
         return item;
     }
 

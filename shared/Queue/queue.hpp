@@ -40,7 +40,7 @@ bool Queue<T, MAX>::isFull() const {
 template <typename T, int MAX>
 void Queue<T, MAX>::enQueue(const T &item) {
     if (isFull()) {
-        std::cerr << "Queue is full";
+        std::cerr << "Queue is full\n";
         return;
     }
     rear++;
@@ -52,7 +52,7 @@ template <typename T, int MAX>
 T Queue<T, MAX>::deQueue() {
     T item{};
     if (isEmpty()) {
-        std::cerr << "Queue is empty";
+        std::cerr << "Queue is empty\n";
         return item;
     }
 
@@ -66,7 +66,7 @@ template <typename T, int MAX>
 T Queue<T, MAX>::peek() const {
     T item{};
     if (isEmpty()) {
-        std::cerr << "Queue is empty";
+        std::cerr << "Queue is empty\n";
         return item;
     }
     item = items[front];
