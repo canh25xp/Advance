@@ -1,5 +1,6 @@
 #pragma once
 #include "queue.hpp"
+#include "stack.hpp"
 #include <iostream>
 
 #define INT_MAX 2147483647
@@ -12,6 +13,7 @@ private:
 
     bool DFS(int vertex, int target, int (&vst)[MAX]);
     int minKey(int (&key)[MAX], bool (&mstSet)[MAX]);
+    bool isSelfLoop(int vertex);
 
 public:
     Graph(int n);
@@ -22,6 +24,7 @@ public:
     bool DFS(int start, int target);
     bool BFS(int start, int target);
     int primMST();
+    bool hasCycle();
 };
 
 template <typename T, int MAX>
@@ -72,6 +75,15 @@ int Graph<T, MAX>::minKey(int (&key)[MAX], bool (&mstSet)[MAX]) {
             min = key[i], min_index = i;
 
     return min_index;
+}
+
+template <typename T, int MAX>
+bool Graph<T, MAX>::isSelfLoop(int vertex) {
+    for (int i = 0; i < size; i++)
+        if (adj[vertex][i])
+            return DFS(i, vertex);
+
+    return false;
 }
 
 template <typename T, int MAX>
@@ -134,4 +146,13 @@ int Graph<T, MAX>::primMST() {
         sum += key[i];
 
     return sum;
+}
+
+template <typename T, int MAX>
+bool Graph<T, MAX>::hasCycle() {
+    for (int i = 0; i < size; i++) {
+        if (isSelfLoop(i))
+            return true;
+    }
+    return false;
 }
