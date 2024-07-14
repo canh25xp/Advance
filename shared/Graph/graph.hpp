@@ -43,15 +43,15 @@ void Graph<T, MAX>::add_edge(int u, int v) {
 }
 
 template <typename T, int MAX>
-bool Graph<T, MAX>::DFS(int vertex, int target, int (&vst)[MAX]) {
+bool Graph<T, MAX>::DFS(int vertex, int target, int (&visited)[MAX]) {
     if (vertex == target)
         return true;
 
-    vst[vertex] = 1;
+    visited[vertex] = 1;
 
     for (int i = 0; i < size; i++)
-        if (adj[vertex][i] == 1 && !vst[i])
-            if (DFS(i, target, vst))
+        if (adj[vertex][i] && !visited[i])
+            if (DFS(i, target, visited))
                 return true;
 
     return false;
