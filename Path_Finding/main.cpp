@@ -19,19 +19,12 @@ int main(int argc, char **argv) {
     for (int t = 0; t < T; t++) {
         int N;
         cin >> N;
-        int matrix[N_MAX][N_MAX] = {};
-        for (int row = 0; row < N; row++) {
-            for (int col = 0; col < N; col++) {
-                cin >> matrix[row][col];
-            }
-        }
+        int mat[N_MAX][N_MAX] = {};
+        for (int row = 0; row < N; row++)
+            for (int col = 0; col < N; col++)
+                cin >> mat[row][col];
 
-        bool flag = solve(matrix, N);
-
-        if (flag == 1)
-            cout << "YES";
-        else
-            cout << "NO";
+        solve(mat, N) ? cout << "YES" : cout << "NO";
         cout << endl;
     }
 
