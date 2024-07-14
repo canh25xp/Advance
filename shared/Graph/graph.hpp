@@ -7,13 +7,14 @@ private:
     int size;
     int adj[MAX][MAX]; // adjacent matrix
 
+    bool DFS(int vertex, int target, int (&vst)[MAX]);
+
 public:
     Graph(int n);
     T &operator()(int i, int j);
     T operator()(int i, int j) const;
 
     void add_edge(int u, int v);
-    bool DFS(int vertex, int target, int vst[]);
     bool DFS(int start, int target);
 };
 
@@ -42,11 +43,11 @@ void Graph<T, MAX>::add_edge(int u, int v) {
 }
 
 template <typename T, int MAX>
-bool Graph<T, MAX>::DFS(int vertex, int target, int vst[]) {
-    vst[vertex] = 1;
-
+bool Graph<T, MAX>::DFS(int vertex, int target, int (&vst)[MAX]) {
     if (vertex == target)
         return true;
+
+    vst[vertex] = 1;
 
     for (int i = 0; i < size; i++)
         if (adj[vertex][i] == 1 && !vst[i])
@@ -58,6 +59,6 @@ bool Graph<T, MAX>::DFS(int vertex, int target, int vst[]) {
 
 template <typename T, int MAX>
 bool Graph<T, MAX>::DFS(int start, int target) {
-    int vst[MAX_NODES] = {};
+    int vst[MAX] = {};
     return DFS(start, target, vst);
 }
