@@ -53,21 +53,6 @@ void Graph<T, MAX>::add_edge(int u, int v) {
 }
 
 template <typename T, int MAX>
-bool Graph<T, MAX>::DFS(int vertex, int target, int (&visited)[MAX]) {
-    if (vertex == target)
-        return true;
-
-    visited[vertex] = 1;
-
-    for (int i = 0; i < size; i++)
-        if (adj[vertex][i] && !visited[i])
-            if (DFS(i, target, visited))
-                return true;
-
-    return false;
-}
-
-template <typename T, int MAX>
 int Graph<T, MAX>::minKey(int (&key)[MAX], bool (&mstSet)[MAX]) {
     int min = INT_MAX, min_index;
 
@@ -91,6 +76,21 @@ template <typename T, int MAX>
 bool Graph<T, MAX>::DFS(int start, int target) {
     int visited[MAX] = {};
     return DFS(start, target, visited);
+}
+
+template <typename T, int MAX>
+bool Graph<T, MAX>::DFS(int vertex, int target, int (&visited)[MAX]) {
+    if (vertex == target)
+        return true;
+
+    visited[vertex] = 1;
+
+    for (int i = 0; i < size; i++)
+        if (adj[vertex][i] && !visited[i])
+            if (DFS(i, target, visited))
+                return true;
+
+    return false;
 }
 
 template <typename T, int MAX>
