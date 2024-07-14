@@ -5,9 +5,9 @@ const int N_MAX = 20000;
 
 int solve(const int (&arr)[N_MAX], const int &N);
 
-int findMid(const int (&arr)[N_MAX], int left, int right, long long halfSum);
+int findMid(const int (&arr)[N_MAX], int left, int right, long long int halfSum);
 
-int backTrack(const int (&arr)[N_MAX], int left, int right, long long sum, int score, int &maxScore);
+int backTrack(const int (&arr)[N_MAX], int left, int right, long long int sum, int score, int &maxScore);
 
 int main(int argc, char **argv) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
 }
 
 int solve(const int (&arr)[N_MAX], const int &N) {
-    long long sum = 0;
+    long long int sum = 0;
     for (int i = 0; i < N; i++)
         sum += arr[i];
 
@@ -44,8 +44,8 @@ int solve(const int (&arr)[N_MAX], const int &N) {
     return maxScore;
 }
 
-int findMid(const int (&arr)[N_MAX], int left, int right, long long halfSum) {
-    long long temp = 0; //
+int findMid(const int (&arr)[N_MAX], int left, int right, long long int halfSum) {
+    long long int temp = 0; //
     for (int mid = left;; mid++) {
         temp += arr[mid];
         if (temp == halfSum)
@@ -56,14 +56,14 @@ int findMid(const int (&arr)[N_MAX], int left, int right, long long halfSum) {
     return -1;
 }
 
-int backTrack(const int (&arr)[N_MAX], int left, int right, long long sum, int score, int &maxScore) {
-    if (left == right || (sum % 2 == 1)) { // nếu có 1 phần tử hoặc tổng lẻ
+int backTrack(const int (&arr)[N_MAX], int left, int right, long long int sum, int score, int &maxScore) {
+    if (left == right || (sum % 2 == 1)) { // If the array has only one element or sum is odd
         if (score > maxScore)
             maxScore = score;
         return maxScore;
     }
 
-    // tìm vị trí mid sao cho tổng từ left đến mid bằng sum / 2
+    // Find the mid point where the left sum is equals sum/2
     int mid = findMid(arr, left, right, sum / 2);
 
     if (mid == -1) { // nếu không thể chia được
@@ -72,7 +72,7 @@ int backTrack(const int (&arr)[N_MAX], int left, int right, long long sum, int s
         return maxScore;
     }
 
-    // lặp lại thao tác với 2 nửa, với số điểm + 1
+    // Recursly do the same with the two halves with a score of + 1
     backTrack(arr, left, mid, sum / 2, score + 1, maxScore);
     backTrack(arr, mid + 1, right, sum / 2, score + 1, maxScore);
 
