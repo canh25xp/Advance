@@ -5,7 +5,7 @@
 
 using namespace std;
 
-const int N_MAX = 21;
+const int N_MAX = 20;
 const int STACK_SIZE = 100000;
 
 bool solve(Point start_point, Point end_point, int matrix[N_MAX][N_MAX], const int &N);
