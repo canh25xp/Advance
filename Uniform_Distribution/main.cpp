@@ -1,7 +1,6 @@
+#pragma warning(disable: 4996)
 #include <iostream>
 using namespace std;
-
-#define DEFAULT_TEST_CASE 10
 
 #define STACK_SIZE 25
 
@@ -41,9 +40,9 @@ int main(int argc, char **argv) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
 
-    int TEST_CASE = DEFAULT_TEST_CASE;
-    cin >> TEST_CASE;
-    for (int case_index = 0; case_index < TEST_CASE; case_index++) {
+    int T;
+    cin >> T;
+    for (int t = 0; t < T; t++) {
         int N = 0;
         cin >> N;
 
@@ -57,7 +56,7 @@ int main(int argc, char **argv) {
             }
         }
 
-        int flag = true;
+        bool flag = true;
 
         for (int i = 0; i < N; i++) {
             int count = contiguous_count<MAX_SIZE>(matrix, i, N);
@@ -67,14 +66,9 @@ int main(int argc, char **argv) {
             }
         }
 
-        cout << "Case #" << case_index + 1 << endl;
-        if (flag)
-            cout << "good" << endl;
-        else
-            cout << "wrong" << endl;
+        cout << "Case #" << t + 1 << endl;
+        (flag) ? cout << "good" << endl : cout << "wrong" << endl;
     }
-
-    fclose(input);
 
     return 0;
 }
