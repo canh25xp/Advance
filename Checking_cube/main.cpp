@@ -36,8 +36,9 @@ int main(int argc, char **argv) {
 }
 
 int solve(int N) {
+    using utils::cbrt;
     int count = 0;
-    int limit = static_cast<int>(utils::cbrt(N)); // upper bound for cube root
+    int limit = static_cast<int>(cbrt(N)); // upper bound for cube root
 
     for (int a = 0; a <= limit; a++)
         for (int b = a; b <= limit; b++)
