@@ -4,6 +4,8 @@
 
 Mario cần phải di chuyển từ vị trí có giá trị bằng 2 và ăn vàng ở ô có giá trị bằng 3.
 
+![Picture1](./Picture1.png)
+
 - 0 là những ô Mario không thể qua
 - 1 là những ô Mario có thể qua
 - 2 là vị trícủa Mario
