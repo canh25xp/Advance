@@ -16,6 +16,7 @@
 |[Calculator_2](./Calculator_2/README.md)|&check;|&check;|&check;|&check;
 |[Calculator_3](./Calculator_3/README.md)|&check;|&check;|&check;
 |[Capture_Knight](./Capture_Knight/README.md)|&check;|&check;|&check;|&check;
+|[Checking_cube](./Checking_cube/README.md)|&check;|&check;|&check;|&check;
 |[Chess_rook](./Chess_rook/README.md)|&check;|&check;|&check;|&check;
 |[Cleaning_Robot](./Cleaning_Robot/README.md)|&check;|&check;|&check;
 |Cryptogram_1||&check;||&check;
@@ -31,12 +32,14 @@
 |[Flatten](./Flatten/README.md)|&check;|&check;|&check;|&check;
 |[Game_with_numbers](./Game_with_numbers/README.md)|&check;|&check;|&check;|&check;
 |GNS||&check;||&check;
+|[Grid_Acid](./Grid_Acid/README.md)|&check;|&check;|&check;|&check;
 |[Hugo](./Hugo/README.md)|&check;|&check;|&check;|&check;
 |[Hugo_Advertising](./Hugo_Advertising/README.md)|&check;|&check;|&check;
 |[Hugo_Gold_Miner](./Hugo_Gold_Miner/README_vi.md)|&check;|&check;|&check;
 |[Hugo_Gold_Miner_2](./Hugo_Gold_Miner_2/README_vi.md)|&check;|&check;|&check;
 |[Hugo_Homecoming](./Hugo_Homecoming/README.md)|&check;|&check;|&check;
 |[Hugo_Marathon](./Hugo_Marathon/README.md)|&check;|&check;|&check;
+|[Hugo_Region_Counting](./Hugo_Region_Counting/README.md)
 |[Hugo_Sells_Oil](./Hugo_Sells_Oil/README.md)|&check;|&check;|&check;|&check;
 |[Hugo_Shipper](./Hugo_Shipper/README.md)|&check;|&check;|&check;
 |[Hugo_Steals_Honey](./Hugo_Steals_Honey/README.md)|&check;|&check;|&check;
@@ -48,6 +51,7 @@
 |[Laughing_Bomb](./Laughing_Bomb/README.md)|&check;|&check;|&check;|&check;
 |Magnetic||&check;||&check;
 |[Map_Coloring](./Map_Coloring/README.md)|&check;|&check;|&check;|&check;
+|[Mario](./Mario/README.md)
 |[Matrix_Product](./Matrix_Product/README.md)|&check;|&check;|&check;|&check;
 |Matrix_Sum||&check;||&check;
 |Maze_1||&check;||&check;
@@ -73,8 +77,9 @@
 |[The_Frog](./The_Frog/README.md)|&check;|&check;|&check;
 |[Turn_Over_Game](./Turn_Over_Game/README.md)|&check;|&check;|&check;|&check;
 |[Uniform_Distribution](./Uniform_Distribution/README.md)|&check;|&check;|&check;|&check;
-|[View](./View/README.md)|&check;|&check;|&check;|&check;
 |[Upgrade_Computer](./Upgrade_Computer/README.md)|&check;|&check;|&check;|&check;
+|[Vandalize_Electrical_System](./Vandalize_Electrical_System/README.md)
+|[View](./View/README.md)|&check;|&check;|&check;|&check;
 |[Village](./Village/README.md)|&check;|&check;|&check;
 |[Wedding](./Wedding/README.md)|&check;|&check;|&check;|&check;
 |[Well_Project](./Well_Project/README.md)|&check;|&check;|&check;|&check;
