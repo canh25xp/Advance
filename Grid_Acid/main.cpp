@@ -1,37 +1,10 @@
-#pragma warning(disable: 4996)
+#pragma warning(disable : 4996)
+#include "queue.hpp"
 #include <iostream>
 
 const int N_MAX = 100; // should be 3000
 const int M_MAX = 100; // should be 3000
 const int Q_MAX = 100000;
-
-template<typename T=int, int MAX=10000>
-class Queue {
-private:
-    int front, rear;
-    T data[MAX];
-
-public:
-    Queue() : front(-1), rear(-1) {} 
-
-    void push(const T &item) {
-        rear++;
-        data[rear] = item;
-    }
-
-    T pop() {
-        front++;
-        return data[front];
-    }
-
-    bool empty() const {
-        return front == rear;
-    }
-
-    bool full() const {
-        return front == 0 && rear = MAX - 1;
-    }
-};
 
 struct Pair {
     int i, j;
@@ -44,7 +17,7 @@ Pair solve(const int (&grid)[N_MAX][M_MAX], int N, int M, Pair start);
 
 using namespace std;
 int main(int argc, char *argv[]) {
-    const char* input = (argc > 1) ? argv[1] : "input.txt";
+    const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
 
     int T; // Total number of test cases
@@ -56,16 +29,16 @@ int main(int argc, char *argv[]) {
 
         int r, c; // the locacation where the acid is poured (row and col)
         cin >> r >> c;
-        Pair start(r-1, c-1); // convert to 0-based indexing
+        Pair start(r - 1, c - 1); // convert to 0-based indexing
 
         int grid[N_MAX][M_MAX] = {}; // The grid contains info about tile type
-        Pair C; // The special cell type C, value 2.
+        Pair C;                      // The special cell type C, value 2.
 
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
                 cin >> grid[i][j];
                 if (grid[i][j] == 2)
-                    C = Pair(i,j);
+                    C = Pair(i, j);
             }
         }
 
@@ -78,27 +51,26 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-Pair solve(const int (&grid)[N_MAX][M_MAX], int N, int M, Pair start){
+Pair solve(const int (&grid)[N_MAX][M_MAX], int N, int M, Pair start) {
     int visited[N_MAX][M_MAX] = {};
     Pair count(-1, -1); // first and second count
 
     Queue<Pair, Q_MAX> q;
-    q.push(start);
+    q.enQueue(start);
     visited[start.i][start.j] = 1;
 
-    while (!q.empty()) {
-        Pair t = q.pop();
+    while (!q.isEmpty()) {
+        Pair t = q.deQueue();
         for (int d = 0; d < 4; d++) {
-            static const int di[4] = {1,0,-1,0};
-            static const int dj[4] = {0,1,0,-1};
+            static const int di[4] = {1, 0, -1, 0};
+            static const int dj[4] = {0, 1, 0, -1};
             Pair n(t.i + di[d], t.j + dj[d]);
             if (n.i >= 0 && n.j >= 0 && n.i < N && n.j < M && !visited[n.i][n.j]) {
                 if (grid[n.i][n.j] == 1) {
-                    q.push(n);
+                    q.enQueue(n);
                     visited[n.i][n.j] = visited[t.i][t.j] + 1;
                     count.j = visited[n.i][n.j];
-                }
-                else if (grid[n.i][n.j] == 2) {
+                } else if (grid[n.i][n.j] == 2) {
                     int adj_count = 0;
                     for (int d_adj = 0; d_adj < 4; d_adj++) {
                         Pair adj(n.i + di[d_adj], n.j + dj[d_adj]);
@@ -107,7 +79,6 @@ Pair solve(const int (&grid)[N_MAX][M_MAX], int N, int M, Pair start){
                     }
                     if (adj_count == 4) {
                         visited[n.i][n.j] = visited[t.i][t.j];
-                        //q.push(n);
                         count.i = visited[n.i][n.j];
                     }
                 }
@@ -115,15 +86,14 @@ Pair solve(const int (&grid)[N_MAX][M_MAX], int N, int M, Pair start){
         }
     }
 
-    for (int i = 0; i < N; i++){
-        for (int j = 0; j < M; j++){
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
             if (visited[i][j] == 0 && grid[i][j] != 0) {
                 count.j = -1;
                 return count;
             }
         }
     }
-
 
     return count;
 }
