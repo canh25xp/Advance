@@ -5,7 +5,7 @@ template <typename T = int, int MAX = 10000>
 class Stack {
 private:
     int top;
-    T items[MAX] = {};
+    T data[MAX] = {};
 
 public:
     Stack();
@@ -33,7 +33,7 @@ void Stack<T, MAX>::push(const T &item) {
         return;
     }
     this->top++;
-    this->items[this->top] = item;
+    this->data[this->top] = item;
 }
 
 template <typename T, int MAX>
@@ -43,7 +43,7 @@ T Stack<T, MAX>::pop() {
         std::cerr << "Stack Underflow\n";
         return item;
     }
-    item = this->items[this->top];
+    item = this->data[this->top];
     this->top--;
     return item;
 }
@@ -56,7 +56,7 @@ T Stack<T, MAX>::peek() const {
         return item;
     }
 
-    item = this->items[this->top];
+    item = this->data[this->top];
 
     return item;
 }
@@ -82,7 +82,7 @@ int Stack<T, MAX>::size() const {
 template <typename T, int MAX>
 bool Stack<T, MAX>::has(const T &item) const {
     for (int i = 0; i < this->size(); i++) {
-        if (this->items[i] == item) {
+        if (this->data[i] == item) {
             return true;
         }
     }

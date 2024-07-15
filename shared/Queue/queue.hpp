@@ -5,7 +5,7 @@ template <typename T = int, int MAX = 10000>
 class Queue {
 private:
     int front, rear, count;
-    T items[MAX] = {};
+    T data[MAX] = {};
 
 public:
     Queue();
@@ -45,7 +45,7 @@ void Queue<T, MAX>::enQueue(const T &item) {
     }
     rear++;
     count++;
-    items[rear] = item;
+    data[rear] = item;
 }
 
 template <typename T, int MAX>
@@ -58,7 +58,7 @@ T Queue<T, MAX>::deQueue() {
 
     front++;
     count--;
-    item = items[front];
+    item = data[front];
     return item;
 }
 
@@ -69,7 +69,7 @@ T Queue<T, MAX>::peek() const {
         std::cerr << "Queue is empty\n";
         return item;
     }
-    item = items[front];
+    item = data[front];
     return item;
 }
 
@@ -81,7 +81,7 @@ int Queue<T, MAX>::size() const {
 template <typename T, int MAX>
 bool Queue<T, MAX>::has(const T &item) const {
     for (int i = 0; i < this->size(); ++i) {
-        if (items[(front + i) % MAX] == item) {
+        if (data[(front + i) % MAX] == item) {
             return true;
         }
     }
