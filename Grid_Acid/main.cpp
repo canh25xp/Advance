@@ -2,9 +2,9 @@
 #include "queue.hpp"
 #include <iostream>
 
-const int N_MAX = 100; // should be 3000
-const int M_MAX = 100; // should be 3000
-const int Q_MAX = 100000;
+const int N_MAX = 3000; // should be 3000
+const int M_MAX = 3000; // should be 3000
+const int Q_MAX = 1000000;
 
 struct Pair {
     int i, j;
@@ -31,8 +31,8 @@ int main(int argc, char *argv[]) {
         cin >> r >> c;
         Pair start(r - 1, c - 1); // convert to 0-based indexing
 
-        int grid[N_MAX][M_MAX] = {}; // The grid contains info about tile type
-        Pair C;                      // The special cell type C, value 2.
+        static int grid[N_MAX][M_MAX] = {}; // The grid contains info about tile type
+        Pair C;                             // The special cell type C, value 2.
 
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < M; j++) {
@@ -52,10 +52,16 @@ int main(int argc, char *argv[]) {
 }
 
 Pair solve(const int (&grid)[N_MAX][M_MAX], int N, int M, Pair start) {
-    int visited[N_MAX][M_MAX] = {};
+    static int visited[N_MAX][M_MAX] = {};
+
+    for (int i = 0; i < N; i++)
+        for (int j = 0; j < M; j++)
+            visited[i][j] = 0;
+
     Pair count(-1, -1); // first and second count
 
-    Queue<Pair, Q_MAX> q;
+    static Queue<Pair, Q_MAX> q;
+    q.clear();
     q.enQueue(start);
     visited[start.i][start.j] = 1;
 
