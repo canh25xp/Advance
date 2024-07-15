@@ -1,4 +1,4 @@
-#pragma warning(disable: 4996)
+#pragma warning(disable : 4996)
 #include <iostream>
 
 const int N_MAX = 5; // Should be 100
@@ -6,7 +6,7 @@ const int N_MAX = 5; // Should be 100
 int solve(const int (&adj)[N_MAX][N_MAX], const int N);
 
 using namespace std;
-int main(int argc, char **argv){
+int main(int argc, char **argv) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
 
@@ -20,7 +20,7 @@ int main(int argc, char **argv){
         int mat[N_MAX][N_MAX] = {};
         for (int i = 0; i < N; i++)
             for (int j = 0; j < N; j++)
-                cin >> mat[i][j]; 
+                cin >> mat[i][j];
 
         int ans = solve(mat, N);
         cout << ans << endl;
@@ -29,7 +29,7 @@ int main(int argc, char **argv){
     return 0;
 }
 
-int solve(const int (&adj)[N_MAX][N_MAX], const int N){
+int solve(const int (&adj)[N_MAX][N_MAX], const int N) {
     int temp_adj[N_MAX][N_MAX] = {};
     for (int i = 0; i < N; i++)
         for (int j = 0; j < N; j++)
@@ -39,13 +39,10 @@ int solve(const int (&adj)[N_MAX][N_MAX], const int N){
     int node = -1;
 
     for (int i = 0; i < N; i++) {
-
         for (int j = 0; j < N; j++) {
             int count_isolate = 0;
             int visited[N_MAX] = {};
-
         }
-
     }
 
     return 0;
