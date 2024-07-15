@@ -4,7 +4,7 @@
 
 const int N_MAX = 3000; // should be 3000
 const int M_MAX = 3000; // should be 3000
-const int Q_MAX = 1000000;
+const int Q_MAX = 3000000;
 
 struct Pair {
     int i, j;
