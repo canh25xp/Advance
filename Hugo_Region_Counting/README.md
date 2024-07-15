@@ -2,16 +2,26 @@
 >
 > Level 4
 
-Cho ma trận NxN (5 ≤ N ≤ 100) chứa các phần tử có giá trị 0 – 5 mô tả lãnh thổ 6 vương quốc.
+Cho ma trận `NxN` (`5 <= N <= 100`) chứa các phần tử có giá trị 0 – 5 mô tả lãnh thổ 6 vương quốc.
 Yêu cầu sáp nhập các vùng số 0 về các lãnh thổ khác sao cho vùng đồng nhất có diện tích lớn nhất
 (các vùng được chuyển đổi trước không được tính vào diện tích để quyết định các vùng chuyển đổi sau),
 sau đó trả về số lượng vùng còn lại sau khi sáp nhập.
 
-Thông thường, chúng ta có thể thấy rõ rằng có hai ô 5, hai ô 4, một ô 3  và hai ô 2 gian hàng xung quanh ba ô 0 này. Tuy nhiên, vì ô 5 cũng kết nối với ô khác cùng loại (ô 5, tại vị trí [1,1] và [4,1] với màu xanh lam), diện tích sẽ trở lên tốt hơn, vì vậy chúng tôi coi tần suất của ô 5 là 4. Trong trường hợp có nhiều hơn một loại ô có cùng tần suất cao nhất, chúng tôi sẽ chọn ô có giá trị cao hơn.
+![Picture1](./Picture1.png)
+
+Thông thường, chúng ta có thể thấy rõ rằng có hai ô 5, hai ô 4, một ô 3  và hai ô 2 gian hàng xung quanh ba ô 0 này.
+Tuy nhiên, vì ô 5 cũng kết nối với ô khác cùng loại (ô 5, tại vị trí [1,1] và [4,1] với màu xanh lam), diện tích sẽ trở lên tốt hơn, vì vậy chúng tôi coi tần suất của ô 5 là 4.
+Trong trường hợp có nhiều hơn một loại ô có cùng tần suất cao nhất, chúng tôi sẽ chọn ô có giá trị cao hơn.
+
+![Picture2](./Picture2.png)
 
 Tiếp tục với ô 0 tiếp theo ta có ma trận bên dưới
 
+![Picture3](./Picture3.png)
+
 Tất cả các Ô cùng loại và cạnh nhau (trên / dưới/ trái / phải) kết nối thành một khu vực.
+
+![Picture4](./Picture4.png)
 
 Ở ví dụ này chúng ta có 11 vùng
 
@@ -53,7 +63,7 @@ Tất cả các Ô cùng loại và cạnh nhau (trên / dưới/ trái / phải
 
 ## Output
 
-- Xuất ra số lượng vùng sau khi đổi các vùng số 0
+Xuất ra số lượng vùng sau khi đổi các vùng số 0
 
 ```
 Case #1
