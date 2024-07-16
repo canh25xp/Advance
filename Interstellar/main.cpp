@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
     int T;
     cin >> T;
 
-    for (int t = 0; t < 0; t++) {
+    for (int t = 0; t < T; t++) {
         int N;
         cin >> N;
 
