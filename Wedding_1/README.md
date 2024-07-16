@@ -1,5 +1,5 @@
 ﻿# Mời đám cưới
->
+
 > Level 4
 
 Anh Uranus sắp tổ chức đám cưới, hôm nay anh muốn đi phát thiệp mời đến những người bạn trong team.
@@ -15,11 +15,12 @@ Hãy giúp anh Uranus tìm số điểm bắt buộc phải đi qua trên đư�
 ## Input
 
 Dòng đầu tiên chứa số nguyên dương không lớn hơn 100 là số lượng các bộ dữ liệu.
-Các dòng tiếp theo chứa các bộ dữ liệu.Mỗi bộ dữ liệu gồm một nhóm dòng theo khuôn dạng: 
+Các dòng tiếp theo chứa các bộ dữ liệu.Mỗi bộ dữ liệu gồm một nhóm dòng theo khuôn dạng:
+
 - Dòng 1 chứa 4 số nguyên `N, M, u, v` (`u, v, N <= 100; M <= 1000`).
   Trong đó `N` là số lượng đỉnh trên đồ thị.
   `M` là số đường đi... `u`, `v` lần lượt là đỉnh bắt đầu và đỉnh kết thúc hành trình của anh Tomoky.
-- `M` dòng  sau, mỗi dòng ghi hai số  i, j cách nhau một khoảng trống cho biết có đường nối trực tiếp giữa i với j (1 <= i, j <= N).
+- `M` dòng sau, mỗi dòng ghi hai số i, j cách nhau một khoảng trống cho biết có đường nối trực tiếp giữa i với j (1 <= i, j <= N).
 
 ```
 2
