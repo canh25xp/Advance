@@ -1,9 +1,15 @@
 #pragma warning(disable : 4996)
 #include <iostream>
 
-const int N_MAX = 5; // Should be 100
+const int N_MAX = 100; // Should be 100
 
 int solve(const int (&adj)[N_MAX][N_MAX], const int N);
+
+int countIsolated(const int (&adj)[N_MAX][N_MAX], const int N);
+
+void unConnect(int (&adj)[N_MAX][N_MAX], const int N, int v);
+
+void DFS(const int (&adj)[N_MAX][N_MAX], int (&visited)[N_MAX], int N, int v);
 
 using namespace std;
 int main(int argc, char **argv) {
@@ -22,28 +28,61 @@ int main(int argc, char **argv) {
             for (int j = 0; j < N; j++)
                 cin >> mat[i][j];
 
-        int ans = solve(mat, N);
-        cout << ans << endl;
+        cout << solve(mat, N) << endl;
     }
 
     return 0;
 }
 
 int solve(const int (&adj)[N_MAX][N_MAX], const int N) {
-    int temp_adj[N_MAX][N_MAX] = {};
-    for (int i = 0; i < N; i++)
-        for (int j = 0; j < N; j++)
-            temp_adj[i][j] = adj[i][j];
+    int adj_copy[N_MAX][N_MAX] = {};
 
     int max = 0;
-    int node = -1;
+    int index = 0;
 
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            int count_isolate = 0;
-            int visited[N_MAX] = {};
+    for (int v = 0; v < N; v++) {
+        for (int i = 0; i < N; i++)
+            for (int j = 0; j < N; j++)
+                adj_copy[i][j] = adj[i][j];
+
+        unConnect(adj_copy, N, v);
+        int count = countIsolated(adj_copy, N);
+        if (count > max) {
+            index = v;
+            max = count;
         }
     }
 
-    return 0;
+    return (max == 1) ? 0 : index + 1;
+}
+
+void unConnect(int (&adj)[N_MAX][N_MAX], const int N, int v) {
+    for (int i = 0; i < N; i++) {
+        adj[v][i] = 0;
+        adj[i][v] = 0;
+    }
+}
+
+int countIsolated(const int (&adj)[N_MAX][N_MAX], const int N) {
+    int visited[N_MAX] = {};
+    int count = 0;
+
+    for (int v = 0; v < N; v++) {
+        if (!visited[v]) {
+            DFS(adj, visited, N, v);
+            count++;
+        }
+    }
+
+    return count - 1;
+}
+
+void DFS(const int (&adj)[N_MAX][N_MAX], int (&visited)[N_MAX], int N, int v) {
+    visited[v] = 1;
+
+    for (int i = 0; i < N; i++) {
+        if (adj[v][i] && !visited[i]) {
+            DFS(adj, visited, N, i);
+        }
+    }
 }
