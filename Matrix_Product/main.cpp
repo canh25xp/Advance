@@ -22,8 +22,8 @@ public:
     Matrix operator^(int exp) const; // Power operator, not XOR operator.
     Matrix operator%(const int &div) const;
     bool operator==(const int &rhs) const;
-    friend ostream &operator<<(ostream &os, const Matrix &mat);
-    friend istream &operator>>(istream &is, Matrix &mat);
+    friend ostream &operator<<(ostream &os, const Matrix<> &mat);
+    friend istream &operator>>(istream &is, Matrix<> &mat);
 
     Matrix QuickModular(int exp, const int &div) const;
     int Size() const;
