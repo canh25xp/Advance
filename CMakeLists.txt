@@ -2,11 +2,11 @@ cmake_minimum_required(VERSION 3.10)
 project(DSA)
 
 if(MSVC)
-  # warning C4996: 'freopen': This function or variable may be unsafe.
-  # Consider using fopen_s instead.
-  # To disable deprecation, use _CRT_SECURE_NO_WARNINGS.
-  # See online help for details.
-  add_definitions(/wd4996)
+    # warning C4996: 'freopen': This function or variable may be unsafe.
+    # Consider using fopen_s instead.
+    # To disable deprecation, use _CRT_SECURE_NO_WARNINGS.
+    # See online help for details.
+    add_definitions(/wd4996)
 endif()
 
 # Generate Clangd compile_commands.json
@@ -56,6 +56,7 @@ add_subdirectory(Hugo)
 # add_subdirectory(Hugo_Gold_Miner_2)
 add_subdirectory(Hugo_Sells_Oil)
 add_subdirectory(Ice_Cave)
+add_subdirectory(Interstellar)
 # add_subdirectory(Involution)
 # add_subdirectory(Ladder_1)
 # add_subdirectory(Ladder_2)
