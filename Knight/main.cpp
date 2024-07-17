@@ -3,8 +3,8 @@
 
 #define INT_MAX 2147483647
 
-const int SIZE_N = 100;
-const int SIZE_M = 100;
+const int SIZE_N = 5;
+const int SIZE_M = 7;
 const int MAX_TARGET = 10;
 
 static const int di[8] = {-2, -1, 1, 2, -2, -1, 1, 2};
@@ -100,6 +100,13 @@ int Solution::Solve() {
             }
         }
     }
+
+
+    BFS(start, 0);
+
+    // for (int i = 0; i < count; i++) {
+    //     BFS(target[i], i);
+    // }
 
     return ans;
 }
