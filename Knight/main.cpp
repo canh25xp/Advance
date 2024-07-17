@@ -88,14 +88,12 @@ Solution::Solution(int (&chessboard)[SIZE_N][SIZE_M], int N, int M) : chessboard
 
 int Solution::Solve() {
     ans = INT_MAX;
-    count = 0;
+    count = 1;
 
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
-            if (chessboard[i][j] == 3) {
-                target[count] = Point(i, j);
-                count++;
-            }
+            if (chessboard[i][j] == 3)
+                target[0] = Point(i, j);
 
             else if (chessboard[i][j] == 1) {
                 target[count] = Point(i, j);
@@ -104,10 +102,10 @@ int Solution::Solve() {
         }
     }
 
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < count; i++)
         BFS(target[i], i);
-    }
 
+    visitedUV[0] = 1;
     BackTrack(0, 0, 1);
 
     return ans;
@@ -126,9 +124,10 @@ int Solution::BFS(Point start, int target_index) {
             if (n.i >= 0 && n.j >= 0 && n.i < N && n.j < M && !visited[n.i][n.j]) {
                 visited[n.i][n.j] = visited[t.i][t.j] + 1;
                 q.enQueue(n);
-                for (int i = 0; i < count; i++)
-                    if (n.i == target[i].i && n.j == target[i].j)
-                        distance[target_index][i] = visited[target[i].i][target[i].j];
+                if (chessboard[n.i][n.j] == 1 || chessboard[n.i][n.j] == 3)
+                    for (int i = 0; i < count; i++)
+                        if (n.i == target[i].i && n.j == target[i].j)
+                            distance[target_index][i] = visited[target[i].i][target[i].j];
             }
         }
     }
