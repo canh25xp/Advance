@@ -4,7 +4,7 @@ int N, M;
 int ans;
 int map[105][105];
 int road[105][2];
-int kc[5][7];
+int kc[105][105];
 int idx;
 int sX, sY;
 
@@ -33,7 +33,7 @@ void pop() {
 
 int dx[8] = {-2, -1, 1, 2, 2, 1, -1, -2};
 int dy[8] = {1, 2, 2, 1, -1, -2, -2, -1};
-int visit[5][7];
+int visit[105][105];
 
 void resetVisit() {
     for (int i = 0; i < N; i++) {
