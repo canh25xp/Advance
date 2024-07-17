@@ -1,5 +1,5 @@
 # Hugo Về Nhà
->
+
 > Level 4
 
 Hugo đang trền đường về nhà và cần đi qua 1 đoạn đường B.
@@ -16,16 +16,17 @@ Muốn đi qua mỗi cổng Hugo có 3 cách lựa chọn.
 
 3. Battle:
    Điều kiện để đánh nhau là số quân của Hugo >= số lượng lính tại cổng đó. Có các lưu ý:
-    - Hugo không được tính vào số lượng của quân
-    - Mỗi người lính chỉ tham gia được vào tối đa 3 trận đánh. Sau 3 trận đánh nếu đi nhóm binh sĩ đó còn sống thì cũng giải tán.
-    - Mỗi trận đánh thì tất cả số binh sĩ đều tham gia.
-    - Đánh nhau chết theo tỉ lệ 1: 1. Ai tham gia trước sẽ bị chết trước
+   - Hugo không được tính vào số lượng của quân
+   - Mỗi người lính chỉ tham gia được vào tối đa 3 trận đánh. Sau 3 trận đánh nếu đi nhóm binh sĩ đó còn sống thì cũng giải tán.
+   - Mỗi trận đánh thì tất cả số binh sĩ đều tham gia.
+   - Đánh nhau chết theo tỉ lệ 1: 1. Ai tham gia trước sẽ bị chết trước
 
 ## Input
 
 Dòng đầu tiên là số lượng trường hợp thử nghiệm
 
 Mỗi trường hợp thử nghiệm sẽ có
+
 - Dòng đầu tiên chứa số lượng cổng `N` (`N <= 20`)
 - N dòng tiếp theo chứa 2 số là số binh lính `K` và chi phí `P` tại mỗi cổng (`2 <= K, P <= 1000`)
 
@@ -64,16 +65,16 @@ In ra chi phí nhỏ nhất Hugo có thể đi qua đoạn đường B
 
 ## Giải thích
 
-| |1|2|3|4|5|6|7|
-|-|-|-|-|-|-|-|-|
-|Số binh sĩ|10|70|80|20|50|30|10|
-|Chi phí|100|5|15|60|90|80|10|
+|            | 1   | 2   | 3   | 4   | 5   | 6   | 7   |
+| ---------- | --- | --- | --- | --- | --- | --- | --- |
+| Số binh sĩ | 10  | 70  | 80  | 20  | 50  | 30  | 10  |
+| Chi phí    | 100 | 5   | 15  | 60  | 90  | 80  | 10  |
 
 Có thể tính chi phí đi nhỏ nhất
 
-| |1|2|3|4|5|6|7|
-|-|-|-|-|-|-|-|-|
-|Số binh sĩ|10|70|80|20|50|30|10|
-|Chi phí|100|5|15|60|90|80|10|
-|Chọn|Pass|Hire|Hire|Battle|Battle|Battle|Pass|
-|Chi phí|100|110|140||||150
+|            | 1    | 2    | 3    | 4      | 5      | 6      | 7    |
+| ---------- | ---- | ---- | ---- | ------ | ------ | ------ | ---- |
+| Số binh sĩ | 10   | 70   | 80   | 20     | 50     | 30     | 10   |
+| Chi phí    | 100  | 5    | 15   | 60     | 90     | 80     | 10   |
+| Chọn       | Pass | Hire | Hire | Battle | Battle | Battle | Pass |
+| Chi phí    | 100  | 110  | 140  |        |        |        | 150  |
