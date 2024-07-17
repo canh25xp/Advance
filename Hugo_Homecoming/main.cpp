@@ -1,6 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 
+#define INT_MAX 2147483647
+
 const int SIZE = 20;
 
 struct Soldier {
