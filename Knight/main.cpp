@@ -84,7 +84,14 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-Solution::Solution(int (&chessboard)[SIZE_N][SIZE_M], int N, int M) : chessboard(chessboard), N(N), M(M), ans(0) {}
+Solution::Solution(int (&chessboard)[SIZE_N][SIZE_M], int N, int M) : chessboard(chessboard), N(N), M(M), ans(0) {
+    for (size_t i = 0; i < MAX_TARGET; i++) {
+        for (int j = 0; j < MAX_TARGET; j++) {
+            distance[i][j] = 0;
+        }
+        visitedUV[i] = 0;
+    }
+}
 
 int Solution::Solve() {
     ans = INT_MAX;
