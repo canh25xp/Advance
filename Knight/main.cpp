@@ -3,8 +3,9 @@
 
 #define INT_MAX 2147483647
 
-const int SIZE_N = 5;
-const int SIZE_M = 7;
+const int SIZE_N = 100;
+const int SIZE_M = 100;
+const int MAX_TARGET = 10;
 
 static const int di[8] = {-2, -1, 1, 2, -2, -1, 1, 2};
 static const int dj[8] = {-1, -2, -2, -1, 1, 2, 2, 1};
@@ -36,7 +37,7 @@ struct Point {
     int i, j;
 };
 
-class Solution{
+class Solution {
 public:
     Solution(int (&chessboard)[SIZE_N][SIZE_M], int N, int M);
 
@@ -48,16 +49,17 @@ private:
     int (&chessboard)[SIZE_N][SIZE_M];
 
     Point start;
-    Point target[SIZE_N*SIZE_M];
-    int targets;
-    int distance[SIZE_N*SIZE_M];
+    Point target[MAX_TARGET];
+    int count; // Total number of targets in the board
+
+    int distance[MAX_TARGET][MAX_TARGET];
 
     int BFS(Point start, int target_index);
 };
 
 using namespace std;
 int main(int argc, char **argv) {
-    const char* input = (argc > 1) ? argv[1] : "input.txt";
+    const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
 
     int T;
@@ -74,7 +76,8 @@ int main(int argc, char **argv) {
 
         Solution s(chessboard, N, M);
 
-        cout << "Case #" << t + 1 << "\n" << s.Solve() << endl;
+        cout << "Case #" << t + 1 << "\n"
+             << s.Solve() << endl;
     }
 
     return 0;
@@ -84,16 +87,16 @@ Solution::Solution(int (&chessboard)[SIZE_N][SIZE_M], int N, int M) : chessboard
 
 int Solution::Solve() {
     ans = INT_MAX;
-    targets = 0;
+    count = 0;
 
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
             if (chessboard[i][j] == 3)
                 start = Point(i, j);
 
-            else if (chessboard[i][j] == 1){
-                target[targets] = Point(i,j);
-                targets++;
+            else if (chessboard[i][j] == 1) {
+                target[count] = Point(i, j);
+                count++;
             }
         }
     }
@@ -102,7 +105,7 @@ int Solution::Solve() {
 }
 
 int Solution::BFS(Point start, int target_index) {
-    int visited [SIZE_N][SIZE_M] = {};
+    int visited[SIZE_N][SIZE_M] = {};
     int count = 0;
 
     Queue<Point> q;
@@ -116,12 +119,15 @@ int Solution::BFS(Point start, int target_index) {
                 visited[n.i][n.j] = visited[t.i][t.j] + 1;
                 q.enQueue(n);
                 if (chessboard[n.i][n.j] == 1) {
-
+                    for (int v; v < count; v++) {
+                        distance[target_index][v] = visited[n.i][n.j];
+                    }
                 }
             }
         }
     }
 
+    return 0;
 }
 
 Point::Point() : i(0), j(0) {}
