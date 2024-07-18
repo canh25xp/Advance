@@ -1,31 +1,66 @@
-﻿# Airplane Game
+# Airplane Game
 >
 > Level 3
+> 
+> Time limit 5s.
 
-Time limit 5s.
+You'll be given a grid as below:
+```
+                       0 1 0 2 0
+                       0 2 2 2 1
+                       0 2 1 1 1
+                       1 0 1 0 0
+                       0 0 1 2 2
+                       1 1 0 0 1
+                       x x S x x 
+```
 
-Một máy bay di chuyển trong một bản đồ game map có kích thước chiều ngang cố định là  n = 5 và chiều dài 5 <= m <= 25.
-Màn hình hiển thị game display có kích thước cố định 5 x 5.
-Máy bay luôn xuất phát từ 1 điểm nằm ngoài game map và ở cột chính giữa theo bề ngang của game map, hướng di chuyển từ dưới lên trên.
-Tại mỗi lần di chuyển, máy bay sẽ đi được 1 ô lên trên, tới 3 vị trí: ô chéo bên trái, ô trên, ô chéo bên phải.
-Trong bản đồ game map có 3 loại ô:
+In the grid above:
 
-- Ô bằng 0 là ô trống
-- Ô bằng 1 là ô coin
-- Ô bằng 2 là quân địch
+- 1: This cell has a coin.
+- 2: This cell has an enemy.
+- 0: It contains nothing.
 
-Luật chơi:
+The highlighted (at the very bottom) zone is the control zone.
+`S` is a spaceship that we need to control so that we can get maximum coins.
+Now, S's initial position will be at the center and we can only move it right or left by one cell or do not move.
+At each time, the non-highlighted part of the grid will move down by one unit.
+We can also use a bomb but only once.
+If we use that, all the enemies in the 5×5 region above the control zone will be killed.
+If we use a bomb at the very beginning, the grid will look like this:
 
-- Máy bay sẽ đi nhặt coin trong game map theo luật di chuyển như mô tả bên trên, từ vị trí xuất phát đến hết game map
-- Khi gặp ô địch thì số coin máy bay đang có sẽ bị giảm đi 1, nếu số coin bằng 0 mà gặp ô địch thì máy bay bị nổ và trò chơi kết thúc
-- Tuy nhiên, trong mỗi lượt chơi, người chơi đc sử dụng một quả bom để cho nổ hết tất cả ô địch trong màn hình game display hiện tại
+```
+                       0 1 0 2 0
+                       0 0 0 0 1
+                       0 0 1 1 1
+                       1 0 1 0 0
+                       0 0 1 0 0
+                       1 1 0 0 1
+                       x x S x x 
+```
+As soon as, the spaceship encounters an enemy or the entire grid has come down, the game ends.
+For example, At the very first instance, if we want to collect a coin we should move left( coins=1).
+This is because when the grid comes down by 1 unit we have a coin on the second position and by moving left we can collect that coin.
+Next, we should move right to collect another coin( coins=2).
+After this, remain at the same position (coins=4).
+This is the current situation after collecting 4 coins.
 
-Yêu cầu: tìm số coin lớn nhất mà máy bay có thể thu đc khi đi từ vị trí xuất phát đến hết game map.
+0 1 0 2 0 0 1 0 0 0 0 2 2 2 1 -->after using 0 0 0 0 1 x x S x x -->bomb x x S x x Now, we can use the bomb to get out of this situation. After this, we can collect at most 1 coin. So maximum coins=5.
 
 ## Input
 
+First line conatins t, number of test cases Next line contains N for each test Next N lines conatin input ( 5 integers )
+
 ```
-1
+2
+7
+1 2 0 0 1
+2 0 0 1 0
+0 1 2 0 1
+1 0 0 2 1
+0 2 1 0 1
+0 1 2 2 2
+1 0 1 1 0
 12
 2 2 0 2 2
 0 1 0 2 1
@@ -43,6 +78,9 @@ Yêu cầu: tìm số coin lớn nhất mà máy bay có thể thu đc khi đi t
 
 ## Output
 
+For each test output single integer with format `#test_number output`
+
 ```
-#1 9
+#1 6
+#2 9
 ```
