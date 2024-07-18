@@ -1,5 +1,11 @@
 # Data Structures and Algorithms Exercises
 
+A Complilation from the Internet, namely:
+- [HackerRank](https://www.hackerrank.com/contests/target-samsung-13-nov19/challenges)
+- [PasteCode](https://pastecode.io/s/xgk4jnjc)
+- [Github](https://github.com/rsenwar/Samsung-Interview-Problems)
+- [Github](https://github.com/bsse1027/Samsung_SWC_Practice)
+
 ## Problems info tracking
 
 |Name|Has Description|Has Input|Has Output|Has Solution|
