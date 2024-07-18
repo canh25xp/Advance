@@ -1,15 +1,15 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <iostream>
 #include "deque.hpp"
 #include "point.hpp"
+#include <iostream>
+
 
 const int LIMIT = 200;
 const int MAX_QUEUE = 50000;
 const int A_VERY_LARGE_NUMBER = INT_MAX;
 
 // Direction: up-left, up-right, down-right, down-left
-const int di[4] = {-1,-1,1,1};
-const int dj[4] = {-1,1,1,-1};
+const int di[4] = {-1, -1, 1, 1};
+const int dj[4] = {-1, 1, 1, -1};
 
 struct State {
     Point p;
@@ -35,7 +35,7 @@ private:
 };
 
 using namespace std;
-int main(int argc, char ** argv) { ////////////////////////////////////////////
+int main(int argc, char **argv) { ////////////////////////////////////////////
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
 
@@ -55,7 +55,7 @@ int main(int argc, char ** argv) { ////////////////////////////////////////////
         for (int i = 0; i < m; i++) {
             int r, c;
             cin >> r >> c;
-            obstacle[r-1][c-1] = 1;
+            obstacle[r - 1][c - 1] = 1;
         }
 
         Solution s(n, m, src, dst, obstacle);
@@ -113,5 +113,5 @@ int Solution::BFS(Point src, Point dst, int direction) {
 }
 
 int Solution::min(int a, int b) {
-    return (a < b) ? a : b; 
+    return (a < b) ? a : b;
 }
