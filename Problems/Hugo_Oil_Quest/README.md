@@ -1,6 +1,8 @@
 # Hugo bán dầu
 >
 > Level 4
+>
+> Alternate Title [Endoscope](https://www.hackerrank.com/contests/target-samsung-13-nov19/challenges/endoscope) 
 
 Hugo được giao bán dầu trên một mạng lưới đường ống dẫn dầu, mỗi một vị trí sẽ thiết lập một loại đường ống khác nhau dựa vào địa hình. Sau khi đi khảo sát, Hugo biết rằng mạng lưới đường ống được tạo thành từ 7 loại ống như bên dưới.
 
