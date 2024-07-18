@@ -1,4 +1,6 @@
-Đề bài: The Battle of robots
+# Đề bài: The Battle of robots
+>
+> TEST 10/08/2023
 
 Có những con robot màu đỏ và robot màu xanh ngẫu nhiên trong ma trận 100x100
 Những robot màu xanh di chuyển về phía bên phải, những con robot màu đỏ di chuyển về bên trái.

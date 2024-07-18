@@ -1,23 +1,34 @@
-Painting the wall
+# Painting the wall
+>
+> Level ?
+>
+> TEST 09/08/2023
 
 Mô tả: Chúng ta sẽ bắn sơn lên tường theo tọa độ cho trước và có 2 loại đạn 1 và 2
 
 Đạn 1: bắn vào 1 ô và lan sang 4 ô xung quanh theo dấu +
+
+```
   1
 1 2 1
   1
+```
+
 Đạn 2: bắn vào 1 ô và lan sang 4 ô xung quanh theo dấu X
+
+```
 1   1
   2
 1   1
+```
 
 Trong đó tại ô được bắn sẽ dính 2 lớp sơn, còn 4 ô xung quanh chỉ dính thêm 1 lớp sơn
 
 Tại mỗi ô chỉ chứa được tối đa 2 lớp sơn, nếu tại ô đó tiếp tục dính sơn, SƠN SẼ CHẢY XUỐNG Ô PHÍA DƯỚI
 Yêu cầu: In ra số ô bị dính sơn
 
-
 Ví dụ mẫu:
+
 N M K - ma trận kích thước N x M (N hàng, M cột), K lần bắn
 5 5 2
 K dòng tiếp theo là thông tin mỗi lần bắn: x y z - x, y là tọa độ (hàng x - cột y) - z là loại đạn

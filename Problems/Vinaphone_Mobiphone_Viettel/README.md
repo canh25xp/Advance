@@ -1,4 +1,6 @@
-Bài 4: Vinaphone_Mobiphone_Viettel : VMV
+# Vinaphone MobiphonevViettel
+>
+> TEST 10/08/2023
 
 Yêu cầu: Tìm ra số ngôi nhà không bị phủ sóng bởi các cột sóng của các nhà mạng
 

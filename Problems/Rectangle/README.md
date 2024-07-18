@@ -1,4 +1,8 @@
-Hình chữ nhật
+# Hình chữ nhật
+>
+> Level ?
+>
+> TEST 10/08/2023
 
 - Cho ma trận 100x100, tìm kiếm có bao nhiêu hình chữ nhật thỏa mãn
 

@@ -1,4 +1,8 @@
-Đề bài: Blackpink View (Góc nhìn đen hồng)
+# Blackpink View (Góc nhìn đen hồng)
+>
+> Level 3
+>
+> TEST 09/08/2023
 
 Có 1 khu biệt thự có kích thước 100x100 tòa nhà
 
@@ -7,7 +11,6 @@ Mỗi ô là 1 tòa nhà, có chiều cao x
 Tại mỗi tầng, có thể mở cửa theo 4 hướng trái, phải, trên dưới.
 1 tầng được gọi là Góc nhìn đen hồng (Blackpink View) nếu tất cả 4 hướng đều không bị chặn bởi 2 tòa nhà khác.
 Nếu tòa nhà được đặt ở cạnh của khu biệt thự thì hướng không có tòa nhà sẽ được coi là đường đi và đường đi có số tầng là 0
-
 
 Ví dụ: 
 
