@@ -25,7 +25,14 @@ include_directories(${CMAKE_SOURCE_DIR}/shared/Stack)
 include_directories(${CMAKE_SOURCE_DIR}/shared/Point)
 include_directories(${CMAKE_SOURCE_DIR}/shared/Graph)
 
-add_subdirectory(Problems)
+file(GLOB cmake_files ${CMAKE_CURRENT_SOURCE_DIR}/Problems ${CMAKE_CURRENT_SOURCE_DIR}/Problems/*)
+foreach(cmake_file ${cmake_files})
+    if(EXISTS ${cmake_file}/CMakeLists.txt)
+        get_filename_component(project_name ${cmake_file} NAME)
+        message(${project_name})
+        add_subdirectory(Problems/${project_name})
+    endif()
+endforeach()
 
 # For testing
 # add_subdirectory(shared/Stack)
