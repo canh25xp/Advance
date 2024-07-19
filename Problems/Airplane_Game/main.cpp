@@ -16,7 +16,7 @@ const int COINS = 1;
 const int ENEMY = 2;
 
 int solve(const int (&mat)[ROWS][COLS], const int N, const int M);
-void backtrack(int &ans, const int (&mat)[ROWS][COLS], const int N, const int M, int i, int j, int coins = 0, int bomb = 1, int effect = 0);
+void backtrack(int &ans, const int (&mat)[ROWS][COLS], const int N, const int M, int i, int j, int coins = 0, bool usedBomb = false, int effect = 0);
 
 int main() {
     freopen("input.txt", "r", stdin);
@@ -47,7 +47,7 @@ int solve(const int (&mat)[ROWS][COLS], const int N, const int M) {
     return ans;
 }
 
-void backtrack(int &ans, const int (&mat)[ROWS][COLS], const int N, const int M, int i, int j, int coins, int bomb, int effect) {
+void backtrack(int &ans, const int (&mat)[ROWS][COLS], const int N, const int M, int i, int j, int coins, bool usedBomb, int effect) {
     if (i == 0) {
         if (coins > ans)
             ans = coins;
@@ -61,16 +61,16 @@ void backtrack(int &ans, const int (&mat)[ROWS][COLS], const int N, const int M,
             continue;
 
         if (mat[ni][nj] != ENEMY) { // No Enemy
-            if (bomb == 0)
-                backtrack(ans, mat, N, M, ni, nj, coins + mat[ni][nj], bomb, effect - 1); // If bomb has already been used, reduce its effect by 1
+            if (usedBomb)
+                backtrack(ans, mat, N, M, ni, nj, coins + mat[ni][nj], usedBomb, effect - 1); // If bomb has already been used, reduce its effect by 1
             else
-                backtrack(ans, mat, N, M, ni, nj, coins + mat[ni][nj], bomb, effect);
+                backtrack(ans, mat, N, M, ni, nj, coins + mat[ni][nj], usedBomb, effect);
         } else {
-            if (bomb == 0) {
+            if (usedBomb) {
                 if (effect > 0)
-                    backtrack(ans, mat, N, M, ni, nj, coins, bomb, effect - 1); // Bomb already used so can pass but effect reduces by 1
+                    backtrack(ans, mat, N, M, ni, nj, coins, usedBomb, effect - 1); // Bomb already used so can pass but effect reduces by 1
             } else
-                backtrack(ans, mat, N, M, ni, nj, coins, 0, 5); // Use bomb ans set effect for five rows
+                backtrack(ans, mat, N, M, ni, nj, coins, true, 5); // Use bomb ans set effect for five rows
         }
     }
 }
