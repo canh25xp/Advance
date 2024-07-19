@@ -4,6 +4,7 @@ using namespace std;
 void maxCoins(int arr[][5], int crow, int ccol, int temp, int &ans, int bomb, int effect);
 
 int main() {
+    freopen("input.txt", "r", stdin);
     int arr[20][5], ans, t, n;
     cin >> t;
     for (int _ = 1; _ <= t; _++) {
@@ -15,7 +16,7 @@ int main() {
         }
         ans = 0;
         maxCoins(arr, n - 1, 2, 0, ans, 1, 0);
-        cout << "#" << _ << " " << ans;
+        cout << "#" << _ << " " << ans << endl;
     }
     return 0;
 }

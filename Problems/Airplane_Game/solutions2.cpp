@@ -8,6 +8,7 @@ int max_coin = 0;
 void playGame(int pos, int rowsLeft, int currentCoin, int bombStatus);
 
 int main() {
+    freopen("input.txt", "r", stdin);
     int copyT, t;
     cin >> t;
     copyT = t;
