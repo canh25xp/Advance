@@ -101,7 +101,11 @@ struct Point {
         return i >= 0 && j >= 0 && i < R && j < C;
     }
 
-    bool isValid(const int& N) const {
+    bool isValid(const int &N) const {
         return i >= 0 && j >= 0 && i < N && j < N;
+    }
+
+    bool isValid(const Point &Size) const {
+        return i >= 0 && j >= 0 && i < Size.i && j < Size.j;
     }
 };
