@@ -70,15 +70,15 @@ int main() {
         }
 
         chayLan();
-        // ans = -1;
-        // visited[sx][sy] = 1;
-        // DFS(sx, sy, 0, diamonds[sx][sy]);
-        // cout << "Case #" << tc << endl;
-        // cout << ans << endl;
+        ans = -1;
+        visited[sx][sy] = 1;
+        DFS(sx, sy, 0, diamonds[sx][sy]);
+        cout << "Case #" << tc << endl;
+        cout << ans << endl;
 
         // Attemp to using Stack instead of recursion, not really work.
-        cout << "Case #" << tc << endl;
-        cout << DFS_Stack(sx, sy) << endl;
+        // cout << "Case #" << tc << endl;
+        // cout << DFS_Stack(sx, sy) << endl;
     }
     return 0;
 }
