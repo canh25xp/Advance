@@ -4,11 +4,10 @@
 #include <iostream>
 using namespace std;
 
-const int N_MAX = 4;
-const int M_MAX = 4;
-const int K_MAX = 16;
-const int QUEUE_MAX = 100000;
-const int A_HUGE_NUMBER = 10;
+const int N_MAX = 20;
+const int M_MAX = 20;
+const int QUEUE_MAX = 1000;
+const int A_HUGE_NUMBER = INT_MAX;
 
 // Direction : up, down, left, right
 const int di[4] = {-1, 1, 0, 0};
@@ -16,6 +15,8 @@ const int dj[4] = {0, 0, -1, 1};
 
 void HandleFire(int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const Point Size);
 int solve(int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const int (&diamonds)[N_MAX][M_MAX], const int (&gates)[N_MAX][M_MAX], const Point Size, const Point Hugo);
+
+void DFS(int (&visited)[N_MAX][M_MAX], int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const int (&diamonds)[N_MAX][M_MAX], const int (&gates)[N_MAX][M_MAX], const Point Size, Point Hugo, int time, int score, int &ans);
 
 int main(int argc, char *argv[]) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
@@ -33,12 +34,9 @@ int main(int argc, char *argv[]) {
         int F; // Total number of fires
         cin >> F;
         int fires[N_MAX][M_MAX] = {};
-
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < M; j++) {
+        for (int i = 0; i < N; i++)
+            for (int j = 0; j < M; j++)
                 fires[i][j] = A_HUGE_NUMBER;
-            }
-        }
 
         for (int f = 0; f < F; f++) {
             int i, j;
@@ -78,41 +76,39 @@ int main(int argc, char *argv[]) {
 
 int solve(int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const int (&diamonds)[N_MAX][M_MAX], const int (&gates)[N_MAX][M_MAX], const Point Size, const Point Hugo) {
     HandleFire(fires, lakes, Size);
-    // static int score = diamonds[R][C];
-    // static int vst[N_MAX][M_MAX] = {};
+    int visited[N_MAX][M_MAX] = {};
+    visited[Hugo.i][Hugo.j] = 1;
 
-    // Queue<Point, QUEUE_MAX> q;
-    // q.enQueue(Point(R, C));
+    int ans = -1;
 
-    // while (!q.isEmpty()) {
-    //     Point t = q.deQueue();
-    //     vst[t.i][t.j] = 1;
+    DFS(visited, fires, lakes, diamonds, gates, Size, Hugo, 0, diamonds[Hugo.i][Hugo.j], ans);
 
-    //     int fires_p[N_MAX][M_MAX] = {};
-    //     for (int i = 0; i < Size.i; i++)
-    //         for (int j = 0; j < Size.j; j++)
-    //             fires_p[i][j] = fires[i][j];
+    return ans;
+}
 
-    //     HandleFire(fires, lakes, Size);
+void DFS(int (&visited)[N_MAX][M_MAX], int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const int (&diamonds)[N_MAX][M_MAX], const int (&gates)[N_MAX][M_MAX], const Point Size, Point Hugo, int time, int score, int &ans) {
+    int h = time;
+    int c = score;
 
-    //     if (gates[t.i][t.j])
-    //         return score;
+    if (gates[Hugo.i][Hugo.j]) {
+        if (c > ans)
+            ans = c;
+    }
 
-    //     for (int d = 0; d < 4; d++) {
-    //         int ni = R + di[d];
-    //         int nj = C + dj[d];
-    //         if (ni >= 0 && nj >= 0 && ni < N && nj < M && !fires[ni][nj] && !vst[ni][nj]) {
-    //             score += diamonds[ni][nj];
-    //             q.enQueue(Point(ni, nj));
-    //         }
-    //     }
+    if (lakes[Hugo.i][Hugo.j])
+        h += 2;
+    else
+        h += 1;
 
-    //     for (int i = 0; i < N; i++)
-    //         for (int j = 0; j < M; j++)
-    //             fires[i][j] = fires_p[i][j];
-    // }
-
-    return 0;
+    for (int k = 0; k < 4; k++) {
+        Point n(Hugo.i + di[k], Hugo.j + dj[k]);
+        if (n.isValid(Size) && !visited[n.i][n.j] && lakes[n.i][n.j] && fires[n.i][n.j] > h) {
+            visited[n.i][n.j] = 1;
+            DFS(visited, fires, lakes, diamonds, gates, Size, n, h, c + diamonds[n.i][n.j], ans);
+            // DFS(nx, ny, h, c + diamonds[nx][ny]);
+            visited[n.i][n.j] = 0;
+        }
+    }
 }
 
 void HandleFire(int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const Point Size) {
