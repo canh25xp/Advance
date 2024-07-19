@@ -1,7 +1,7 @@
 #include <iostream>
 
-const int LIM_M = 20;  // 20
-const int LIM_N = 100; // 100
+const int LIM_M = 3;  // 20
+const int LIM_N = 4; // 100
 
 int K, R;
 int M;
@@ -12,7 +12,7 @@ int ans;
 int location[LIM_M][2] = {};
 int solitaire[LIM_N][3] = {};
 int adj[LIM_M][LIM_N] = {};
-int p[LIM_M];
+int visited[LIM_N] = {};
 
 int squared(int x);
 
@@ -20,7 +20,7 @@ int squared(int a[2], int b[2]);
 
 void calculateDistance(int (&adj)[LIM_M][LIM_N]);
 
-void backTrack(int step = 0, int st = 0);
+void backTrack(int step = 0, int sum = 0, int index = 0);
 
 using namespace std;
 int main(int argc, char **argv){
@@ -43,11 +43,12 @@ int main(int argc, char **argv){
         for (int i = 0; i < N; i++)
             cin >> solitaire[i][0] >> solitaire[i][1] >> solitaire[i][2];
 
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < M; i++)
             for (int j = 0; j < N; j++)
                 adj[i][j] = 0;
-            p[i] = 0;
-        }
+
+        for (int i = 0; i < N; i++)
+            visited[i] = 0;
 
         ans = 0;
         calculateDistance(adj);
@@ -73,30 +74,26 @@ void calculateDistance(int (&adj)[LIM_M][LIM_N]) {
                 adj[i][j] = solitaire[j][2];
 }
 
-void backTrack(int step, int st) {
-    if(step == K) {
-        int sum = 0;
-
-        int visited[LIM_N] = {};
-
-        for(int i = 0; i < K; i++) {
-            int pl = p[i];
-            for(int j = 0; j < N; j++) {
-                if(!visited[j] && adj[pl][j]) {
-                    sum += adj[pl][j];
-                    visited[j] = 1;
-                }
-            }
-        }
-
-        if(sum > ans)
+void backTrack(int step, int sum, int index) {
+    if (step == K) {
+        if (sum > ans)
             ans = sum;
-
         return;
     }
 
-    for(int i = st; i < M; i++) {
-        p[step] = i;
-        backTrack(step + 1, i + 1);
+    if (index == M)
+        return;
+
+    backTrack(step, sum, index + 1);
+    int num = 0;
+    for (int i = 0; i < N; i++) {
+        if (!visited[i] && adj[index][i]) {
+            visited[i] = 1;
+            num += adj[index][i];
+        }
     }
+    backTrack(step + 1, sum + num, index + 1);
+    for (int i = 0; i < N; i++)
+        if (visited[i] && adj[index][i])
+            visited[i] = 0;
 }
