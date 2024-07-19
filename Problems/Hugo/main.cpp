@@ -87,42 +87,33 @@ int solve(int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const in
 }
 
 void DFS(int (&visited)[N_MAX][M_MAX], int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const int (&diamonds)[N_MAX][M_MAX], const int (&gates)[N_MAX][M_MAX], const Point Size, Point Hugo, int time, int score, int &ans) {
-    int h = time;
-    int c = score;
-
-    if (gates[Hugo.i][Hugo.j]) {
-        if (c > ans)
-            ans = c;
-    }
+    if (gates[Hugo.i][Hugo.j] && score > ans)
+        ans = score;
 
     if (lakes[Hugo.i][Hugo.j])
-        h += 2;
+        time += 2;
     else
-        h += 1;
+        time += 1;
 
     for (int k = 0; k < 4; k++) {
         Point n(Hugo.i + di[k], Hugo.j + dj[k]);
-        if (n.isValid(Size) && !visited[n.i][n.j] && (lakes[n.i][n.j] || fires[n.i][n.j] > h)) {
+        if (n.isValid(Size) && !visited[n.i][n.j] && (lakes[n.i][n.j] || fires[n.i][n.j] > time)) {
             visited[n.i][n.j] = 1;
-            DFS(visited, fires, lakes, diamonds, gates, Size, n, h, c + diamonds[n.i][n.j], ans);
-            // DFS(nx, ny, h, c + diamonds[nx][ny]);
+            DFS(visited, fires, lakes, diamonds, gates, Size, n, time, score + diamonds[n.i][n.j], ans);
             visited[n.i][n.j] = 0;
         }
     }
 }
 
 void HandleFire(int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const Point Size) {
-    Queue<Point, 600> q;
-    for (int i = 0; i < Size.i; i++) {
-        for (int j = 0; j < Size.j; j++) {
-            if (fires[i][j] == 0) {
+    Queue<Point, QUEUE_MAX> q;
+    for (int i = 0; i < Size.i; i++)
+        for (int j = 0; j < Size.j; j++)
+            if (fires[i][j] == 0)
                 q.enQueue(Point(i, j));
-            }
-        }
-    }
 
     while (!q.isEmpty()) {
-        Point t = q.deQueue();
+        Point t = q.deQueue(); // current Point
         for (int d = 0; d < 4; d++) {
             Point n(t.i + di[d], t.j + dj[d]); // next Point
             if (n.isValid(Size) && (fires[n.i][n.j] == A_HUGE_NUMBER || fires[n.i][n.j] > fires[t.i][t.j] + 1) && !lakes[n.i][n.j]) {
