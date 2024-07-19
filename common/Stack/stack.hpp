@@ -18,6 +18,7 @@ public:
     bool isEmpty() const;          // Check if the Stack if Empty
     int size() const;              // Get the current number of items in the Stack
     bool has(const T &item) const; // Check if the Stack has an item.
+    void clear();
 };
 
 template <typename T, int MAX>
@@ -87,4 +88,9 @@ bool Stack<T, MAX>::has(const T &item) const {
         }
     }
     return false;
+}
+
+template <typename T, int MAX>
+void Stack<T, MAX>::clear() {
+    top = -1;
 }
