@@ -70,15 +70,15 @@ int main() {
         }
 
         chayLan();
-        ans = -1;
-        visited[sx][sy] = 1;
-        DFS(sx, sy, 0, diamonds[sx][sy]);
-        cout << "Case #" << tc << endl;
-        cout << ans << endl;
+        // ans = -1;
+        // visited[sx][sy] = 1;
+        // DFS(sx, sy, 0, diamonds[sx][sy]);
+        // cout << "Case #" << tc << endl;
+        // cout << ans << endl;
 
         // Attemp to using Stack instead of recursion, not really work.
-        // cout << "Case #" << tc << endl;
-        // cout << DFS_Stack(sx, sy) << endl;
+        cout << "Case #" << tc << endl;
+        cout << DFS_Stack(sx, sy) << endl;
     }
     return 0;
 }
@@ -170,12 +170,11 @@ void DFS(int i, int j, int time, int score) {
 int DFS_Stack(int i, int j) {
     int time = 0;
     int score = diamonds[i][j];
-    int res = 0;
+    int res = -1;
     int visited[20][20] = {};
 
-    Stack<State, 1000> stk;
-    State s(i, j, time, score);
-    stk.push(s);
+    Stack<State, 50000> stk;
+    stk.push(State(i, j, time, score));
     visited[i][j] = 1;
     while (!stk.isEmpty()) {
         // Pop the top element
@@ -200,11 +199,11 @@ int DFS_Stack(int i, int j) {
             int ny = t.j + dy[k];
             if (dk(nx, ny) && visited[nx][ny] == 0 && (lakes[nx][ny] == 1 || h < fires[nx][ny])) {
                 visited[nx][ny] = 1;
-                State n(nx, ny, h, c + diamonds[nx][ny]);
-                stk.push(n);
+                stk.push(State(nx, ny, h, c + diamonds[nx][ny]));
                 backtrack = false;
             }
         }
+
         if (backtrack)
             visited[t.i][t.j] = 0; // Set visited to 0 after all possible paths from this node are explored
     }
