@@ -60,17 +60,17 @@ void backtrack(int &ans, const int (&mat)[ROWS][COLS], const int N, const int M,
         if (nj < 0 || nj > M - 1)
             continue;
 
-        if (mat[ni][nj] != ENEMY) {
+        if (mat[ni][nj] != ENEMY) { // No Enemy
             if (bomb == 0)
-                backtrack(ans, mat, N, M, ni, nj, coins + mat[ni][nj], bomb, effect - 1);
+                backtrack(ans, mat, N, M, ni, nj, coins + mat[ni][nj], bomb, effect - 1); // If bomb has already been used, reduce its effect by 1
             else
                 backtrack(ans, mat, N, M, ni, nj, coins + mat[ni][nj], bomb, effect);
         } else {
             if (bomb == 0) {
                 if (effect > 0)
-                    backtrack(ans, mat, N, M, ni, nj, coins, bomb, effect - 1);
+                    backtrack(ans, mat, N, M, ni, nj, coins, bomb, effect - 1); // Bomb already used so can pass but effect reduces by 1
             } else
-                backtrack(ans, mat, N, M, ni, nj, coins, 0, 5);
+                backtrack(ans, mat, N, M, ni, nj, coins, 0, 5); // Use bomb ans set effect for five rows
         }
     }
 }
