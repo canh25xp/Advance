@@ -81,10 +81,11 @@ void DFS(int i, int j, int time, int score) {
         if (c > ans)
             ans = c;
     }
+
     if (lakes[i][j] == 1)
-        h = h + 2;
+        h += 2;
     else
-        h = h + 1;
+        h += 1;
 
     for (int k = 0; k < 4; k++) {
         int nx = i + dx[k];
@@ -101,15 +102,12 @@ int DFS_Stack(int i, int j) {
     int time = 0;
     int score = diamonds[i][j];
     int res = -1;
-
     int visited[20][20] = {};
-    visited[i][j] = 1;
-
-    State s(i, j, time, score);
 
     Stack<State, 1000> stk;
+    State s(i, j, time, score);
     stk.push(s);
-
+    visited[i][j] = 1;
     while (!stk.isEmpty()) {
         // Pop the top element
         State t = stk.pop();
@@ -123,10 +121,11 @@ int DFS_Stack(int i, int j) {
         }
 
         if (lakes[t.i][t.j] == 1)
-            h = h + 2;
+            h += 2;
         else
-            h = h + 1;
+            h += 1;
 
+        bool backtrack = true;
         for (int k = 0; k < 4; k++) {
             int nx = t.i + dx[k];
             int ny = t.j + dy[k];
@@ -134,9 +133,11 @@ int DFS_Stack(int i, int j) {
                 visited[nx][ny] = 1;
                 State n(nx, ny, h, c + diamonds[nx][ny]);
                 stk.push(n);
+                backtrack = false;
             }
         }
-        visited[t.i][t.j] = 0; // Set visited to 0 after all possible paths from this node are explored
+        if (backtrack)
+            visited[t.i][t.j] = 0; // Set visited to 0 after all possible paths from this node are explored
     }
     return res;
 }
@@ -179,12 +180,15 @@ int main() {
         }
 
         chayLan();
-        // ans = -1;
-        // visited[sx][sy] = 1;
-        // DFS(sx, sy, 0, diamonds[sx][sy]);
-        ans = DFS_Stack(sx, sy);
+        ans = -1;
+        visited[sx][sy] = 1;
+        DFS(sx, sy, 0, diamonds[sx][sy]);
         cout << "Case #" << tc << endl;
         cout << ans << endl;
+
+        // Attemp to using Stack instead of recursion, not really work.
+        // cout << "Case #" << tc << endl;
+        // cout << DFS_Stack(sx, sy) << endl;
     }
     return 0;
 }
