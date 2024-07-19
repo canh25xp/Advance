@@ -8,7 +8,7 @@ int regions, isolates, bridges;
 // Start and Endpoint of an edge.
 int edge[MAX_EDGE][2];
 
-template<typename T, int MAX>
+template <typename T, int MAX>
 class Queue {
 public:
     Queue() : front(-1), rear(-1) {}
@@ -26,7 +26,7 @@ public:
     }
 
     bool full() const {
-        return rear == MAX - 1; 
+        return rear == MAX - 1;
     }
 
     bool empty() const {
@@ -47,7 +47,8 @@ bool IsConnected(const int (&adj)[LIM][LIM], const int N, int s, int e);
 using namespace std;
 int main() {
     freopen("input.txt", "r", stdin);
-    int T; cin >> T;
+    int T;
+    cin >> T;
     for (int t = 0; t < T; t++) {
         int N; // Number of villages.
         cin >> N;
@@ -124,7 +125,7 @@ bool IsConnected(const int (&adj)[LIM][LIM], const int N, int s, int e) {
 void CountBridge(int (&adj)[LIM][LIM], const int N, int (&edge)[MAX_EDGE][2], int edges) {
     for (int i = 0; i < edges; i++) {
         adj[edge[i][0]][edge[i][1]] = adj[edge[i][1]][edge[i][0]] = 0; // Destroy the bridge
-        if(!IsConnected(adj, N, edge[i][0], edge[i][1]))
+        if (!IsConnected(adj, N, edge[i][0], edge[i][1]))
             bridges++;
         adj[edge[i][0]][edge[i][1]] = adj[edge[i][1]][edge[i][0]] = 1; // Rebuild the bridge
     }
