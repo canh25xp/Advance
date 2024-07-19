@@ -45,14 +45,35 @@ Next, we should move right to collect another coin( coins=2).
 After this, remain at the same position (coins=4).
 This is the current situation after collecting 4 coins.
 
-0 1 0 2 0 0 1 0 0 0 0 2 2 2 1 -->after using 0 0 0 0 1 x x S x x -->bomb x x S x x Now, we can use the bomb to get out of this situation. After this, we can collect at most 1 coin. So maximum coins=5.
+```
+                       0 1 0 2 0
+                       0 2 2 2 1
+                       x x S x x 
+```
+Now, we can use the bomb to get out of this situation.
+
+-> After using bomb
+```
+                       0 1 0 0 0
+                       0 0 0 0 1
+                       x x S x x 
+```
+
+After this, we can collect at most 1 coin. So maximum coins=5.
 
 ## Input
 
 First line conatins t, number of test cases Next line contains N for each test Next N lines conatin input ( 5 integers )
 
 ```
-2
+3
+6
+0 1 0 2 0
+0 2 2 2 1
+0 2 1 1 1
+1 0 1 0 0
+0 0 1 2 2
+1 1 0 0 1
 7
 1 2 0 0 1
 2 0 0 1 0
@@ -81,6 +102,7 @@ First line conatins t, number of test cases Next line contains N for each test N
 For each test output single integer with format `#test_number output`
 
 ```
-#1 6
-#2 9
+#1 5
+#2 6
+#3 9
 ```
