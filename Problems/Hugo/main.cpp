@@ -14,7 +14,7 @@ const int dj[4] = {0, 0, -1, 1};
 
 void HandleFire(int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const Point Size);
 int solve(int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const int (&diamonds)[N_MAX][M_MAX], const int (&gates)[N_MAX][M_MAX], const Point Size, const Point Hugo);
-void DFS(int (&visited)[N_MAX][M_MAX], int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const int (&diamonds)[N_MAX][M_MAX], const int (&gates)[N_MAX][M_MAX], const Point Size, Point Hugo, int time, int score, int &ans);
+void DFS(int (&visited)[N_MAX][M_MAX], int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const int (&diamonds)[N_MAX][M_MAX], const int (&gates)[N_MAX][M_MAX], const Point Size, Point t, int time, int score, int &ans);
 
 int main(int argc, char *argv[]) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
@@ -84,17 +84,17 @@ int solve(int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const in
     return ans;
 }
 
-void DFS(int (&visited)[N_MAX][M_MAX], int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const int (&diamonds)[N_MAX][M_MAX], const int (&gates)[N_MAX][M_MAX], const Point Size, Point Hugo, int time, int score, int &ans) {
-    if (gates[Hugo.i][Hugo.j] && score > ans)
+void DFS(int (&visited)[N_MAX][M_MAX], int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const int (&diamonds)[N_MAX][M_MAX], const int (&gates)[N_MAX][M_MAX], const Point Size, Point t, int time, int score, int &ans) {
+    if (gates[t.i][t.j] && score > ans)
         ans = score;
 
-    if (lakes[Hugo.i][Hugo.j])
+    if (lakes[t.i][t.j])
         time += 2;
     else
         time += 1;
 
     for (int k = 0; k < 4; k++) {
-        Point n(Hugo.i + di[k], Hugo.j + dj[k]);
+        Point n(t.i + di[k], t.j + dj[k]);
         if (n.isValid(Size) && !visited[n.i][n.j] && (lakes[n.i][n.j] || fires[n.i][n.j] > time)) {
             visited[n.i][n.j] = 1;
             DFS(visited, fires, lakes, diamonds, gates, Size, n, time, score + diamonds[n.i][n.j], ans);
