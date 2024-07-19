@@ -23,9 +23,9 @@ When you are given a road network with N cities, generate a program that partiti
 
 ## Constraints
 
-The number of cities: `5≤N≤1000`
+The number of cities: `5 <= N <= 1000`
 
-The number of edges: `1≤E`
+The number of edges: `1 <= E`
 
 ## Input
 
