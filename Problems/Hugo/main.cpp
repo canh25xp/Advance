@@ -102,7 +102,7 @@ void DFS(int (&visited)[N_MAX][M_MAX], int (&fires)[N_MAX][M_MAX], const int (&l
 
     for (int k = 0; k < 4; k++) {
         Point n(Hugo.i + di[k], Hugo.j + dj[k]);
-        if (n.isValid(Size) && !visited[n.i][n.j] && lakes[n.i][n.j] && fires[n.i][n.j] > h) {
+        if (n.isValid(Size) && !visited[n.i][n.j] && (lakes[n.i][n.j] || fires[n.i][n.j] > h)) {
             visited[n.i][n.j] = 1;
             DFS(visited, fires, lakes, diamonds, gates, Size, n, h, c + diamonds[n.i][n.j], ans);
             // DFS(nx, ny, h, c + diamonds[nx][ny]);
