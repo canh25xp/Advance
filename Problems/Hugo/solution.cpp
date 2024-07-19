@@ -1,3 +1,4 @@
+#include "stack.hpp"
 #include <iostream>
 
 using namespace std;
@@ -6,6 +7,12 @@ int t, tc, n, m, sx, sy, p, thoat, ans, front, rear;
 int lakes[20][20], diamonds[20][20], qx[600], qy[600], fires[20][20], visited[20][20], gates[20][20];
 int dx[4] = {-1, 0, 1, 0};
 int dy[4] = {0, 1, 0, -1};
+
+struct State {
+    int i, j, time, score;
+    State() : i(0), j(0), time(0), score(0) {}
+    State(int i, int j, int time, int score) : i(i), j(j), time(time), score(score) {}
+};
 
 void initQ() {
     rear = front = -1;
@@ -80,14 +87,58 @@ void DFS(int i, int j, int time, int score) {
         h = h + 1;
 
     for (int k = 0; k < 4; k++) {
-        int tx = i + dx[k];
-        int ty = j + dy[k];
-        if (dk(tx, ty) && visited[tx][ty] == 0 && (lakes[tx][ty] == 1 || h < fires[tx][ty])) {
-            visited[tx][ty] = 1;
-            DFS(tx, ty, h, c + diamonds[tx][ty]);
-            visited[tx][ty] = 0;
+        int nx = i + dx[k];
+        int ny = j + dy[k];
+        if (dk(nx, ny) && visited[nx][ny] == 0 && (lakes[nx][ny] == 1 || h < fires[nx][ny])) {
+            visited[nx][ny] = 1;
+            DFS(nx, ny, h, c + diamonds[nx][ny]);
+            visited[nx][ny] = 0;
         }
     }
+}
+
+int DFS_Stack(int i, int j) {
+    int time = 0;
+    int score = diamonds[i][j];
+    int res = -1;
+
+    int visited[20][20] = {};
+    visited[i][j] = 1;
+
+    State s(i, j, time, score);
+
+    Stack<State, 1000> stk;
+    stk.push(s);
+
+    while (!stk.isEmpty()) {
+        // Pop the top element
+        State t = stk.pop();
+
+        int h = t.time;
+        int c = t.score;
+
+        if (gates[t.i][t.j] == 3) {
+            if (c > res)
+                res = c;
+        }
+
+        if (lakes[t.i][t.j] == 1)
+            h = h + 2;
+        else
+            h = h + 1;
+
+        for (int k = 0; k < 4; k++) {
+            int nx = t.i + dx[k];
+            int ny = t.j + dy[k];
+            if (dk(nx, ny) && visited[nx][ny] == 0 && (lakes[nx][ny] == 1 || h < fires[nx][ny])) {
+                visited[nx][ny] = 1;
+                State n(nx, ny, h, c + diamonds[nx][ny]);
+                stk.push(n);
+            }
+        }
+        visited[t.i][t.j] = 0; // Set visited to 0 after all possible paths from this node are explored
+    }
+    return res;
 }
 
 int main() {
@@ -128,10 +179,10 @@ int main() {
         }
 
         chayLan();
-        ans = -1;
-        visited[sx][sy] = 1;
-        if (lakes[sx][sy] != 2)
-            DFS(sx, sy, 0, diamonds[sx][sy]);
+        // ans = -1;
+        // visited[sx][sy] = 1;
+        // DFS(sx, sy, 0, diamonds[sx][sy]);
+        ans = DFS_Stack(sx, sy);
         cout << "Case #" << tc << endl;
         cout << ans << endl;
     }
