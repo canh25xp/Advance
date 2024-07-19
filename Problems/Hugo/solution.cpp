@@ -14,6 +14,75 @@ struct State {
     State(int i, int j, int time, int score) : i(i), j(j), time(time), score(score) {}
 };
 
+void initQ();
+
+int isEmpty();
+
+void enQueue(int x, int y);
+
+int deQueueX();
+
+int deQueueY();
+
+int dk(int x, int y);
+
+void chayLan();
+
+void DFS(int i, int j, int time, int score);
+
+int DFS_Stack(int i, int j);
+
+int main() {
+    freopen("input.txt", "r", stdin);
+    cin >> t;
+    for (tc = 1; tc <= t; tc++) {
+        cin >> n >> m >> sx >> sy;
+        sx;
+        sy;
+        int i, j, x, h, c;
+        for (i = 1; i <= n; i++) {
+            for (j = 1; j <= m; j++) {
+                lakes[i][j] = 0;
+                fires[i][j] = 5000;
+                visited[i][j] = 0;
+                gates[i][j] = 0;
+            }
+        }
+        cin >> p;
+        for (x = 0; x < p; x++) {
+            cin >> h >> c;
+            fires[h][c] = 0;
+        }
+        cin >> p;
+        for (x = 0; x < p; x++) {
+            cin >> h >> c;
+            lakes[h][c] = 1;
+        }
+        cin >> thoat;
+        for (x = 0; x < thoat; x++) {
+            cin >> h >> c;
+            gates[h][c] = 3;
+        }
+        for (i = 1; i <= n; i++) {
+            for (j = 1; j <= m; j++) {
+                cin >> diamonds[i][j];
+            }
+        }
+
+        chayLan();
+        ans = -1;
+        visited[sx][sy] = 1;
+        DFS(sx, sy, 0, diamonds[sx][sy]);
+        cout << "Case #" << tc << endl;
+        cout << ans << endl;
+
+        // Attemp to using Stack instead of recursion, not really work.
+        // cout << "Case #" << tc << endl;
+        // cout << DFS_Stack(sx, sy) << endl;
+    }
+    return 0;
+}
+
 void initQ() {
     rear = front = -1;
 }
@@ -101,7 +170,7 @@ void DFS(int i, int j, int time, int score) {
 int DFS_Stack(int i, int j) {
     int time = 0;
     int score = diamonds[i][j];
-    int res = -1;
+    int res = 0;
     int visited[20][20] = {};
 
     Stack<State, 1000> stk;
@@ -140,55 +209,4 @@ int DFS_Stack(int i, int j) {
             visited[t.i][t.j] = 0; // Set visited to 0 after all possible paths from this node are explored
     }
     return res;
-}
-
-int main() {
-    freopen("input.txt", "r", stdin);
-    cin >> t;
-    for (tc = 1; tc <= t; tc++) {
-        cin >> n >> m >> sx >> sy;
-        sx;
-        sy;
-        int i, j, x, h, c;
-        for (i = 1; i <= n; i++) {
-            for (j = 1; j <= m; j++) {
-                lakes[i][j] = 0;
-                fires[i][j] = 5000;
-                visited[i][j] = 0;
-                gates[i][j] = 0;
-            }
-        }
-        cin >> p;
-        for (x = 0; x < p; x++) {
-            cin >> h >> c;
-            fires[h][c] = 0;
-        }
-        cin >> p;
-        for (x = 0; x < p; x++) {
-            cin >> h >> c;
-            lakes[h][c] = 1;
-        }
-        cin >> thoat;
-        for (x = 0; x < thoat; x++) {
-            cin >> h >> c;
-            gates[h][c] = 3;
-        }
-        for (i = 1; i <= n; i++) {
-            for (j = 1; j <= m; j++) {
-                cin >> diamonds[i][j];
-            }
-        }
-
-        chayLan();
-        ans = -1;
-        visited[sx][sy] = 1;
-        DFS(sx, sy, 0, diamonds[sx][sy]);
-        cout << "Case #" << tc << endl;
-        cout << ans << endl;
-
-        // Attemp to using Stack instead of recursion, not really work.
-        // cout << "Case #" << tc << endl;
-        // cout << DFS_Stack(sx, sy) << endl;
-    }
-    return 0;
 }
