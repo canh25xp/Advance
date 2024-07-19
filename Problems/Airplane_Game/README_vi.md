@@ -4,8 +4,8 @@
 > 
 > Time limit 5s.
 
-Một máy bay di chuyển trong một bản đồ game map có kích thước chiều ngang cố định là  n = 5 và chiều dài 5 <= m <= 25.
-Màn hình hiển thị game display có kích thước cố định 5 x 5.
+Một máy bay di chuyển trong một bản đồ game map có kích thước chiều ngang cố định là  `M = 5` và chiều dài `5 <= N <= 25`.
+Màn hình hiển thị game display có kích thước cố định `5 x 5`.
 Máy bay luôn xuất phát từ 1 điểm nằm ngoài game map và ở cột chính giữa theo bề ngang của game map, hướng di chuyển từ dưới lên trên.
 Tại mỗi lần di chuyển, máy bay sẽ đi được 1 ô lên trên, tới 3 vị trí: ô chéo bên trái, ô trên, ô chéo bên phải.
 Trong bản đồ game map có 3 loại ô:
