@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include "point.hpp"
 #include "queue.hpp"
 #include <iostream>
@@ -15,7 +14,6 @@ const int dj[4] = {0, 0, -1, 1};
 
 void HandleFire(int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const Point Size);
 int solve(int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const int (&diamonds)[N_MAX][M_MAX], const int (&gates)[N_MAX][M_MAX], const Point Size, const Point Hugo);
-
 void DFS(int (&visited)[N_MAX][M_MAX], int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], const int (&diamonds)[N_MAX][M_MAX], const int (&gates)[N_MAX][M_MAX], const Point Size, Point Hugo, int time, int score, int &ans);
 
 int main(int argc, char *argv[]) {
