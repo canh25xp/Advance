@@ -15,6 +15,8 @@ int solve(int (&arr)[N_MAX], int n, int limit);
 
 int backtracking(int (&arr)[N_MAX], int n, int limit, int i = 0, int sum = 0);
 
+void backtracking_inplaced(int (&arr)[N_MAX], int n, int limit, int &ans, int i = 0, int sum = 0);
+
 int main(int argc, char **argv) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
@@ -37,7 +39,9 @@ int main(int argc, char **argv) {
 
 int solve(int (&arr)[N_MAX], int n, int limit) {
     int ans = 0;
-    ans = backtracking(arr, n, limit);
+    // ans = backtracking(arr, n, limit);
+    // ans = find_max_capacity(arr, n, limit);
+    backtracking_inplaced(arr, n, limit, ans);
     return ans;
 }
 
@@ -52,6 +56,22 @@ int backtracking(int (&arr)[N_MAX], int n, int limit, int i, int sum) {
     int s2 = backtracking(arr, n, limit, i + 1, sum);
 
     return (s1 > s2) ? s1 : s2;
+}
+
+void backtracking_inplaced(int (&arr)[N_MAX], int n, int limit, int &ans, int i, int sum) {
+    if (sum > limit)
+        return;
+
+    if (i == n) {
+        if (sum > ans)
+            ans = sum;
+        return;
+    }
+
+    sum += arr[i];
+    backtracking_inplaced(arr, n, limit, ans, i + 1, sum);
+    sum -= arr[i];
+    backtracking_inplaced(arr, n, limit, ans, i + 1, sum);
 }
 
 int find_max_capacity(int (&arr)[N_MAX], int n, int limit) {
