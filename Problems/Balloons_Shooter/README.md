@@ -1,18 +1,18 @@
-# Ban Bong Bay
+# Balloons Shooter
 >
 > Level 4
 
-Cho $N$ quả bóng bay với mỗi quả bóng bay có 1 giá trị số $K$.
+Given $N$ Balloons with each one has a number $K$ on it.
 
-Người chơi được yêu cầu bắn vỡ các quả bóng bay để có được số điểm lớn nhất.
+The player need to shoot the ballons to get the maximum score.
 
-Điểm của người chơi sẽ được tính bằng tổng các lần bắn bóng bay.
+The player's score is the total score of each shot, with the following rules : 
 
-- Điểm của mỗi lần bắn bóng bay sẽ bằng tích của 2 quả bóng bay bên cạnh.
-- Nếu bên cạnh chỉ có 1 quả bóng bay thì điểm sẽ bằng điểm của quả bóng bay này.
-- Nếu không còn quả bóng bay nào bên cạnh thì điểm sẽ bằng điểm của quả bóng bay vừa bị bắn.
+- The score of each shot is equal to the product of the two ballons next to the one being shoot.
+- If there's only one balloon next to it, then the score is equal to this balloon.
+- If there's no balloon next to it, then the score is equal to the balloon being shoot it self.
 
-Hãy tìm điểm số lớn nhất và in ra.
+Find the maximum score possible in print it out.
 
 ## Constraints
 
@@ -36,7 +36,7 @@ $N \leq 10$, $K <  1000$
 
 ## Ouput
 
-Định dạng in ra như bên dưới.
+Print out the maximum score with the following format.
 
 ```
 Case #1
