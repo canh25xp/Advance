@@ -2,7 +2,7 @@
 >
 > Level 4
 
-Cho N quả bóng bay với mỗi quả bóng bay có 1 giá trị số.
+Cho $N$ quả bóng bay với mỗi quả bóng bay có 1 giá trị số $K$.
 Người chơi được yêu cầu bắn vỡ các quả bóng bay để có được số điểm lớn nhất.
 
 Điểm của người chơi sẽ được tính bằng tổng các lần bắn bóng bay.
@@ -13,11 +13,10 @@ Nếu bên cạnh chỉ có 1 quả bóng bay thì điểm sẽ bằng điểm c
 Nếu không còn quả bóng bay nào bên cạnh thì điểm sẽ bằng điểm của quả bóng bay vừa bị bắn.
 
 Hãy tìm điểm số lớn nhất và in ra.
-N <=10
 
-Điểm của các quả bóng <10000
+## Constraints
 
-Định dạng in ra như bên dưới.
+$N \leq 10$, $K <  1000$
 
 ## Input
 
@@ -36,6 +35,8 @@ N <=10
 ```
 
 ## Ouput
+
+Định dạng in ra như bên dưới.
 
 ```
 Case #1
