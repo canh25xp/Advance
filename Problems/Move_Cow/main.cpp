@@ -11,6 +11,10 @@ int find_max(int (&arr)[SIZE], int n, int limit);
 
 int find_max_capacity(int (&arr)[N_MAX], int n, int limit);
 
+int solve(int (&arr)[N_MAX], int n, int limit);
+
+int backtracking(int (&arr)[N_MAX], int n, int limit, int i = 0, int sum = 0);
+
 int main(int argc, char **argv) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
@@ -19,17 +23,35 @@ int main(int argc, char **argv) {
     cin >> T;
 
     for (int ti = 1; ti <= T; ++ti) {
-        int loading_capacity, cows;
-        cin >> loading_capacity >> cows;
+        int capacity, cows;
+        cin >> capacity >> cows;
 
         int weights[N_MAX] = {};
-
         for (int i = 0; i < cows; i++)
             cin >> weights[i];
 
-        cout << "#" << ti << " " << find_max_capacity(weights, cows, loading_capacity) << endl;
+        cout << "#" << ti << " " << solve(weights, cows, capacity) << endl;
     }
     return 0;
+}
+
+int solve(int (&arr)[N_MAX], int n, int limit) {
+    int ans = 0;
+    ans = backtracking(arr, n, limit);
+    return ans;
+}
+
+int backtracking(int (&arr)[N_MAX], int n, int limit, int i, int sum) {
+    if (sum > limit)
+        return 0;
+    if (i == n)
+        return sum;
+
+    int s1 = backtracking(arr, n, limit, i + 1, sum + arr[i]);
+
+    int s2 = backtracking(arr, n, limit, i + 1, sum);
+
+    return (s1 > s2) ? s1 : s2;
 }
 
 int find_max_capacity(int (&arr)[N_MAX], int n, int limit) {
