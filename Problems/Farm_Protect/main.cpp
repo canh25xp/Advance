@@ -46,7 +46,7 @@ int solve() {
         for (int j = 0; j < m; j++) {
             if (!vst[i][j]) {
                 vst[i][j] = 1;
-                if (!BFS(Point(i, j)))
+                if (BFS(Point(i, j)))
                     ans++;
             }
         }
@@ -56,19 +56,23 @@ int solve() {
 }
 
 bool BFS(Point x) {
+    bool flag = true;
     q.clear();
     q.enQueue(x);
     while (!q.isEmpty()) {
         Point curr = q.deQueue();
         for (int d = 0; d < 8; d++) {
             Point next(curr.i + di[d], curr.j + dj[d]);
-            if (next.isValid(n, m) && !vst[next.i][next.j] && mat[next.i][next.j] == mat[curr.i][curr.j]) {
+            if (!next.isValid(n, m))
+                continue;
+
+            if (!vst[next.i][next.j] && mat[next.i][next.j] == mat[curr.i][curr.j]) {
                 vst[next.i][next.j] = 1;
                 q.enQueue(next);
-            } else if (next.isValid(n, m) && mat[next.i][next.j] > mat[curr.i][curr.j])
-                return true;
+            } else if (mat[next.i][next.j] > mat[curr.i][curr.j])
+                flag = false;
         }
     }
 
-    return false;
+    return flag;
 }
