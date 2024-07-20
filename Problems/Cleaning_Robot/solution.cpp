@@ -44,6 +44,59 @@ private:
 Queue q1;
 Queue q2;
 
+void resetVisited();
+
+int checkEdge(int xx, int yy);
+
+void bfs(int i, int j, int pos);
+
+void backtrack(int currDir, int cnt, int sum);
+
+int main() {
+    freopen("input.txt", "r", stdin);
+    cin >> T;
+    for (int tc = 1; tc <= T; tc++) {
+        cin >> n >> m;
+        totalDirty = 0;
+        for (int i = 0; i <= 10; i++) {
+            dirX[i] = 0;
+            dirY[i] = 0;
+            used[i] = 0;
+        }
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                cin >> matrix[i][j];
+                if (matrix[i][j] == 3) {
+                    xr = i;
+                    yr = j;
+                }
+                if (matrix[i][j] == 1) {
+                    totalDirty++;
+                    dirX[totalDirty] = i;
+                    dirY[totalDirty] = j;
+                }
+            }
+        }
+        resetVisited();
+        res = oo;
+        bfs(xr, yr, 0);
+        for (int i = 1; i <= totalDirty; i++) {
+            resetVisited();
+            used[i] = 0;
+            bfs(dirX[i], dirY[i], i);
+        }
+        backtrack(0, 0, 0);
+        if (res != oo) {
+            cout << "Case #" << tc << endl
+                 << res << endl;
+        } else {
+            cout << "Case #" << tc << endl
+                 << -1 << endl;
+        }
+    }
+    return 0;
+}
+
 void resetVisited() {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
@@ -103,49 +156,4 @@ void backtrack(int currDir, int cnt, int sum) {
             used[i] = 0;
         }
     }
-}
-
-int main() {
-    // freopen("input.txt", "r", stdin);
-    cin >> T;
-    for (int tc = 1; tc <= T; tc++) {
-        cin >> n >> m;
-        totalDirty = 0;
-        for (int i = 0; i <= 10; i++) {
-            dirX[i] = 0;
-            dirY[i] = 0;
-            used[i] = 0;
-        }
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) {
-                cin >> matrix[i][j];
-                if (matrix[i][j] == 3) {
-                    xr = i;
-                    yr = j;
-                }
-                if (matrix[i][j] == 1) {
-                    totalDirty++;
-                    dirX[totalDirty] = i;
-                    dirY[totalDirty] = j;
-                }
-            }
-        }
-        resetVisited();
-        res = oo;
-        bfs(xr, yr, 0);
-        for (int i = 1; i <= totalDirty; i++) {
-            resetVisited();
-            used[i] = 0;
-            bfs(dirX[i], dirY[i], i);
-        }
-        backtrack(0, 0, 0);
-        if (res != oo) {
-            cout << "Case #" << tc << endl
-                 << res << endl;
-        } else {
-            cout << "Case #" << tc << endl
-                 << -1 << endl;
-        }
-    }
-    return 0;
 }
