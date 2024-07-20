@@ -3,14 +3,14 @@
 > Level 4
 
 Cho $N$ quả bóng bay với mỗi quả bóng bay có 1 giá trị số $K$.
+
 Người chơi được yêu cầu bắn vỡ các quả bóng bay để có được số điểm lớn nhất.
 
 Điểm của người chơi sẽ được tính bằng tổng các lần bắn bóng bay.
-Điểm của mỗi lần bắn bóng bay sẽ bằng tích của 2 quả bóng bay bên cạnh.
 
-Nếu bên cạnh chỉ có 1 quả bóng bay thì điểm sẽ bằng điểm của quả bóng bay này.
-
-Nếu không còn quả bóng bay nào bên cạnh thì điểm sẽ bằng điểm của quả bóng bay vừa bị bắn.
+- Điểm của mỗi lần bắn bóng bay sẽ bằng tích của 2 quả bóng bay bên cạnh.
+- Nếu bên cạnh chỉ có 1 quả bóng bay thì điểm sẽ bằng điểm của quả bóng bay này.
+- Nếu không còn quả bóng bay nào bên cạnh thì điểm sẽ bằng điểm của quả bóng bay vừa bị bắn.
 
 Hãy tìm điểm số lớn nhất và in ra.
 
