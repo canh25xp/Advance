@@ -5,8 +5,8 @@
 
 using namespace std;
 
-const int N = 8; // should be 700
-const int M = 7; // should be 700
+const int N = 700; // should be 700
+const int M = 700; // should be 700
 
 int n, m;
 int mat[N][M] = {};
