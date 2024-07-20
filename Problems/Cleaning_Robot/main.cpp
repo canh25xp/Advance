@@ -26,3 +26,7 @@ int main(int argc, char **argv) {
 
     return 0;
 }
+
+int solve(int (&mat)[N][M], int n, int m) {
+    return -1;
+}
