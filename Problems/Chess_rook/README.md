@@ -2,13 +2,14 @@
 
 In chess, the rook is a piece that can move any number of squares vertically or horizontally.
 
-In this problem we will consider small chess boards (at most 4 ×4) that can also contain walls through which rooks cannot move.
+In this problem we will consider small chess boards (at most `4 x 4`) that can also contain walls through which rooks cannot move.
 
 The goal is to place as many rooks on a board as possible so that no two can capture each other.
 
 A configuration of rooks is legal provided that no two rooks are on the same horizontal row or vertical column unless there is at least one wall separating them.
 
-The following image shows five pictures of the same board. The first picture is the empty board, the second and third pictures show legal configurations, and the fourth and fifth pictures show illegal configurations.
+The following image shows five pictures of the same board.
+The first picture is the empty board, the second and third pictures show legal configurations, and the fourth and fifth pictures show illegal configurations.
 
 For this board, the maximum number of rooks in a legal configuration is 5; the second picture shows one way to do it, but there are several other ways.
 
