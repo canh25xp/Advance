@@ -15,6 +15,8 @@ const int dj[4] = {0, -1, 0, 1};
 int solve(int (&mat)[N][M], int n, int m);
 void BFS(int (&mat)[N][M], int n, int m, Point (&target)[K], int count, int index, int (&dis)[K][K]);
 
+void backtracking(int &res, int totalDirty, int used[], int distancE[K][K], int currDir, int cnt, int sum);
+
 using namespace std;
 int main(int argc, char **argv) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
@@ -39,7 +41,7 @@ int main(int argc, char **argv) {
 
 int solve(int (&mat)[N][M], int n, int m) {
     int ans = INF;
-    int count = 1;
+    int k = 1;
     Point target[K];
 
     for (int i = 0; i < n; i++) {
@@ -47,17 +49,36 @@ int solve(int (&mat)[N][M], int n, int m) {
             if (mat[i][j] == 3)
                 target[0].i = i, target[0].j = j;
             else if (mat[i][j] == 1) {
-                target[count].i = i, target[count].j = j;
-                count++;
+                target[k].i = i, target[k].j = j;
+                k++;
             }
         }
     }
 
     int dis[K][K] = {};
-    for (int i = 0; i < count; i++)
-        BFS(mat, n, m, target, count, i, dis);
+    for (int i = 0; i < k; i++)
+        BFS(mat, n, m, target, k, i, dis);
 
+    int used[K] = {};
+    backtracking(ans, k - 1, used, dis, 0, 0, 0);
     return ans;
+}
+
+void backtracking(int &res, int totalDirty, int used[], int distancE[K][K], int currDir, int cnt, int sum) {
+    if (sum > res)
+        return;
+    if (cnt == totalDirty) {
+        if (sum < res)
+            res = sum;
+        return;
+    }
+    for (int i = 1; i <= totalDirty; i++) {
+        if (used[i] == 0 && distancE[currDir][i] > 0) {
+            used[i] = 1;
+            backtracking(res, totalDirty, used, distancE, i, cnt + 1, sum + distancE[currDir][i]);
+            used[i] = 0;
+        }
+    }
 }
 
 void BFS(int (&mat)[N][M], int n, int m, Point (&target)[K], int count, int index, int (&dis)[K][K]) {
