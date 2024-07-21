@@ -12,47 +12,19 @@ int N;
 
 int parent[MAX_N];
 
-void swap(int i, int j) {
-    int tmp = st[i];
-    st[i] = st[j];
-    st[j] = tmp;
-    tmp = en[i];
-    en[i] = en[j];
-    en[j] = tmp;
-    tmp = dist[i];
-    dist[i] = dist[j];
-    dist[j] = tmp;
-}
+void swap(int i, int j);
 
-void qSort(int left, int right) {
-    int i, last;
-    if (left >= right)
-        return;
-    swap(left, (left + right) >> 1);
-    last = left;
-    for (int i = left + 1; i <= right; i++)
-        if (dist[i] > dist[left])
-            swap(++last, i);
-    swap(left, last);
-    qSort(left, last - 1);
-    qSort(last + 1, right);
-}
+void qSort(int left, int right);
 
-int findSet(int x) {
-    if (x == parent[x])
-        return x;
-    return parent[x] = findSet(parent[x]);
-}
+int findSet(int x);
 
-void join(int x, int y) {
-    parent[findSet(y)] = findSet(x);
-}
+void join(int x, int y);
 
 int main() {
     int T;
     int res;
     int u, v, machine, neighbor, ret;
-    freopen("thanhtri_input.txt", "r", stdin);
+    freopen("input.txt", "r", stdin);
     scanf("%d", &T);
 
     for (int tc = 1; tc <= T; tc++) {
@@ -97,4 +69,40 @@ int main() {
     }
 
     return 0;
+}
+
+void swap(int i, int j) {
+    int tmp = st[i];
+    st[i] = st[j];
+    st[j] = tmp;
+    tmp = en[i];
+    en[i] = en[j];
+    en[j] = tmp;
+    tmp = dist[i];
+    dist[i] = dist[j];
+    dist[j] = tmp;
+}
+
+void qSort(int left, int right) {
+    int i, last;
+    if (left >= right)
+        return;
+    swap(left, (left + right) >> 1);
+    last = left;
+    for (int i = left + 1; i <= right; i++)
+        if (dist[i] > dist[left])
+            swap(++last, i);
+    swap(left, last);
+    qSort(left, last - 1);
+    qSort(last + 1, right);
+}
+
+int findSet(int x) {
+    if (x == parent[x])
+        return x;
+    return parent[x] = findSet(parent[x]);
+}
+
+void join(int x, int y) {
+    parent[findSet(y)] = findSet(x);
 }
