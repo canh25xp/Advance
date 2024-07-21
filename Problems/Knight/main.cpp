@@ -1,7 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
+#include "point.hpp"
+#include "queue.hpp"
 #include <iostream>
 
 #define INT_MAX 2147483647
+#define INF INT_MAX
 
 const int SIZE_N = 100;
 const int SIZE_M = 100;
@@ -9,33 +12,6 @@ const int MAX_TARGET = 10 + 1;
 
 const int di[8] = {-2, -1, 1, 2, -2, -1, 1, 2};
 const int dj[8] = {-1, -2, -2, -1, 1, 2, 2, 1};
-
-template <typename T = int, int MAX = 10000>
-class Queue {
-private:
-    int front, rear, count;
-    T data[MAX];
-
-public:
-    Queue();
-    ~Queue();
-
-    void enQueue(const T &item);
-    T deQueue();
-    T peek() const;
-    bool isFull() const;
-    bool isEmpty() const;
-    int size() const;
-    bool has(const T &item) const;
-    void clear();
-};
-
-struct Point {
-    Point();
-    Point(int i, int j);
-
-    int i, j;
-};
 
 class Solution {
 public:
@@ -49,12 +25,12 @@ private:
     int (&chessboard)[SIZE_N][SIZE_M];
 
     Point target[MAX_TARGET];
-    int count; // Total number of targets in the board
+    int count; // Total number of targets in the board (the knight is counted too)
 
     int distance[MAX_TARGET][MAX_TARGET] = {}; // TODO: initialize somewhere else
     int visitedUV[MAX_TARGET] = {};            // TODO: initialize somewhere else
 
-    int BFS(Point start, int target_index);
+    int BFS(int target_index);
     void BackTrack(int u, int step, int ith);
 };
 
@@ -110,19 +86,18 @@ int Solution::Solve() {
     }
 
     for (int i = 0; i < count; i++)
-        BFS(target[i], i);
+        BFS(i);
 
-    visitedUV[0] = 1;
     BackTrack(0, 0, 1);
 
     return ans;
 }
 
-int Solution::BFS(Point start, int target_index) {
+int Solution::BFS(int index) {
     int visited[SIZE_N][SIZE_M] = {};
-
     Queue<Point> q;
-    q.enQueue(start);
+    q.enQueue(target[index]);
+    visited[target[index].i][target[index].j] = 1;
 
     while (!q.isEmpty()) {
         Point t = q.deQueue();
@@ -131,11 +106,17 @@ int Solution::BFS(Point start, int target_index) {
             if (n.i >= 0 && n.j >= 0 && n.i < N && n.j < M && !visited[n.i][n.j]) {
                 visited[n.i][n.j] = visited[t.i][t.j] + 1;
                 q.enQueue(n);
-                if (chessboard[n.i][n.j] == 1 || chessboard[n.i][n.j] == 3)
-                    for (int i = 0; i < count; i++)
-                        if (n.i == target[i].i && n.j == target[i].j)
-                            distance[target_index][i] = visited[target[i].i][target[i].j];
             }
+        }
+    }
+
+    for (int i = 0; i < count; i++) {
+        if (visited[target[i].i][target[i].j]) {
+            distance[index][i] = visited[target[i].i][target[i].j] - 1;
+            distance[i][index] = visited[target[i].i][target[i].j] - 1;
+        } else {
+            distance[index][i] = -1;
+            distance[i][index] = -1;
         }
     }
 
@@ -151,89 +132,11 @@ void Solution::BackTrack(int u, int step, int ith) {
     if (step > ans)
         return;
 
-    for (int v = 0; v < count; v++) {
+    for (int v = 1; v <= count; v++) {
         if (!visitedUV[v] && distance[u][v] > 0) {
             visitedUV[v] = 1;
             BackTrack(v, step + distance[u][v], ith + 1);
             visitedUV[v] = 0;
         }
     }
-}
-
-Point::Point() : i(0), j(0) {}
-
-Point::Point(int i, int j) : i(i), j(j) {}
-
-template <typename T, int MAX>
-Queue<T, MAX>::Queue() : front(-1), rear(-1), count(0) {}
-
-template <typename T, int MAX>
-Queue<T, MAX>::~Queue() {}
-
-template <typename T, int MAX>
-bool Queue<T, MAX>::isEmpty() const {
-    return front == rear;
-}
-
-template <typename T, int MAX>
-bool Queue<T, MAX>::isFull() const {
-    return front == 0 && rear == MAX - 1;
-}
-
-template <typename T, int MAX>
-void Queue<T, MAX>::enQueue(const T &item) {
-    if (isFull()) {
-        std::cerr << "Queue is full\n";
-        return;
-    }
-    rear++;
-    count++;
-    data[rear] = item;
-}
-
-template <typename T, int MAX>
-T Queue<T, MAX>::deQueue() {
-    T item;
-    if (isEmpty()) {
-        std::cerr << "Queue is empty\n";
-        return item;
-    }
-
-    front++;
-    count--;
-    item = data[front];
-    return item;
-}
-
-template <typename T, int MAX>
-T Queue<T, MAX>::peek() const {
-    T item;
-    if (isEmpty()) {
-        std::cerr << "Queue is empty\n";
-        return item;
-    }
-    item = data[front];
-    return item;
-}
-
-template <typename T, int MAX>
-int Queue<T, MAX>::size() const {
-    return count;
-}
-
-template <typename T, int MAX>
-bool Queue<T, MAX>::has(const T &item) const {
-    for (int i = 0; i < this->size(); ++i) {
-        if (data[(front + i) % MAX] == item) {
-            return true;
-        }
-    }
-    return false;
-}
-
-template <typename T, int MAX>
-void Queue<T, MAX>::clear() {
-    front = -1;
-    rear = -1;
-    count = 0;
 }
