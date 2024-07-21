@@ -2,6 +2,7 @@
 #include "queue.hpp"
 #include <iostream>
 
+#define INT_MAX 2147483647
 #define INF INT_MAX
 
 const int N = 100;
