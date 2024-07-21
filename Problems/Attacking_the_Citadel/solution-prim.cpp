@@ -1,4 +1,3 @@
-////Tan cong thanh tri - Prim
 #include <stdio.h>
 
 #define MAX_N 101

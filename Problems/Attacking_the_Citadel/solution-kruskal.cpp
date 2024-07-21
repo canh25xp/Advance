@@ -1,4 +1,3 @@
-// Tan cong thanh tri - Kruskal
 #include <stdio.h>
 
 #define MAX_N 101

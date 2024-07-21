@@ -1,4 +1,3 @@
-// Tan cong thanh tri - DFS
 #include <stdio.h>
 
 #define MAX_N 101
@@ -18,7 +17,7 @@ void DFS(int v);
 int main() {
     int T;
     int u, v, machine, neighbor;
-    freopen("thanhtri_input.txt", "r", stdin);
+    freopen("input.txt", "r", stdin);
     scanf("%d", &T);
 
     for (int tc = 1; tc <= T; tc++) {
