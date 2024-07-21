@@ -1,7 +1,10 @@
 #include <iostream>
 
-int t, tc, n, m, cm, ans;
-int gg[50], gm[50], lk[50][30], tbc[50], dm[50];
+const int N = 20;
+const int M = 30;
+
+int n, m, required, ans;
+int price[50], discount_price[50], discount_part[50][30], required_part[50], bought[50];
 
 void backtrack(int x, int tien);
 
@@ -9,32 +12,36 @@ using namespace std;
 int main(int argc, char **argv) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
-    cin >> t;
-    for (tc = 1; tc <= t; tc++) {
+    int T;
+    cin >> T;
+    for (int tc = 1; tc <= T; tc++) {
         cin >> n;
-        int i, j, x, l;
-        for (i = 1; i <= n; i++) {
-            cin >> gg[i];
-            dm[i] = 0;
+        for (int i = 1; i <= n; i++) {
+            cin >> price[i];
+            bought[i] = 0;
         }
         cin >> m;
-        for (i = 1; i <= m; i++) {
-            for (j = 1; j <= n; j++) {
-                lk[i][j] = 0;
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                discount_part[i][j] = 0;
             }
         }
-        for (i = 1; i <= m; i++) {
-            cin >> gm[i];
+        for (int i = 1; i <= m; i++) {
+            cin >> discount_price[i];
+            int x;
             cin >> x;
-            for (j = 1; j <= x; j++) {
+            for (int j = 1; j <= x; j++) {
+                int l;
                 cin >> l;
-                lk[i][l] = 1;
+                discount_part[i][l] = 1;
             }
         }
-        cin >> cm;
-        for (i = 1; i <= cm; i++)
-            cin >> tbc[i];
-        ans = 1000000002;
+
+        cin >> required;
+        for (int i = 1; i <= required; i++)
+            cin >> required_part[i];
+
+        ans = INT_MAX;
         backtrack(1, 0);
 
         cout << "#" << tc << " " << ans << endl;
@@ -43,29 +50,29 @@ int main(int argc, char **argv) {
 }
 
 void backtrack(int x, int tien) {
-    if (x == cm + 1) {
+    if (x == required + 1) {
         if (ans > tien)
             ans = tien;
         return;
     }
-    int tb = tbc[x];
-    if (dm[tb] == 0) {
+    int tb = required_part[x];
+    if (bought[tb] == 0) {
         for (int j = 0; j <= 1; j++) {
             if (j == 0) {
-                dm[tb]++;
-                backtrack(x + 1, tien + gg[tb]);
-                dm[tb]--;
+                bought[tb]++;
+                backtrack(x + 1, tien + price[tb]);
+                bought[tb]--;
             } else {
                 for (int k = 1; k <= m; k++) {
-                    if (lk[k][tb]) {
+                    if (discount_part[k][tb]) {
                         for (int i = 0; i <= n; i++) {
-                            if (lk[k][i])
-                                dm[i]++;
+                            if (discount_part[k][i])
+                                bought[i]++;
                         }
-                        backtrack(x + 1, tien + gm[k]);
+                        backtrack(x + 1, tien + discount_price[k]);
                         for (int i = 1; i <= n; i++) {
-                            if (lk[k][i])
-                                dm[i]--;
+                            if (discount_part[k][i])
+                                bought[i]--;
                         }
                     }
                 }
