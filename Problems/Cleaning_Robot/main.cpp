@@ -15,7 +15,7 @@ const int dj[4] = {0, -1, 0, 1};
 int solve(int (&mat)[N][M], int n, int m);
 void BFS(int (&mat)[N][M], int n, int m, Point (&target)[K], int count, int index, int (&dis)[K][K]);
 
-void backtracking(int &ans, int k, int visited[], int dis[K][K], int index = 0, int count = 0, int moves = 0);
+void backtracking(int &ans, int k, int (&visited)[K], int (&dis)[K][K], int index = 0, int count = 0, int moves = 0);
 
 using namespace std;
 int main(int argc, char **argv) {
@@ -64,7 +64,7 @@ int solve(int (&mat)[N][M], int n, int m) {
     return (ans != INF) ? ans : -1;
 }
 
-void backtracking(int &ans, int k, int visited[], int dis[K][K], int index, int count, int moves) {
+void backtracking(int &ans, int k, int (&visited)[K], int (&dis)[K][K], int index, int count, int moves) {
     if (moves > ans)
         return;
     if (count == k) {
@@ -73,7 +73,7 @@ void backtracking(int &ans, int k, int visited[], int dis[K][K], int index, int 
         return;
     }
     for (int i = 1; i <= k; i++) {
-        if (visited[i] == 0 && dis[index][i] > 0) {
+        if (!visited[i] && dis[index][i] > 0) {
             visited[i] = 1;
             backtracking(ans, k, visited, dis, i, count + 1, moves + dis[index][i]);
             visited[i] = 0;
