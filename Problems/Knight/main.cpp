@@ -8,7 +8,7 @@
 
 const int N = 100;
 const int M = 100;
-const int K = 10 + 1; // count the knight as target too.
+const int K = 10 + 1; // Maximum number of target. Count the knight as target too.
 const int Q = 10000;  // QUEUE size
 
 const int di[8] = {-2, -1, 1, 2, -2, -1, 1, 2};
@@ -32,7 +32,7 @@ private:
     int visited[K] = {};     // TODO: initialize somewhere else
 
     int BFS(int target_index);
-    void BackTrack(int u, int step, int ith);
+    void BackTrack(int u = 0, int count = 0, int moves = 0);
 };
 
 using namespace std;
@@ -89,7 +89,7 @@ int Solution::Solve() {
     for (int i = 0; i < k; i++)
         BFS(i);
 
-    BackTrack(0, 0, 1);
+    BackTrack();
 
     return ans;
 }
@@ -124,19 +124,20 @@ int Solution::BFS(int index) {
     return 0;
 }
 
-void Solution::BackTrack(int u, int step, int ith) {
-    if (ith == k) {
-        if (step < ans)
-            ans = step;
-        return;
-    }
-    if (step > ans)
+void Solution::BackTrack(int u, int count, int moves) {
+    if (moves > ans)
         return;
 
-    for (int v = 1; v <= k; v++) {
+    if (count == k - 1) {
+        if (moves < ans)
+            ans = moves;
+        return;
+    }
+
+    for (int v = 1; v < k; v++) {
         if (!visited[v] && distance[u][v] > 0) {
             visited[v] = 1;
-            BackTrack(v, step + distance[u][v], ith + 1);
+            BackTrack(v, count + 1, moves + distance[u][v]);
             visited[v] = 0;
         }
     }
