@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+#define INF 654321
+
 int t, tc, m, n;
 char a[3001][3001];
 int visited[3001][3001];
@@ -66,7 +68,7 @@ void BFS(int x, int y) {
 }
 
 int main() {
-    // freopen("input.txt", "r", stdin);
+    freopen("input.txt", "r", stdin);
     cin >> t;
     for (tc = 1; tc <= t; tc++) {
         cin >> m >> n;
@@ -81,7 +83,7 @@ int main() {
                     endX = i;
                     endY = j;
                 }
-                visited[i][j] = 654321;
+                visited[i][j] = INF;
             }
         }
         flag = false;
@@ -89,7 +91,7 @@ int main() {
         BFS(startX, startY);
         ans = visited[endX][endY];
         cout << "Case #" << tc << endl;
-        if (ans == 654321)
+        if (ans == INF)
             cout << -1 << endl;
         else
             cout << ans - 1 << endl;
