@@ -48,7 +48,7 @@ All adjacent numbers in a line are each separated by a space.
 
 ## Output
 
-Output the 10 answers in 10 lines.
+Output the 12 answers in 12 lines.
 Each line starts with `#x`, where `x` means the index of a test case, and puts a space, and prints the answer.
 The answer enumerates only one of the two groups.
 The answer starts with `K`, the number of cities in the group, and then enumerates the `K` cities.
