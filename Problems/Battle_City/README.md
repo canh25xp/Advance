@@ -23,8 +23,16 @@ Well, given the description of a map, the positions of your tank and the target,
 There can be more than one test case in the input.
 The first line has `T`, the number of test cases.
 Then the totally `T` test cases are provided in the following lines (`T<=10`).
-The first line of each test case contains two integers `M` and `N` (`2 <= M, N <= 300`).
-Each of the following `M` lines contains `N` uppercase letters, each of which is one of `Y` (you), `T` (target), `S` (steel wall), `B` (brick wall), `R` (river) and `E` (empty space).
+The first line of each test case contains two integers `N` and `M` (`2 <= N, M <= 300`).
+Each of the following `N` lines contains `M` uppercase letters, each of which is one of
+
+- `Y` : you
+- `T` : target
+- `S` : steel wall 
+- `B` : brick wall
+- `R` : river 
+- `E` : empty space
+
 Both `Y` and `T` appear only once.
 
 ```
