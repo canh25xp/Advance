@@ -6,29 +6,29 @@
 #define INT_MAX 2147483647
 #define INF INT_MAX
 
-const int SIZE_N = 100;
-const int SIZE_M = 100;
-const int MAX_TARGET = 10 + 1;
+const int N = 100;
+const int M = 100;
+const int K = 10 + 1; // count the knight as target too.
 
 const int di[8] = {-2, -1, 1, 2, -2, -1, 1, 2};
 const int dj[8] = {-1, -2, -2, -1, 1, 2, 2, 1};
 
 class Solution {
 public:
-    Solution(int (&chessboard)[SIZE_N][SIZE_M], int N, int M);
+    Solution(int (&chessboard)[N][M], int n, int m);
 
     int Solve();
 
 private:
     int ans;
-    int N, M;
-    int (&chessboard)[SIZE_N][SIZE_M];
+    int n, m;
+    int (&chessboard)[N][M];
 
-    Point target[MAX_TARGET];
+    Point target[K];
     int count; // Total number of targets in the board (the knight is counted too)
 
-    int distance[MAX_TARGET][MAX_TARGET] = {}; // TODO: initialize somewhere else
-    int visitedUV[MAX_TARGET] = {};            // TODO: initialize somewhere else
+    int distance[K][K] = {}; // TODO: initialize somewhere else
+    int visitedUV[K] = {};   // TODO: initialize somewhere else
 
     int BFS(int target_index);
     void BackTrack(int u, int step, int ith);
@@ -43,15 +43,15 @@ int main(int argc, char **argv) {
     cin >> T;
 
     for (int t = 0; t < T; t++) {
-        int N, M;
-        cin >> N >> M;
-        int chessboard[SIZE_N][SIZE_M] = {};
+        int n, m;
+        cin >> n >> m;
+        int chessboard[N][M] = {};
 
-        for (int i = 0; i < N; i++)
-            for (int j = 0; j < M; j++)
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++)
                 cin >> chessboard[i][j];
 
-        Solution s(chessboard, N, M);
+        Solution s(chessboard, n, m);
 
         cout << "Case #" << t + 1 << "\n"
              << s.Solve() << endl;
@@ -60,9 +60,9 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-Solution::Solution(int (&chessboard)[SIZE_N][SIZE_M], int N, int M) : chessboard(chessboard), N(N), M(M), ans(0) {
-    for (size_t i = 0; i < MAX_TARGET; i++) {
-        for (int j = 0; j < MAX_TARGET; j++) {
+Solution::Solution(int (&chessboard)[N][M], int n, int m) : chessboard(chessboard), n(n), m(m), ans(0) {
+    for (size_t i = 0; i < K; i++) {
+        for (int j = 0; j < K; j++) {
             distance[i][j] = 0;
         }
         visitedUV[i] = 0;
@@ -70,7 +70,7 @@ Solution::Solution(int (&chessboard)[SIZE_N][SIZE_M], int N, int M) : chessboard
 }
 
 int Solution::Solve() {
-    ans = INT_MAX;
+    ans = INF;
     count = 1;
 
     for (int i = 0; i < N; i++) {
@@ -94,7 +94,7 @@ int Solution::Solve() {
 }
 
 int Solution::BFS(int index) {
-    int visited[SIZE_N][SIZE_M] = {};
+    int visited[N][M] = {};
     Queue<Point> q;
     q.enQueue(target[index]);
     visited[target[index].i][target[index].j] = 1;

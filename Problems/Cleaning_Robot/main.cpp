@@ -7,7 +7,7 @@
 
 const int N = 100;
 const int M = 100;
-const int K = 11;
+const int K = 10 + 1; // count the robot as target too
 const int MAX_QUEUE = 1000;
 
 const int di[4] = {-1, 0, 1, 0};
