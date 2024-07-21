@@ -15,7 +15,7 @@ const int dj[4] = {0, -1, 0, 1};
 int solve(int (&mat)[N][M], int n, int m);
 void BFS(int (&mat)[N][M], int n, int m, Point (&target)[K], int count, int index, int (&dis)[K][K]);
 
-void backtracking(int &res, int totalDirty, int used[], int distancE[K][K], int currDir, int cnt, int sum);
+void backtracking(int &ans, int k, int visited[], int dis[K][K], int index = 0, int count = 0, int moves = 0);
 
 using namespace std;
 int main(int argc, char **argv) {
@@ -59,24 +59,24 @@ int solve(int (&mat)[N][M], int n, int m) {
     for (int i = 0; i < k; i++)
         BFS(mat, n, m, target, k, i, dis);
 
-    int used[K] = {};
-    backtracking(ans, k - 1, used, dis, 0, 0, 0);
-    return ans;
+    int visited[K] = {};
+    backtracking(ans, k - 1, visited, dis);
+    return (ans != INF) ? ans : -1;
 }
 
-void backtracking(int &res, int totalDirty, int used[], int distancE[K][K], int currDir, int cnt, int sum) {
-    if (sum > res)
+void backtracking(int &ans, int k, int visited[], int dis[K][K], int index, int count, int moves) {
+    if (moves > ans)
         return;
-    if (cnt == totalDirty) {
-        if (sum < res)
-            res = sum;
+    if (count == k) {
+        if (moves < ans)
+            ans = moves;
         return;
     }
-    for (int i = 1; i <= totalDirty; i++) {
-        if (used[i] == 0 && distancE[currDir][i] > 0) {
-            used[i] = 1;
-            backtracking(res, totalDirty, used, distancE, i, cnt + 1, sum + distancE[currDir][i]);
-            used[i] = 0;
+    for (int i = 1; i <= k; i++) {
+        if (visited[i] == 0 && dis[index][i] > 0) {
+            visited[i] = 1;
+            backtracking(ans, k, visited, dis, i, count + 1, moves + dis[index][i]);
+            visited[i] = 0;
         }
     }
 }
