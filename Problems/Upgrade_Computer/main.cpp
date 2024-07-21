@@ -4,7 +4,7 @@ const int N = 20;
 const int M = 30;
 
 int n, m, required, ans;
-int price[50], discount_price[50], discount_part[50][30], required_part[50], bought[50];
+int original_price[50], discount_price[50], discount_part[50][30], required_part[50], bought[50];
 
 void backtrack(int x, int tien);
 
@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
     for (int tc = 1; tc <= T; tc++) {
         cin >> n;
         for (int i = 1; i <= n; i++) {
-            cin >> price[i];
+            cin >> original_price[i];
             bought[i] = 0;
         }
         cin >> m;
@@ -49,18 +49,18 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-void backtrack(int x, int tien) {
-    if (x == required + 1) {
-        if (ans > tien)
-            ans = tien;
+void backtrack(int index, int total_price) {
+    if (index == required + 1) {
+        if (ans > total_price)
+            ans = total_price;
         return;
     }
-    int tb = required_part[x];
+    int tb = required_part[index];
     if (bought[tb] == 0) {
         for (int j = 0; j <= 1; j++) {
             if (j == 0) {
                 bought[tb]++;
-                backtrack(x + 1, tien + price[tb]);
+                backtrack(index + 1, total_price + original_price[tb]);
                 bought[tb]--;
             } else {
                 for (int k = 1; k <= m; k++) {
@@ -69,7 +69,7 @@ void backtrack(int x, int tien) {
                             if (discount_part[k][i])
                                 bought[i]++;
                         }
-                        backtrack(x + 1, tien + discount_price[k]);
+                        backtrack(index + 1, total_price + discount_price[k]);
                         for (int i = 1; i <= n; i++) {
                             if (discount_part[k][i])
                                 bought[i]--;
@@ -79,6 +79,6 @@ void backtrack(int x, int tien) {
             }
         }
     } else {
-        backtrack(x + 1, tien);
+        backtrack(index + 1, total_price);
     }
 }
