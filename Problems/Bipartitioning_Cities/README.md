@@ -29,8 +29,8 @@ The number of edges: `1 <= E`
 
 ## Input
 
-You are given `10` test cases.
-A test case has two lines; thus there are `20` lines in total.
+You are given `12` test cases.
+A test case has two lines; thus there are `24` lines in total.
 In each test case, the first line has `N` (the number of cities) and `E` (the number of roads) separated by a space.
 The next line enumerates `E` roads.
 A road consists of the two cities it connects.
