@@ -9,6 +9,7 @@
 const int N = 100;
 const int M = 100;
 const int K = 10 + 1; // count the knight as target too.
+const int Q = 10000;  // QUEUE size
 
 const int di[8] = {-2, -1, 1, 2, -2, -1, 1, 2};
 const int dj[8] = {-1, -2, -2, -1, 1, 2, 2, 1};
@@ -25,10 +26,10 @@ private:
     int (&chessboard)[N][M];
 
     Point target[K];
-    int count; // Total number of targets in the board (the knight is counted too)
+    int k; // Total number of targets in the board (the knight is counted too)
 
     int distance[K][K] = {}; // TODO: initialize somewhere else
-    int visitedUV[K] = {};   // TODO: initialize somewhere else
+    int visited[K] = {};     // TODO: initialize somewhere else
 
     int BFS(int target_index);
     void BackTrack(int u, int step, int ith);
@@ -65,13 +66,13 @@ Solution::Solution(int (&chessboard)[N][M], int n, int m) : chessboard(chessboar
         for (int j = 0; j < K; j++) {
             distance[i][j] = 0;
         }
-        visitedUV[i] = 0;
+        visited[i] = 0;
     }
 }
 
 int Solution::Solve() {
     ans = INF;
-    count = 1;
+    k = 1;
 
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < M; j++) {
@@ -79,13 +80,13 @@ int Solution::Solve() {
                 target[0] = Point(i, j);
 
             else if (chessboard[i][j] == 1) {
-                target[count] = Point(i, j);
-                count++;
+                target[k] = Point(i, j);
+                k++;
             }
         }
     }
 
-    for (int i = 0; i < count; i++)
+    for (int i = 0; i < k; i++)
         BFS(i);
 
     BackTrack(0, 0, 1);
@@ -95,7 +96,7 @@ int Solution::Solve() {
 
 int Solution::BFS(int index) {
     int visited[N][M] = {};
-    Queue<Point> q;
+    Queue<Point, Q> q;
     q.enQueue(target[index]);
     visited[target[index].i][target[index].j] = 1;
 
@@ -110,7 +111,7 @@ int Solution::BFS(int index) {
         }
     }
 
-    for (int i = 0; i < count; i++) {
+    for (int i = 0; i < k; i++) {
         if (visited[target[i].i][target[i].j]) {
             distance[index][i] = visited[target[i].i][target[i].j] - 1;
             distance[i][index] = visited[target[i].i][target[i].j] - 1;
@@ -124,7 +125,7 @@ int Solution::BFS(int index) {
 }
 
 void Solution::BackTrack(int u, int step, int ith) {
-    if (ith == count) {
+    if (ith == k) {
         if (step < ans)
             ans = step;
         return;
@@ -132,11 +133,11 @@ void Solution::BackTrack(int u, int step, int ith) {
     if (step > ans)
         return;
 
-    for (int v = 1; v <= count; v++) {
-        if (!visitedUV[v] && distance[u][v] > 0) {
-            visitedUV[v] = 1;
+    for (int v = 1; v <= k; v++) {
+        if (!visited[v] && distance[u][v] > 0) {
+            visited[v] = 1;
             BackTrack(v, step + distance[u][v], ith + 1);
-            visitedUV[v] = 0;
+            visited[v] = 0;
         }
     }
 }
