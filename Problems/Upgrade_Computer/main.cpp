@@ -1,7 +1,5 @@
 #include <iostream>
 
-const int N = 20;
-
 int t, tc, n, m, cm, ans;
 int gg[50], gm[50], lk[50][30], tbc[50], dm[50];
 
@@ -11,10 +9,8 @@ using namespace std;
 int main(int argc, char **argv) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
-    int T;
-    cin >> T;
+    cin >> t;
     for (tc = 1; tc <= t; tc++) {
-        int n;
         cin >> n;
         int i, j, x, l;
         for (i = 1; i <= n; i++) {
