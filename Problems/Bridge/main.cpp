@@ -1,15 +1,14 @@
 #include "point.hpp"
 #include <iostream>
-using namespace std;
 
 const int N = 20; // Length of the bridge should be no more than 20
 const int M = 5;  // Width of the bridge should always be 5
 
-void DFS(const int (&mat)[N][M], const int n, const int m, const Point current, int coin = 0);
+using namespace std;
+void DFS(const int (&)[N][M], const int, const int, const Point, int &, int = 0, bool = true);
 
-int max_coin, check;
+int solve(int (&)[N][M], int n, int m);
 
-// MAIN
 int main() {
     freopen("input.txt", "r", stdin);
 
@@ -25,34 +24,34 @@ int main() {
             for (int j = 0; j < m; j++)
                 cin >> bridge[i][j];
 
-        Point start(n, m / 2);
-
-        max_coin = -1;
-        check = 1;
-
-        DFS(bridge, n, m, start);
-        cout << "#" << tc + 1 << " " << max_coin << endl;
+        cout << "#" << tc + 1 << " " << solve(bridge, n, m) << endl;
     }
     return 0;
 }
-// END MAIN
 
-void DFS(const int (&mat)[N][M], const int n, const int m, const Point current, int coin) {
+int solve(int (&mat)[N][M], int n, int m) {
+    int ans = -1;
+    Point start(n, m / 2);
+
+    DFS(mat, n, m, start, ans);
+    return ans;
+}
+
+void DFS(const int (&mat)[N][M], const int n, const int m, const Point curr, int &ans, int coin, bool check) {
     static const Point d[3] = {Point(-1, 0), Point(-1, -1), Point(-1, 1)}; // Direction : up_straight, up_left, up_right.
 
-    if (current.i == 0 && max_coin < coin)
-        max_coin = coin;
+    if (curr.i == 0 && ans < coin)
+        ans = coin;
 
     for (int i = 0; i < 3; i++) {
-        Point next = current + d[i];
-
+        Point next = curr + d[i];
         if (next.j >= 0 && next.j < m && next.i >= 0) {
             if (mat[next.i][next.j] != 2)
-                DFS(mat, n, m, next, coin + mat[next.i][next.j]);
+                DFS(mat, n, m, next, ans, coin + mat[next.i][next.j], check);
 
             else if (check) {
                 check = 0;
-                DFS(mat, n, m, next, coin);
+                DFS(mat, n, m, next, ans, coin, check);
                 check = 1;
             }
         }
