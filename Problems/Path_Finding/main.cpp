@@ -43,7 +43,7 @@ bool solve(const int (&mat)[N_MAX][N_MAX], const int &N) {
     s.push(src);
     bool vst[N_MAX][N_MAX] = {}; // visited
 
-    while (!s.isEmpty()) {
+    while (!s.empty()) {
         Point t = s.pop(); // The current Point
 
         if (t == dst)

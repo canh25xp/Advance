@@ -68,7 +68,7 @@ int contiguous_count(const int (&matrix)[max_size][max_size], const int &value, 
                 s.push(pair);
                 checked[i][j] = true;
                 count++;
-                while (!s.isEmpty()) {
+                while (!s.empty()) {
                     pair = s.pop();
                     for (int d = 0; d < 4; d++) {
                         Pair new_pair(pair.x + dx[d], pair.y + dy[d]);

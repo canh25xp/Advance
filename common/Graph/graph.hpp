@@ -101,7 +101,7 @@ bool Graph<T, MAX>::DFS_Stack(int start, int target) {
     visited[start] = 1;
 
     s.push(start);
-    while (!s.isEmpty()) {
+    while (!s.empty()) {
         int t = s.pop();
         if (t == target)
             return true;
