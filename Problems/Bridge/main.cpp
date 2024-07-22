@@ -1,21 +1,9 @@
-#define _CRT_SECURE_NO_WARNINGS // Suppress Warning C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead.
+#include "point.hpp"
 #include <iostream>
 using namespace std;
 
 const int MAX_W = 5;  // Width of the bridge should always be 5
 const int MAX_L = 20; // Length of the bridge should be no more than 20
-
-struct Point {
-    Point();
-    Point(int _x, int _y);
-
-    bool operator==(const Point &rhs) const;
-    bool operator!=(const Point &rhs) const;
-    void operator+=(const Point &rhs);
-    Point operator+(const Point &rhs) const;
-
-    int x, y;
-};
 
 template <const int ROWS, const int COLS>
 void DFS(const int (&mat)[ROWS][COLS], const int L, const int W, const Point current, int coin = 0);
@@ -73,42 +61,4 @@ void DFS(const int (&mat)[ROWS][COLS], const int L, const int W, const Point cur
             }
         }
     }
-}
-
-Point::Point() {
-    x = 0;
-    y = 0;
-}
-
-Point::Point(int _x, int _y) {
-    x = _x;
-    y = _y;
-}
-
-bool Point::operator==(const Point &rhs) const {
-    if (this->x == rhs.x && this->y == rhs.y)
-        return true;
-    else
-        return false;
-}
-
-bool Point::operator!=(const Point &rhs) const {
-    if (this->x == rhs.x && this->y == rhs.y)
-        return false;
-    else
-        return true;
-}
-
-void Point::operator+=(const Point &rhs) {
-    this->x += rhs.x;
-    this->y += rhs.y;
-}
-
-Point Point::operator+(const Point &rhs) const {
-    Point tmp;
-
-    tmp.x = this->x + rhs.x;
-    tmp.y = this->y + rhs.y;
-
-    return tmp;
 }
