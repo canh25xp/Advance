@@ -1,3 +1,4 @@
+#include <climits>
 #include <iostream>
 
 const int SIZE = 5;
@@ -20,13 +21,14 @@ struct WormHole {
 
 class Solution {
 public:
-    Solution (Point S, Point D, WormHole (&W)[SIZE], int N) : S(S), D(D), W(W), N(N) {}
+    Solution(Point S, Point D, WormHole (&W)[SIZE], int N) : S(S), D(D), W(W), N(N) {}
 
     int solve();
 
     Point S, D;
     WormHole (&W)[SIZE];
     int N;
+
 private:
     int ans;
     int visited[SIZE];
