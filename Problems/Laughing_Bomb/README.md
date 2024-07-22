@@ -54,7 +54,7 @@ The coordinate of the row and column on which the bomb fall is given by being se
 
 ## Output
 
-Output how long does it take to contaminate al people on the first row of each test case.
+Output how long does it take to contaminate all people on the first row of each test case.
 
 ```
 8
