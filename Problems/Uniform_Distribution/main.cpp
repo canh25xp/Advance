@@ -1,16 +1,9 @@
-#pragma warning(disable : 4996)
+#include "point.hpp"
 #include "stack.hpp"
 #include <iostream>
 
 const int STACK_SIZE = 25;
 const int MAX_SIZE = 5;
-
-struct Pair {
-    Pair();
-    Pair(int x, int y);
-    int x;
-    int y;
-};
 
 template <int max_size>
 int contiguous_count(const int (&matrix)[max_size][max_size], const int &value, const int &size);
@@ -63,18 +56,17 @@ int contiguous_count(const int (&matrix)[max_size][max_size], const int &value, 
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             if (matrix[i][j] == value) {
-                Stack<Pair, STACK_SIZE> s;
-                Pair pair(i, j);
-                s.push(pair);
+                Stack<Point, STACK_SIZE> s;
+                s.push(Point(i, j));
                 checked[i][j] = true;
                 count++;
                 while (!s.empty()) {
-                    pair = s.pop();
+                    Point p = s.pop(); // previous
                     for (int d = 0; d < 4; d++) {
-                        Pair new_pair(pair.x + dx[d], pair.y + dy[d]);
-                        if (new_pair.x >= 0 && new_pair.x < size && new_pair.y >= 0 && new_pair.y < size && matrix[new_pair.x][new_pair.y] == value && checked[new_pair.x][new_pair.y] == 0) {
-                            s.push(new_pair);
-                            checked[new_pair.x][new_pair.y] = 1;
+                        Point n(p.i + dx[d], p.j + dy[d]); // next
+                        if (n.valid(size) && matrix[n.i][n.j] == value && !checked[n.i][n.j]) {
+                            s.push(n);
+                            checked[n.i][n.j] = 1;
                             count++;
                         }
                     }
@@ -84,14 +76,4 @@ int contiguous_count(const int (&matrix)[max_size][max_size], const int &value, 
         }
     }
     return count;
-}
-
-Pair::Pair() {
-    x = 0;
-    y = 0;
-}
-
-Pair::Pair(int _x, int _y) {
-    x = _x;
-    y = _y;
 }
