@@ -5,13 +5,12 @@ const int N = 20; // Length of the bridge should be no more than 20
 const int M = 5;  // Width of the bridge should always be 5
 
 using namespace std;
-void DFS(const int (&)[N][M], const int, const int, const Point, int &, int = 0, bool = true);
+void DFS(const int (&)[N][M], const int, const int, const Point, int &, int = 0, int = 1);
 
 int solve(int (&)[N][M], int n, int m);
 
 int main() {
     freopen("input.txt", "r", stdin);
-
     int T; // the total number of test case
     cin >> T;
     for (int tc = 0; tc < T; tc++) {
@@ -37,7 +36,7 @@ int solve(int (&mat)[N][M], int n, int m) {
     return ans;
 }
 
-void DFS(const int (&mat)[N][M], const int n, const int m, const Point curr, int &ans, int coin, bool check) {
+void DFS(const int (&mat)[N][M], const int n, const int m, const Point curr, int &ans, int coin, int check) {
     static const Point d[3] = {Point(-1, 0), Point(-1, -1), Point(-1, 1)}; // Direction : up_straight, up_left, up_right.
 
     if (curr.i == 0 && ans < coin)
@@ -45,15 +44,16 @@ void DFS(const int (&mat)[N][M], const int n, const int m, const Point curr, int
 
     for (int i = 0; i < 3; i++) {
         Point next = curr + d[i];
-        if (next.j >= 0 && next.j < m && next.i >= 0) {
-            if (mat[next.i][next.j] != 2)
-                DFS(mat, n, m, next, ans, coin + mat[next.i][next.j], check);
+        if (!next.valid(n, m))
+            continue;
 
-            else if (check) {
-                check = 0;
-                DFS(mat, n, m, next, ans, coin, check);
-                check = 1;
-            }
+        if (mat[next.i][next.j] != 2)
+            DFS(mat, n, m, next, ans, coin + mat[next.i][next.j], check);
+
+        else if (check) {
+            check = 0;
+            DFS(mat, n, m, next, ans, coin, check);
+            check = 1;
         }
     }
 }
