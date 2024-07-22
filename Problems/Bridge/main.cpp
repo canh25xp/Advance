@@ -12,7 +12,7 @@ int max_coin, check;
 
 // MAIN
 int main() {
-    freopen("eval_input.txt", "r", stdin);
+    freopen("input.txt", "r", stdin);
 
     int T; // the total number of test case
     cin >> T;
