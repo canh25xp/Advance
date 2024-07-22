@@ -9,6 +9,8 @@ const int dj[4] = {1, -1, 0, 0};
 
 void solve(int (&mat)[N_MAX][N_MAX], int N);
 
+int BFS(int (&)[N_MAX][N_MAX], int, Point, int (&)[N_MAX][N_MAX]);
+
 using namespace std;
 int main() {
     freopen("input.txt", "r", stdin);
@@ -33,31 +35,39 @@ int main() {
 
 void solve(int (&mat)[N_MAX][N_MAX], int N) {
     Stack<Point, N_MAX * N_MAX> s;
-    int checked[N_MAX][N_MAX] = {};
+    int visited[N_MAX][N_MAX] = {};
     int constellars = 0;
     int max = 0;
     for (int i = 0; i < N; i++) {
         for (int j = 0; j < N; j++) {
-            if (mat[i][j] == 1 && checked[i][j] != 1) {
-                s.push(Point(i, j));
-                checked[i][j] = 1;
+            if (mat[i][j] && !visited[i][j]) {
                 constellars++;
-                int stars = 1;
-                while (!s.empty()) {
-                    Point p = s.pop();
-                    for (int d = 0; d < 4; d++) {
-                        Point n(p.i + di[d], p.j + dj[d]);
-                        if (n.valid(N) && mat[n.i][n.j] == 1 && !checked[n.i][n.j]) {
-                            s.push(n);
-                            checked[n.i][n.j] = 1;
-                            stars++;
-                        }
-                    }
-                }
+                int stars = BFS(mat, N, Point(i, j), visited);
                 if (stars > max)
                     max = stars;
             }
         }
     }
     cout << constellars << " " << max << endl;
+}
+
+int BFS(int (&mat)[N_MAX][N_MAX], int N, Point curr, int (&visited)[N_MAX][N_MAX]) {
+    Stack<Point, N_MAX * N_MAX> s;
+    int count = 1;
+    s.push(curr);
+    visited[curr.i][curr.j] = 1;
+
+    while (!s.empty()) {
+        Point p = s.pop();
+        for (int d = 0; d < 4; d++) {
+            Point n(p.i + di[d], p.j + dj[d]);
+            if (n.valid(N) && mat[n.i][n.j] && !visited[n.i][n.j]) {
+                s.push(n);
+                visited[n.i][n.j] = 1;
+                count++;
+            }
+        }
+    }
+
+    return count;
 }
