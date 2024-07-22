@@ -1,4 +1,3 @@
-#pragma warning(disable : 4996)
 #include <iostream>
 
 const int N_MAX = 100; // Should be 100
