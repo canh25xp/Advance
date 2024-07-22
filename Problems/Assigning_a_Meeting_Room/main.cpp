@@ -1,4 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 using namespace std;
 
@@ -12,10 +11,10 @@ void sort_by_second_inplaced(int (&arr)[LIM][2], int N);
 
 void swap(int (&a)[2], int (&b)[2]);
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
-    //freopen("out.txt", "w", stdout);
+    // freopen("out.txt", "w", stdout);
     int T;
     cin >> T;
     for (int t = 0; t < T; t++) {
@@ -57,8 +56,8 @@ int solve(int (&interval)[LIM][2], int N) {
 void sort_by_second_inplaced(int (&arr)[LIM][2], int N) {
     for (int i = 0; i < N - 1; i++)
         for (int j = 0; j < N - i - 1; j++)
-            if (arr[j][1] > arr[j+1][1])
-                swap(arr[j], arr[j+1]);
+            if (arr[j][1] > arr[j + 1][1])
+                swap(arr[j], arr[j + 1]);
 }
 
 void swap(int (&a)[2], int (&b)[2]) {
