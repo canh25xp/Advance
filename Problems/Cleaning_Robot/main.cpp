@@ -92,7 +92,7 @@ void BFS(int (&mat)[N][M], int n, int m, Point (&target)[K], int k, int index, i
         Point curr = q.pop();
         for (int d = 0; d < 4; d++) {
             Point next(curr.i + di[d], curr.j + dj[d]);
-            if (next.isValid(n, m) && !visited[next.i][next.j] && mat[next.i][next.j] != 2) {
+            if (next.valid(n, m) && !visited[next.i][next.j] && mat[next.i][next.j] != 2) {
                 visited[next.i][next.j] = visited[curr.i][curr.j] + 1;
                 q.push(next);
             }

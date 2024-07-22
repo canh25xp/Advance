@@ -102,7 +102,7 @@ int BFS(const int (&mat)[N_MAX][M_MAX], const int &N, const int &M, const Point 
 
         for (int d = 0; d < 4; d++) {
             Point n(t.i + di[d], t.j + dj[d]);
-            if (n.isValid(N, M) && !vst[n.i][n.j] && Check(mat[t.i][t.j], mat[n.i][n.j], d)) {
+            if (n.valid(N, M) && !vst[n.i][n.j] && Check(mat[t.i][t.j], mat[n.i][n.j], d)) {
                 q.push(Point(n.i, n.j));
                 vst[n.i][n.j] = vst[t.i][t.j] + 1;
                 count++;

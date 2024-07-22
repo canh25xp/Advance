@@ -62,7 +62,7 @@ int BFS(Point srt, Point dst, int maze[SIZE][SIZE], int size) {
         Point current = q.pop();
         for (int d = 0; d < 4; d++) {
             Point next(current.i + dx[d], current.j + dy[d]);
-            if (next.isValid(size, size) && !visited[next.i][next.j] && maze[next.i][next.j] != TRAP) {
+            if (next.valid(size, size) && !visited[next.i][next.j] && maze[next.i][next.j] != TRAP) {
                 visited[next.i][next.j] = visited[current.i][current.j] + 1;
                 if (next == dst) {
                     return visited[next.i][next.j];

@@ -95,7 +95,7 @@ void DFS(int (&visited)[N_MAX][M_MAX], int (&fires)[N_MAX][M_MAX], const int (&l
 
     for (int k = 0; k < 4; k++) {
         Point n(t.i + di[k], t.j + dj[k]);
-        if (n.isValid(Size) && !visited[n.i][n.j] && (lakes[n.i][n.j] || fires[n.i][n.j] > time)) {
+        if (n.valid(Size) && !visited[n.i][n.j] && (lakes[n.i][n.j] || fires[n.i][n.j] > time)) {
             visited[n.i][n.j] = 1;
             DFS(visited, fires, lakes, diamonds, gates, Size, n, time, score + diamonds[n.i][n.j], ans);
             visited[n.i][n.j] = 0;
@@ -114,7 +114,7 @@ void HandleFire(int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], co
         Point t = q.pop(); // current Point
         for (int d = 0; d < 4; d++) {
             Point n(t.i + di[d], t.j + dj[d]); // next Point
-            if (n.isValid(Size) && (fires[n.i][n.j] == A_HUGE_NUMBER || fires[n.i][n.j] > fires[t.i][t.j] + 1) && !lakes[n.i][n.j]) {
+            if (n.valid(Size) && (fires[n.i][n.j] == A_HUGE_NUMBER || fires[n.i][n.j] > fires[t.i][t.j] + 1) && !lakes[n.i][n.j]) {
                 q.push(n);
                 fires[n.i][n.j] = fires[t.i][t.j] + 1;
             }

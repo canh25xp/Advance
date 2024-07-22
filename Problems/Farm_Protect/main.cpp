@@ -63,7 +63,7 @@ bool BFS(Point x) {
         Point curr = q.pop();
         for (int d = 0; d < 8; d++) {
             Point next(curr.i + di[d], curr.j + dj[d]);
-            if (!next.isValid(n, m))
+            if (!next.valid(n, m))
                 continue;
 
             if (!vst[next.i][next.j] && mat[next.i][next.j] == mat[curr.i][curr.j]) {

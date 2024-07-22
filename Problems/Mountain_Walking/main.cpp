@@ -51,7 +51,7 @@ void backtracking(int (&mat)[N][N], int n, int (&visited)[N][N], Point bruh, int
 
     for (int d = 0; d < 4; d++) {
         Point next(bruh.i + di[d], bruh.j + dj[d]);
-        if (next.isValid(n) && !visited[next.i][next.j]) {
+        if (next.valid(n) && !visited[next.i][next.j]) {
             int heightDiff = abs(mat[next.i][next.j] - mat[bruh.i][bruh.j]);
             int nextDiff = max(diff, heightDiff);
             if (nextDiff <= INT_MAX) {

@@ -62,7 +62,7 @@ int BFS(const int &N, const int &M, const Point &A, const Point &D) {
         Point current = q.pop();
         for (int d = 0; d < 8; d++) {
             Point next(current.i + dr[d], current.j + dc[d]);
-            if (next.isValid(N, M) && !visited[next.i][next.j]) {
+            if (next.valid(N, M) && !visited[next.i][next.j]) {
                 visited[next.i][next.j] = visited[current.i][current.j] + 1;
                 if (next == D)
                     return visited[next.i][next.j];

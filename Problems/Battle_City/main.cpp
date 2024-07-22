@@ -66,11 +66,11 @@ int BFS(char (&mat)[N][M], int n, int m, Point Y, Point T) {
         Point curr = q.pop();
         for (int d = 0; d < 4; d++) {
             Point next = curr + Point(di[d], dj[d]);
-            if (next.isValid(n, m) && mat[next.i][next.j] == 'B' && visited[next.i][next.j] > visited[curr.i][curr.j] + 2) {
+            if (next.valid(n, m) && mat[next.i][next.j] == 'B' && visited[next.i][next.j] > visited[curr.i][curr.j] + 2) {
                 visited[next.i][next.j] = visited[curr.i][curr.j] + 2;
                 q.push(next);
             }
-            if (next.isValid(n, m) && (mat[next.i][next.j] == 'T' || mat[next.i][next.j] == 'E') && visited[next.i][next.j] > visited[curr.i][curr.j] + 1) {
+            if (next.valid(n, m) && (mat[next.i][next.j] == 'T' || mat[next.i][next.j] == 'E') && visited[next.i][next.j] > visited[curr.i][curr.j] + 1) {
                 visited[next.i][next.j] = visited[curr.i][curr.j] + 1;
                 q.push(next);
             }

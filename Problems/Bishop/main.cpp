@@ -95,7 +95,7 @@ int Solution::BFS(Point src, Point dst, int direction) {
         int d = t.d;
         for (int i = 0; i < 4; i++) {
             Point next(curr.i + di[i], curr.j + dj[i]);
-            if (next.isValid(n) && !obstacle[next.i][next.j]) {
+            if (next.valid(n) && !obstacle[next.i][next.j]) {
                 int cost = (i == d) ? 0 : 1;
                 if (visited[next.i][next.j] > visited[curr.i][curr.j] + cost) {
                     visited[next.i][next.j] = visited[curr.i][curr.j] + cost;
