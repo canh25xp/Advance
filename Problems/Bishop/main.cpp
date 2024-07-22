@@ -2,7 +2,6 @@
 #include "point.hpp"
 #include <iostream>
 
-
 const int LIMIT = 200;
 const int MAX_QUEUE = 50000;
 const int A_VERY_LARGE_NUMBER = INT_MAX;

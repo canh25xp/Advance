@@ -1,27 +1,3 @@
-/******************************************************************************
-Capture Knignt
-A Mobile piece (a Knight, Move like an L shape), called the Attack Piece (A)
-A Stationary Piece, called the Defend piece (D)
-NxM chessboard
-Capture the (D) by moving the (A) with minimum amount of moves.
-Output that MINIMUM NUMBER OF MOVES.
-[INPUT]
-2               <- T, the number of Test cases
-9 9             <- N M, the rows and cols of the chess board
-3 5 2 8         <- R C S K, Location of (A) and (D)
-20 20
-2 3 7 9
-[OUTPUT]
-Case #1
-2
-Case #2
-5
-
-NOTES: The index of the input location is 1-based index.
-That is, the location of the upper left most is (1,1)
-******************************************************************************/
-
-#define _CRT_SECURE_NO_WARNINGS // Suppress Warning	C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead.
 #include "point.hpp"
 #include "queue.hpp"
 #include <iostream>
@@ -113,3 +89,25 @@ void Print(const int &N, const int &M, const Point &A, const Point &D) {
         cout << "|" << endl;
     }
 }
+/******************************************************************************
+Capture Knignt
+A Mobile piece (a Knight, Move like an L shape), called the Attack Piece (A)
+A Stationary Piece, called the Defend piece (D)
+NxM chessboard
+Capture the (D) by moving the (A) with minimum amount of moves.
+Output that MINIMUM NUMBER OF MOVES.
+[INPUT]
+2               <- T, the number of Test cases
+9 9             <- N M, the rows and cols of the chess board
+3 5 2 8         <- R C S K, Location of (A) and (D)
+20 20
+2 3 7 9
+[OUTPUT]
+Case #1
+2
+Case #2
+5
+
+NOTES: The index of the input location is 1-based index.
+That is, the location of the upper left most is (1,1)
+******************************************************************************/
