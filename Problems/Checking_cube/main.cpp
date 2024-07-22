@@ -1,4 +1,3 @@
-#pragma warning(disable : 4996)
 #include <iostream>
 
 namespace utils {
@@ -18,9 +17,7 @@ int solve(int N);
 using namespace std;
 int main(int argc, char **argv) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
-    const char *output = "myoutput.txt";
     freopen(input, "r", stdin);
-    freopen(output, "w", stdout);
 
     int T; // Totol number of Test cases
     cin >> T;
