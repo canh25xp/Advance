@@ -1,9 +1,6 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include "point.hpp"
 #include "queue.hpp"
 #include <iostream>
-
-using namespace std;
 
 const int MAX_N = 100; // should be 100
 const int MAX_M = 100; // should be 100
@@ -12,9 +9,11 @@ const int MAX_M = 100; // should be 100
 int di[4] = {-1, 0, 1, 0};
 int dj[4] = {0, 1, 0, -1};
 
+int solve(int (&)[MAX_N][MAX_M], int, int, Point);
+
+using namespace std;
 int main() {
     freopen("input.txt", "r", stdin);
-    // freopen("output.txt", "w", stdout);
 
     int T;
     cin >> T;
@@ -31,23 +30,28 @@ int main() {
         cin >> bomb.j >> bomb.i;
         bomb--;
 
-        int visited[MAX_N][MAX_M] = {};
-        Queue<Point, 50000> q;
-        int ans = 0;
-        visited[bomb.i][bomb.j] = 1;
-        q.push(bomb);
-        while (!q.empty()) {
-            Point curr = q.pop();
-            for (int d = 0; d < 4; d++) {
-                Point next(curr.i + di[d], curr.j + dj[d]);
-                if (next.valid(N, M) && !visited[next.i][next.j] && mat[next.i][next.j]) {
-                    visited[next.i][next.j] = visited[curr.i][curr.j] + 1;
-                    ans = visited[next.i][next.j];
-                    q.push(next);
-                }
-            }
-        }
-        cout << ans << endl;
+        cout << solve(mat, N, M, bomb) << endl;
     }
     return 0;
+}
+
+int solve(int (&mat)[MAX_N][MAX_M], int N, int M, Point start) {
+    int visited[MAX_N][MAX_M] = {};
+    int ans = 0;
+    Queue<Point, 50000> q;
+
+    q.push(start);
+    visited[start.i][start.j] = 1;
+    while (!q.empty()) {
+        Point curr = q.pop();
+        for (int d = 0; d < 4; d++) {
+            Point next(curr.i + di[d], curr.j + dj[d]);
+            if (next.valid(N, M) && !visited[next.i][next.j] && mat[next.i][next.j]) {
+                visited[next.i][next.j] = visited[curr.i][curr.j] + 1;
+                ans = visited[next.i][next.j];
+                q.push(next);
+            }
+        }
+    }
+    return ans;
 }
