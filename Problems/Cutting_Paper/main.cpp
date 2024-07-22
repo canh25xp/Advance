@@ -1,33 +1,9 @@
-// Cutting a Piece of Colored Paper; Level 3; Recursive
-/******************************************************************************
-Cutting a Piece of Colored Paper
-You want to cut a piece of paper by a certain fixed rule to make some pieces of white or blue colored square paper with various sizes.
-
-*******************************************************************************/
-#define _CRT_SECURE_NO_WARNINGS // Suppress Warning	C4996: 'freopen': This function or variable may be unsafe. Consider using freopen_s instead.
+#include "point.hpp"
 #include <iostream>
-using namespace std;
+
 const int MAX_N = 128; // $N = 2^K; 1 \leq K \leq 7$; K is natural number. $N \leq 128$
 const int WHITE = 0;
 const int BLUE = 0;
-
-struct Point {
-    int i, j;
-
-    Point();
-    Point(int i, int j);
-
-    bool operator==(const Point &rhs) const;
-    bool operator!=(const Point &rhs) const;
-    Point operator+(const Point &rhs) const;
-    void operator+=(const Point &rhs);
-    void operator+=(const int &rhs);
-    void operator++();
-    Point operator-(const Point &rhs) const;
-    void operator-=(const Point &rhs);
-    void operator-=(const int &rhs);
-    void operator--();
-};
 
 template <const int MAX>
 void Cut(const int (&mat)[MAX][MAX], const int N, const Point tl, const Point br);
@@ -37,11 +13,12 @@ bool Check(const int (&mat)[MAX][MAX], const int N, const Point tl, const Point 
 
 int count_w, count_b;
 
+using namespace std;
 int main(int argc, char **argv) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
-    const char *output = "output.txt";
     freopen(input, "r", stdin);
-    freopen(output, "w", stdout);
+    // const char *output = "output.txt";
+    // freopen(output, "w", stdout);
 
     int T;
     cin >> T;
@@ -91,58 +68,4 @@ bool Check(const int (&mat)[MAX][MAX], const int N, const Point tl, const Point 
         count_b++;
 
     return (count == 0 || count == size);
-}
-
-Point::Point() : i(0), j(0) {}
-
-Point::Point(int i, int j) : i(i), j(j) {}
-
-bool Point::operator==(const Point &rhs) const {
-    if (this->i == rhs.i && this->j == rhs.j)
-        return true;
-    return false;
-}
-
-bool Point::operator!=(const Point &rhs) const {
-    if (this->i == rhs.i && this->j == rhs.j)
-        return false;
-    return true;
-}
-
-void Point::operator+=(const Point &rhs) {
-    this->i += rhs.i;
-    this->j += rhs.j;
-}
-
-void Point::operator+=(const int &rhs) {
-    this->i += rhs;
-    this->j += rhs;
-}
-
-void Point::operator++() {
-    this->i++;
-    this->j++;
-}
-
-void Point::operator-=(const Point &rhs) {
-    this->i -= rhs.i;
-    this->j -= rhs.j;
-}
-
-void Point::operator-=(const int &rhs) {
-    this->i -= rhs;
-    this->j -= rhs;
-}
-
-Point Point::operator+(const Point &rhs) const {
-    return Point(this->i + rhs.i, this->j + rhs.j);
-}
-
-Point Point::operator-(const Point &rhs) const {
-    return Point(this->i - rhs.i, this->j - rhs.j);
-}
-
-void Point::operator--() {
-    this->i--;
-    this->j--;
 }
