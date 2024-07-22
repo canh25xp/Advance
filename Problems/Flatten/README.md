@@ -41,9 +41,11 @@ No more dumps can be executed if flattening is completed within the given dump c
 The first line of the input file provides the number of dumps.
 The test case is given in next lines.
 
-Total of 10 test cases are given.
+Total of 11 test cases are given.
 
 ```
+2
+5 8 3 1 5 6 9 9 2 2 4
 834
 42 68 35 1 70 25 79 59 63 65 6 46 82 28 62 92 96 43 28 37 92 5 3 54 93 83 22 17 19 96...
 617
@@ -57,7 +59,8 @@ The output file outputs the test case number following the `#`` symbol.
 It is followed by a space, and then the height difference between the tallest column and shortest column in the test case is output.
 
 ```
-#1 13
-#2 32
+#1 6
+#2 13
+#3 32
 ...
 ```
