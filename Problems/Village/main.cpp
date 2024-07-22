@@ -1,3 +1,4 @@
+#include "queue.hpp"
 #include <iostream>
 
 const int LIM = 300;
@@ -8,40 +9,9 @@ int regions, isolates, bridges;
 // Start and Endpoint of an edge.
 int edge[MAX_EDGE][2];
 
-template <typename T, int MAX>
-class Queue {
-public:
-    Queue() : front(-1), rear(-1) {}
-
-    void push(T a) {
-        if (full())
-            return;
-        rear++;
-        data[rear] = a;
-    }
-
-    T pop() {
-        front++;
-        return data[front];
-    }
-
-    bool full() const {
-        return rear == MAX - 1;
-    }
-
-    bool empty() const {
-        return front == rear;
-    }
-
-private:
-    int front, rear;
-    T data[MAX];
-};
-
 int BFS(const int (&adj)[LIM][LIM], int (&visited)[LIM], const int N, int v);
 void CountRegionAndIsolate(const int (&adj)[LIM][LIM], const int N);
 void CountBridge(int (&adj)[LIM][LIM], const int N, int (&edge)[MAX_EDGE][2], int edges);
-
 bool IsConnected(const int (&adj)[LIM][LIM], const int N, int s, int e);
 
 using namespace std;
