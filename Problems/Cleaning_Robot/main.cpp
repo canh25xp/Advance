@@ -85,16 +85,16 @@ void backtracking(int &ans, int k, int (&visited)[K], int (&dis)[K][K], int u, i
 void BFS(int (&mat)[N][M], int n, int m, Point (&target)[K], int k, int index, int (&dis)[K][K]) {
     int visited[N][M] = {};
     Queue<Point, MAX_QUEUE> q;
-    q.enQueue(target[index]);
+    q.push(target[index]);
     visited[target[index].i][target[index].j] = 1;
 
-    while (!q.isEmpty()) {
-        Point curr = q.deQueue();
+    while (!q.empty()) {
+        Point curr = q.pop();
         for (int d = 0; d < 4; d++) {
             Point next(curr.i + di[d], curr.j + dj[d]);
             if (next.isValid(n, m) && !visited[next.i][next.j] && mat[next.i][next.j] != 2) {
                 visited[next.i][next.j] = visited[curr.i][curr.j] + 1;
-                q.enQueue(next);
+                q.push(next);
             }
         }
     }

@@ -97,16 +97,16 @@ int Solution::Solve() {
 int Solution::BFS(int index) {
     int visited[N][M] = {};
     Queue<Point, Q> q;
-    q.enQueue(target[index]);
+    q.push(target[index]);
     visited[target[index].i][target[index].j] = 1;
 
-    while (!q.isEmpty()) {
-        Point t = q.deQueue();
+    while (!q.empty()) {
+        Point t = q.pop();
         for (int d = 0; d < 8; d++) {
             Point n(t.i + di[d], t.j + dj[d]);
             if (n.i >= 0 && n.j >= 0 && n.i < N && n.j < M && !visited[n.i][n.j]) {
                 visited[n.i][n.j] = visited[t.i][t.j] + 1;
-                q.enQueue(n);
+                q.push(n);
             }
         }
     }

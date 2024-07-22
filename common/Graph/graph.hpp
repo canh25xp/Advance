@@ -122,18 +122,18 @@ bool Graph<T, MAX>::BFS(int start, int target) {
     int visited[MAX] = {};
     Queue<int, MAX> q;
 
-    q.enQueue(start);
+    q.push(start);
     visited[start] = 1;
 
-    while (!q.isEmpty()) {
-        int t = q.deQueue();
+    while (!q.empty()) {
+        int t = q.pop();
         if (t == target)
             return true;
 
         for (int i = 0; i < size; i++) {
             if (adj[t][i] && !visited[i]) {
                 visited[i] = 1;
-                q.enQueue(i);
+                q.push(i);
             }
         }
     }

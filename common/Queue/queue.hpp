@@ -11,11 +11,11 @@ public:
     Queue();
     ~Queue();
 
-    void enQueue(const T &item);
-    T deQueue();
+    void push(const T &item);
+    T pop();
     T peek() const;
-    bool isFull() const;
-    bool isEmpty() const;
+    bool full() const;
+    bool empty() const;
     int size() const;
     bool has(const T &item) const;
     void clear();
@@ -28,18 +28,18 @@ template <typename T, int MAX>
 Queue<T, MAX>::~Queue() {}
 
 template <typename T, int MAX>
-bool Queue<T, MAX>::isEmpty() const {
+bool Queue<T, MAX>::empty() const {
     return front == rear;
 }
 
 template <typename T, int MAX>
-bool Queue<T, MAX>::isFull() const {
+bool Queue<T, MAX>::full() const {
     return front == 0 && rear == MAX - 1;
 }
 
 template <typename T, int MAX>
-void Queue<T, MAX>::enQueue(const T &item) {
-    if (isFull()) {
+void Queue<T, MAX>::push(const T &item) {
+    if (full()) {
         std::cerr << "Queue is full\n";
         return;
     }
@@ -49,9 +49,9 @@ void Queue<T, MAX>::enQueue(const T &item) {
 }
 
 template <typename T, int MAX>
-T Queue<T, MAX>::deQueue() {
+T Queue<T, MAX>::pop() {
     T item{};
-    if (isEmpty()) {
+    if (empty()) {
         std::cerr << "Queue is empty\n";
         return item;
     }
@@ -65,7 +65,7 @@ T Queue<T, MAX>::deQueue() {
 template <typename T, int MAX>
 T Queue<T, MAX>::peek() const {
     T item{};
-    if (isEmpty()) {
+    if (empty()) {
         std::cerr << "Queue is empty\n";
         return item;
     }

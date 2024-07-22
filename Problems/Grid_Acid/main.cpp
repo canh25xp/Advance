@@ -62,18 +62,18 @@ Pair solve(const int (&grid)[N_MAX][M_MAX], int N, int M, Pair start) {
 
     static Queue<Pair, Q_MAX> q;
     q.clear();
-    q.enQueue(start);
+    q.push(start);
     visited[start.i][start.j] = 1;
 
-    while (!q.isEmpty()) {
-        Pair t = q.deQueue();
+    while (!q.empty()) {
+        Pair t = q.pop();
         for (int d = 0; d < 4; d++) {
             static const int di[4] = {1, 0, -1, 0};
             static const int dj[4] = {0, 1, 0, -1};
             Pair n(t.i + di[d], t.j + dj[d]);
             if (n.i >= 0 && n.j >= 0 && n.i < N && n.j < M && !visited[n.i][n.j]) {
                 if (grid[n.i][n.j] == 1) {
-                    q.enQueue(n);
+                    q.push(n);
                     visited[n.i][n.j] = visited[t.i][t.j] + 1;
                     count.j = visited[n.i][n.j];
                 } else if (grid[n.i][n.j] == 2) {

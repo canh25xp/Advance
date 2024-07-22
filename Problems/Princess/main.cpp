@@ -54,12 +54,12 @@ int main(int argc, char *argv[]) {
 
 int BFS(Point srt, Point dst, int maze[SIZE][SIZE], int size) {
     Queue<Point, 50000> q;
-    q.enQueue(srt);
+    q.push(srt);
 
     int visited[SIZE][SIZE] = {};
 
-    while (!q.isEmpty()) {
-        Point current = q.deQueue();
+    while (!q.empty()) {
+        Point current = q.pop();
         for (int d = 0; d < 4; d++) {
             Point next(current.i + dx[d], current.j + dy[d]);
             if (next.isValid(size, size) && !visited[next.i][next.j] && maze[next.i][next.j] != TRAP) {
@@ -67,7 +67,7 @@ int BFS(Point srt, Point dst, int maze[SIZE][SIZE], int size) {
                 if (next == dst) {
                     return visited[next.i][next.j];
                 }
-                q.enQueue(next);
+                q.push(next);
             }
         }
     }

@@ -58,9 +58,9 @@ int solve() {
 bool BFS(Point x) {
     bool flag = true;
     q.clear();
-    q.enQueue(x);
-    while (!q.isEmpty()) {
-        Point curr = q.deQueue();
+    q.push(x);
+    while (!q.empty()) {
+        Point curr = q.pop();
         for (int d = 0; d < 8; d++) {
             Point next(curr.i + di[d], curr.j + dj[d]);
             if (!next.isValid(n, m))
@@ -68,7 +68,7 @@ bool BFS(Point x) {
 
             if (!vst[next.i][next.j] && mat[next.i][next.j] == mat[curr.i][curr.j]) {
                 vst[next.i][next.j] = 1;
-                q.enQueue(next);
+                q.push(next);
             } else if (mat[next.i][next.j] > mat[curr.i][curr.j])
                 flag = false;
         }

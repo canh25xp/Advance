@@ -108,14 +108,14 @@ void HandleFire(int (&fires)[N_MAX][M_MAX], const int (&lakes)[N_MAX][M_MAX], co
     for (int i = 0; i < Size.i; i++)
         for (int j = 0; j < Size.j; j++)
             if (fires[i][j] == 0)
-                q.enQueue(Point(i, j));
+                q.push(Point(i, j));
 
-    while (!q.isEmpty()) {
-        Point t = q.deQueue(); // current Point
+    while (!q.empty()) {
+        Point t = q.pop(); // current Point
         for (int d = 0; d < 4; d++) {
             Point n(t.i + di[d], t.j + dj[d]); // next Point
             if (n.isValid(Size) && (fires[n.i][n.j] == A_HUGE_NUMBER || fires[n.i][n.j] > fires[t.i][t.j] + 1) && !lakes[n.i][n.j]) {
-                q.enQueue(n);
+                q.push(n);
                 fires[n.i][n.j] = fires[t.i][t.j] + 1;
             }
         }

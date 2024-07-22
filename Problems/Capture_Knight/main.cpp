@@ -76,21 +76,21 @@ int BFS(const int &N, const int &M, const Point &A, const Point &D) {
     static int visited[MAX_N][MAX_M] = {};
 
     q.clear();
-    q.enQueue(A);
+    q.push(A);
 
     for (int i = 0; i < N; i++)
         for (int j = 0; j < M; j++)
             visited[i][j] = 0;
 
-    while (!q.isEmpty()) {
-        Point current = q.deQueue();
+    while (!q.empty()) {
+        Point current = q.pop();
         for (int d = 0; d < 8; d++) {
             Point next(current.i + dr[d], current.j + dc[d]);
             if (next.isValid(N, M) && !visited[next.i][next.j]) {
                 visited[next.i][next.j] = visited[current.i][current.j] + 1;
                 if (next == D)
                     return visited[next.i][next.j];
-                q.enQueue(next);
+                q.push(next);
             }
         }
     }
