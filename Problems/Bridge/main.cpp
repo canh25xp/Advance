@@ -2,11 +2,10 @@
 #include <iostream>
 using namespace std;
 
-const int MAX_W = 5;  // Width of the bridge should always be 5
-const int MAX_L = 20; // Length of the bridge should be no more than 20
+const int N = 20; // Length of the bridge should be no more than 20
+const int M = 5;  // Width of the bridge should always be 5
 
-template <const int ROWS, const int COLS>
-void DFS(const int (&mat)[ROWS][COLS], const int L, const int W, const Point current, int coin = 0);
+void DFS(const int (&mat)[N][M], const int n, const int m, const Point current, int coin = 0);
 
 int max_coin, check;
 
@@ -17,46 +16,43 @@ int main() {
     int T; // the total number of test case
     cin >> T;
     for (int tc = 0; tc < T; tc++) {
-        int L; // Length of the bridge
-        cin >> L;
-        int W = MAX_W;
+        int n; // Length of the bridge
+        cin >> n;
+        int m = M;
 
-        int bridge[MAX_L][MAX_W] = {};
-        for (int i = 0; i < L; i++) {
-            for (int j = 0; j < W; j++) {
+        int bridge[N][M] = {};
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < m; j++)
                 cin >> bridge[i][j];
-            }
-        }
 
-        Point start(W / 2, L);
+        Point start(n, m / 2);
 
         max_coin = -1;
         check = 1;
 
-        DFS<MAX_L, MAX_W>(bridge, L, W, start);
+        DFS(bridge, n, m, start);
         cout << "#" << tc + 1 << " " << max_coin << endl;
     }
     return 0;
 }
 // END MAIN
 
-template <const int ROWS, const int COLS>
-void DFS(const int (&mat)[ROWS][COLS], const int L, const int W, const Point current, int coin) {
-    static const Point d[3] = {Point(0, -1), Point(-1, -1), Point(1, -1)}; // Direction : up_straight, up_left, up_right.
+void DFS(const int (&mat)[N][M], const int n, const int m, const Point current, int coin) {
+    static const Point d[3] = {Point(-1, 0), Point(-1, -1), Point(-1, 1)}; // Direction : up_straight, up_left, up_right.
 
-    if (current.y == 0 && max_coin < coin)
+    if (current.i == 0 && max_coin < coin)
         max_coin = coin;
 
     for (int i = 0; i < 3; i++) {
         Point next = current + d[i];
 
-        if (next.x >= 0 && next.x < W && next.y >= 0) {
-            if (mat[next.y][next.x] != 2)
-                DFS(mat, L, W, next, coin + mat[next.y][next.x]);
+        if (next.j >= 0 && next.j < m && next.i >= 0) {
+            if (mat[next.i][next.j] != 2)
+                DFS(mat, n, m, next, coin + mat[next.i][next.j]);
 
             else if (check) {
                 check = 0;
-                DFS(mat, L, W, next, coin);
+                DFS(mat, n, m, next, coin);
                 check = 1;
             }
         }
