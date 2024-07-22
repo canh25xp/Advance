@@ -52,7 +52,7 @@ void solve(int (&mat)[N_MAX][N_MAX], int N) {
 }
 
 int BFS(int (&mat)[N_MAX][N_MAX], int N, Point curr, int (&visited)[N_MAX][N_MAX]) {
-    Stack<Point, N_MAX * N_MAX> s;
+    Stack<Point, N_MAX * N_MAX> s; // either Stack or Queue works !
     int count = 1;
     s.push(curr);
     visited[curr.i][curr.j] = 1;
