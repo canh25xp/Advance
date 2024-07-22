@@ -1,3 +1,5 @@
+#include "point.hpp"
+#include "queue.hpp"
 #include <iostream>
 using namespace std;
 
@@ -19,35 +21,6 @@ const int p[8][4] = {
     {0, 1, 0, 1}, // Down-Right
     {0, 1, 1, 0}, // Down-Left
     {1, 0, 1, 0}  // Up-Left
-};
-
-template <typename T, unsigned int MAX>
-class Queue {
-public:
-    Queue();
-    ~Queue();
-
-    void reset();
-    bool isFull();
-    bool isEmpty();
-    void enQueue(T item);
-    T deQueue();
-
-private:
-    T items[MAX];
-    int front, rear;
-};
-
-struct Point {
-    int i, j;
-
-    Point() : i(0), j(0) {}
-
-    Point(int i, int j) : i(i), j(j) {}
-
-    bool BoundaryCheck(int N, int M) {
-        return !(i < 0 || j < 0 || i >= N || j >= M);
-    }
 };
 
 // Check if pipe p1 can go to pipe p2 in the direction d and pipe p2 can go to pipe p1 in the reverse direction.
@@ -119,66 +92,22 @@ int BFS(const int (&mat)[N_MAX][M_MAX], const int &N, const int &M, const Point 
 
     Queue<Point, QUEUE_SIZE> q;
 
-    q.enQueue(start);
+    q.push(start);
 
-    while (!q.isEmpty()) {
-        Point t = q.deQueue();
+    while (!q.empty()) {
+        Point t = q.pop();
 
         if (vst[t.i][t.j] >= steps)
             return count;
 
         for (int d = 0; d < 4; d++) {
             Point n(t.i + di[d], t.j + dj[d]);
-            if (n.BoundaryCheck(N, M) && !vst[n.i][n.j] && Check(mat[t.i][t.j], mat[n.i][n.j], d)) {
-                q.enQueue(Point(n.i, n.j));
+            if (n.isValid(N, M) && !vst[n.i][n.j] && Check(mat[t.i][t.j], mat[n.i][n.j], d)) {
+                q.push(Point(n.i, n.j));
                 vst[n.i][n.j] = vst[t.i][t.j] + 1;
                 count++;
             }
         }
     }
     return count;
-}
-
-template <typename T, unsigned int MAX>
-Queue<T, MAX>::Queue() : front(-1), rear(-1) {}
-
-template <typename T, unsigned int MAX>
-Queue<T, MAX>::~Queue() {}
-
-template <typename T, unsigned int MAX>
-void Queue<T, MAX>::reset() {
-    front = -1;
-    rear = -1;
-}
-
-template <typename T, unsigned int MAX>
-bool Queue<T, MAX>::isEmpty() {
-    if (front == rear)
-        return true;
-    return false;
-}
-
-template <typename T, unsigned int MAX>
-bool Queue<T, MAX>::isFull() {
-    if (front == 0 && rear == MAX - 1)
-        return true;
-    return false;
-}
-
-template <typename T, unsigned int MAX>
-void Queue<T, MAX>::enQueue(T item) {
-    if (isFull())
-        return;
-    rear++;
-    items[rear] = item;
-}
-
-template <typename T, unsigned int MAX>
-T Queue<T, MAX>::deQueue() {
-    T item;
-    if (isEmpty())
-        return item;
-    front++;
-    item = this->items[front];
-    return item;
 }
