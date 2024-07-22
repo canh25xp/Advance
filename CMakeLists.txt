@@ -24,6 +24,7 @@ include_directories(${CMAKE_SOURCE_DIR}/common/Deque)
 include_directories(${CMAKE_SOURCE_DIR}/common/Stack)
 include_directories(${CMAKE_SOURCE_DIR}/common/Point)
 include_directories(${CMAKE_SOURCE_DIR}/common/Graph)
+include_directories(${CMAKE_SOURCE_DIR}/common/Utils)
 
 file(GLOB CMAKE_FILES ${CMAKE_CURRENT_SOURCE_DIR}/Problems ${CMAKE_CURRENT_SOURCE_DIR}/Problems/*)
 foreach(CMAKE_FILE ${CMAKE_FILES})
