@@ -20,10 +20,6 @@
                     "name": "PATH",
                     "value": "${env:PATH}:${command:cmake.getLaunchTargetDirectory}"
                 },
-                {
-                    "name": "OTHER_VALUE",
-                    "value": "Something something"
-                }
             ],
             "console": "integratedTerminal"
         },
@@ -45,10 +41,6 @@
                     "name": "PATH",
                     "value": "${env:PATH}:${command:cmake.getLaunchTargetDirectory}"
                 },
-                {
-                    "name": "OTHER_VALUE",
-                    "value": "Something something"
-                }
             ],
             "MIMode": "gdb",
             "setupCommands": [
