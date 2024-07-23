@@ -3,40 +3,53 @@
 #include <unordered_map>
 #include <vector>
 
+using namespace std;
 set<int> path;
-int isCycle = 0;
-int cycleStart = -1;
-int cycleEnd = -1;
+int isCycle;
+int cycleStart;
+int cycleEnd;
 
 void detectCycle(int currNode, int nodeSum, unordered_map<int, vector<int>> &adjList, vector<bool> visited, vector<bool> pathVisited, int &minNodeSum, set<int> temp);
 
-using namespace std;
 int main(int argc, char *argv[]) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
 
-    int V, E;
-    int minNodeSum = INT_MAX;
-    cin >> V >> E;
-    unordered_map<int, vector<int>> adjList;
-    vector<bool> visited(20, 0);
-    vector<bool> pathVisited(20, 0);
+    int T;
+    cin >> T;
 
-    for (int i = 0; i < E; i++) {
-        int u, v;
-        cin >> u >> v;
-        adjList[u].push_back(v);
-    }
+    for (int tc = 0; tc < T; tc++) {
+        int V, E;
+        int minNodeSum = INT_MAX;
+        cin >> V >> E;
+        unordered_map<int, vector<int>> adjList;
+        vector<bool> visited(20, 0);
+        vector<bool> pathVisited(20, 0);
 
-    for (int i = 1; i <= V; i++) {
-        if (!visited[i]) {
-            set<int> temp = {};
-            detectCycle(i, 0, adjList, visited, pathVisited, minNodeSum, temp);
+        isCycle = 0;
+        cycleStart = -1;
+        cycleEnd = -1;
+
+        for (int i = 0; i < E; i++) {
+            int u, v;
+            cin >> u >> v;
+            adjList[u].push_back(v);
         }
+
+        for (int i = 1; i <= V; i++) {
+            if (!visited[i]) {
+                set<int> temp = {};
+                detectCycle(i, 0, adjList, visited, pathVisited, minNodeSum, temp);
+            }
+        }
+        if (isCycle)
+            for (auto itr : path)
+                cout << itr << " ";
+        else
+            cout << "-1";
+
+        cout << endl;
     }
-    if (isCycle)
-        for (auto itr : path)
-            cout << itr << " ";
 
     return 0;
 }
