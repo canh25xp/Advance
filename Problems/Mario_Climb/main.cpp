@@ -1,53 +1,18 @@
+#include "point.hpp"
+#include "queue.hpp"
 #include <iostream>
 
 const int N = 50;
 const int M = 50;
 
-const int di[4] = {-1,0,1,0};
-const int dj[4] = {0,-1,0,1};
-
-struct Point {
-    int i,j;
-
-    Point() : i(0), j(0) {}
-    Point(int i, int j) : i(i), j(j) {}
-
-    bool operator==(const Point &rhs) const {
-        return i == rhs.i && j == rhs.j;
-    }
-
-    bool valid(int n, int m) const {
-        return i >= 0 && j >= 0 && i < n && j < m;
-    }
-};
-
-template<typename T, int MAX=10000>
-class Queue{
-public:
-    Queue() : front(-1), rear(-1) {}
-
-    void push(T a) {
-        data[++rear] = a;
-    }
-
-    T pop() {
-        return data[++front];
-    }
-
-    bool empty() {
-        return front == rear;
-    }
-
-private:
-    int front, rear;
-    T data[MAX];
-};
+const int di[4] = {-1, 0, 1, 0};
+const int dj[4] = {0, -1, 0, 1};
 
 int solve(int (&)[N][M], int, int);
 bool BFS(int (&)[N][M], int, int, Point, Point, int);
 
 using namespace std;
-int main(int argc, char **argv){
+int main(int argc, char **argv) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
     int T;
@@ -68,14 +33,14 @@ int main(int argc, char **argv){
     return 0;
 }
 
-int solve(int (&mat)[N][M], int n, int m){
+int solve(int (&mat)[N][M], int n, int m) {
     Point S, D;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
             if (mat[i][j] == 2)
-                S = Point(i,j);
+                S = Point(i, j);
             else if (mat[i][j] == 3)
-                D = Point(i,j);
+                D = Point(i, j);
         }
     }
 
@@ -97,7 +62,7 @@ bool BFS(int (&mat)[N][M], int n, int m, Point S, Point D, int step) {
         Point curr = q.pop();
         for (int h = 1; h <= step; h++) {
             for (int i = 0; i < 4; i++) {
-                Point next(curr.i + di[i]*h, curr.j + dj[i]);
+                Point next(curr.i + di[i] * h, curr.j + dj[i]);
                 if (next.valid(n, m) && !visited[next.i][next.j] && mat[next.i][next.j]) {
                     if (next == D)
                         return true;
