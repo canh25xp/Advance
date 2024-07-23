@@ -69,3 +69,21 @@ void detectCycle(int currNode, int nodeSum, unordered_map<int, vector<int>> &adj
         }
     }
 }
+
+void findCircleUnit(unordered_map<int, vector<int>> &G, int start, int v, bool *visited, vector<int> &path) {
+    if (visited[v]) {
+        if (v == start) {
+            for (auto c : path)
+                cout << c << " ";
+            cout << endl;
+            return;
+        } else
+            return;
+    }
+    visited[v] = true;
+    path.push_back(v);
+    for (auto i : G[v])
+        findCircleUnit(G, start, i, visited, path);
+    visited[v] = false;
+    path.pop_back();
+}
