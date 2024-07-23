@@ -1,26 +1,5 @@
+#include "queue.hpp"
 #include <iostream>
-
-template<typename T, int MAX=1000>
-class Queue{
-public:
-    Queue() : front(-1), rear(-1) {}
-
-    void push(T a) {
-        data[++rear] = a;
-    }
-
-    T pop() {
-        return data[++front];
-    }
-
-    bool empty() {
-        return front == rear;
-    }
-
-private:
-    int front, rear;
-    T data[MAX];
-};
 
 const int N = 1000;
 
@@ -29,7 +8,7 @@ bool isBipartiteUtil(bool (&G)[N][N], int V, int src, int (&colorArr)[N]);
 void solve(bool (&G)[N][N], int V);
 
 using namespace std;
-int main(int argc, char **argv){
+int main(int argc, char **argv) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
     freopen(input, "r", stdin);
     int T;
@@ -58,9 +37,9 @@ int main(int argc, char **argv){
 
 void solve(bool (&G)[N][N], int V) {
     // Create a color array to store colors assigned to all vertices.
-    // Vertex/ number is used as index in this array. 
+    // Vertex/ number is used as index in this array.
     // The value '-1' of colorArr[i] is used to indicate that no color is assigned to vertex 'i'.
-    // The value 1 is used to indicate first color is assigned; 
+    // The value 1 is used to indicate first color is assigned;
     // and value 0 indicates second color is assigned.
     int colorArr[N] = {};
     for (int i = 0; i < V; ++i)
@@ -68,7 +47,7 @@ void solve(bool (&G)[N][N], int V) {
 
     for (int i = 0; i < V; i++) {
         if (colorArr[i] == -1) {
-            if (!isBipartiteUtil(G, V , i, colorArr)) {
+            if (!isBipartiteUtil(G, V, i, colorArr)) {
                 cout << -1 << endl;
                 return;
             }
@@ -89,7 +68,8 @@ bool isBipartiteUtil(bool (&G)[N][N], int V, int src, int (&colorArr)[N]) {
         int u = q.pop();
 
         // Return false if there is a self-loop
-        if (G[u][u]) return false;
+        if (G[u][u])
+            return false;
 
         // Find all non-colored adjacent vertices
         for (int v = 0; v < V; v++) {
