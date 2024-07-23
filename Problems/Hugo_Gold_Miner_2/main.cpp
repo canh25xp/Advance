@@ -1,47 +1,12 @@
+#include "point.hpp"
+#include "queue.hpp"
 #include <iostream>
 
 const int N = 20;
 const int G = 4;
 
-const int di[4] = {-1,0,1,0};
-const int dj[4] = {0,-1,0,1};
-
-struct Point {
-    int i,j;
-
-    Point() : i(0), j(0) {}
-    Point(int i, int j) : i(i), j(j) {}
-
-    bool operator==(const Point &rhs) const {
-        return i == rhs.i && j == rhs.j;
-    }
-
-    bool valid(int n, int m) const {
-        return i >= 0 && j >= 0 && i < n && j < m;
-    }
-};
-
-template<typename T, int MAX=100000>
-class Queue{
-public:
-    Queue() : front(-1), rear(-1) {}
-
-    void push(T a) {
-        data[++rear] = a;
-    }
-
-    T pop() {
-        return data[++front];
-    }
-
-    bool empty() {
-        return front == rear;
-    }
-
-private:
-    int front, rear;
-    T data[MAX];
-};
+const int di[4] = {-1, 0, 1, 0};
+const int dj[4] = {0, -1, 0, 1};
 
 int solve(int (&)[N][N], Point (&)[G], int, int);
 
@@ -85,7 +50,7 @@ int solve(int (&mat)[N][N], Point (&gold)[G], int n, int g) {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (mat[i][j] == 1) {
-                int step = BFS(mat, gold, n, g, Point(i,j));
+                int step = BFS(mat, gold, n, g, Point(i, j));
                 if (step == -1)
                     continue;
 
@@ -95,20 +60,20 @@ int solve(int (&mat)[N][N], Point (&gold)[G], int n, int g) {
         }
     }
 
-    return (ans == INT_MAX) ? - 1 : ans;
+    return (ans == INT_MAX) ? -1 : ans;
 }
 
 int BFS(int (&mat)[N][N], Point (&gold)[G], int n, int g, Point x) {
-    int visited[N][N] ={};
+    int visited[N][N] = {};
     Queue<Point> q;
     q.push(x);
     visited[x.i][x.j] = 1;
 
-    while (!q.empty()){
+    while (!q.empty()) {
         Point prev = q.pop();
         for (int d = 0; d < 4; d++) {
             Point next(prev.i + di[d], prev.j + dj[d]);
-            if (next.valid(n, n) && mat[next.i][next.j] && !visited[next.i][next.j]){
+            if (next.valid(n, n) && mat[next.i][next.j] && !visited[next.i][next.j]) {
                 visited[next.i][next.j] = visited[prev.i][prev.j] + 1;
                 q.push(next);
             }
@@ -119,7 +84,7 @@ int BFS(int (&mat)[N][N], Point (&gold)[G], int n, int g, Point x) {
     for (int gi = 0; gi < g; gi++) {
         if (visited[gold[gi].i][gold[gi].j] == 0)
             return -1;
-        
+
         if (visited[gold[gi].i][gold[gi].j] > max)
             max = visited[gold[gi].i][gold[gi].j];
     }
