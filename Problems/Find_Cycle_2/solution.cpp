@@ -5,7 +5,9 @@
 
 using namespace std;
 
-void detectCycle(int currNode, int nodeSum, unordered_map<int, vector<int>> &adjList, vector<bool> visited, vector<bool> pathVisited, int &minNodeSum, set<int> temp, set<int> &path, bool &isCycle);
+const int N = 10;
+
+void detectCycle(int currNode, int nodeSum, unordered_map<int, vector<int>> &adjList, vector<int> visited, vector<int> pathVisited, int &minNodeSum, set<int> &temp, set<int> &path, bool &isCycle);
 
 int main(int argc, char *argv[]) {
     const char *input = (argc > 1) ? argv[1] : "input.txt";
@@ -15,30 +17,30 @@ int main(int argc, char *argv[]) {
     cin >> T;
 
     for (int tc = 0; tc < T; tc++) {
-        int V, E;
-        int minNodeSum = INT_MAX;
+        int V, E; // Vertices, Edges
         cin >> V >> E;
-        unordered_map<int, vector<int>> adjList;
-        vector<bool> visited(20, 0);
-        vector<bool> pathVisited(20, 0);
 
+        unordered_map<int, vector<int>> adjList;
         for (int i = 0; i < E; i++) {
             int u, v;
             cin >> u >> v;
-            adjList[u].push_back(v);
+            adjList[u - 1].push_back(v - 1);
         }
 
+        vector<int> visited(V, 0);
+        vector<int> pathVisited(V, 0);
+        int minNodeSum = INT_MAX;
         set<int> path;
         bool isCycle = 0;
-        for (int i = 1; i <= V; i++) {
-            if (!visited[i]) {
+        for (int v = 0; v < V; v++) {
+            if (!visited[v]) {
                 set<int> temp = {};
-                detectCycle(i, 0, adjList, visited, pathVisited, minNodeSum, temp, path, isCycle);
+                detectCycle(v, 0, adjList, visited, pathVisited, minNodeSum, temp, path, isCycle);
             }
         }
         if (isCycle)
             for (auto itr : path)
-                cout << itr << " ";
+                cout << itr + 1 << " ";
         else
             cout << "-1";
 
@@ -48,7 +50,7 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
-void detectCycle(int currNode, int nodeSum, unordered_map<int, vector<int>> &adjList, vector<bool> visited, vector<bool> pathVisited, int &minNodeSum, set<int> temp, set<int> &path, bool &isCycle) {
+void detectCycle(int currNode, int nodeSum, unordered_map<int, vector<int>> &adjList, vector<int> visited, vector<int> pathVisited, int &minNodeSum, set<int> &temp, set<int> &path, bool &isCycle) {
     temp.insert(currNode);
     visited[currNode] = 1;
     pathVisited[currNode] = 1;
