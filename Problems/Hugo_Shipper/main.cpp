@@ -39,7 +39,8 @@ int solve(int (&coords)[N][2], int n, int (&S)[2], int (&H)[2]) {
 
     for (int i = 0; i < n; i++) {
         visited[i] = 1;
-        backtrack(coords, n, S, H, visited, ans, i, dis(S, coords[i]), 1);
+        int currDis = dis(S, coords[i]);
+        backtrack(coords, n, S, H, visited, ans, i, currDis, 1);
         visited[i] = 0;
     }
 
@@ -65,7 +66,8 @@ void backtrack(int (&coords)[N][2], int n, int (&S)[2], int (&H)[2], int (&visit
     for (int j = 0; j < n; j++) {
         if (!visited[j]) {
             visited[j] = 1;
-            backtrack(coords, n, S, H, visited, ans, j, currDis + dis(coords[j], coords[i]), cnt + 1);
+            int nextDis = currDis + dis(coords[j], coords[i]);
+            backtrack(coords, n, S, H, visited, ans, j, nextDis, cnt + 1);
             visited[j] = 0;
         }
     }
