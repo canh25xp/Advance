@@ -44,10 +44,9 @@ int solve(int (&mat)[N][M], int n, int m) {
         }
     }
 
-    int step = 1;
-    while (!BFS(mat, n, m, S, D, step)) {
+    int step = 0;
+    while (!BFS(mat, n, m, S, D, step))
         step++;
-    }
 
     return step;
 }
@@ -60,7 +59,7 @@ bool BFS(int (&mat)[N][M], int n, int m, Point S, Point D, int step) {
 
     while (!q.empty()) {
         Point curr = q.pop();
-        for (int h = 1; h <= step; h++) {
+        for (int h = 0; h <= step; h++) {
             for (int i = 0; i < 4; i++) {
                 Point next(curr.i + di[i] * h, curr.j + dj[i]);
                 if (next.valid(n, m) && !visited[next.i][next.j] && mat[next.i][next.j]) {
