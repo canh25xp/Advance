@@ -8,3 +8,13 @@ Case #7 219
 Case #8 283
 Case #9 295
 Case #10 344
+Case #11 200
+Case #12 304
+Case #13 200
+Case #14 304
+Case #15 200
+Case #16 304
+Case #17 200
+Case #18 304
+Case #19 200
+Case #20 304
