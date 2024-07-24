@@ -8,7 +8,7 @@ int solve(int (&)[N][2], int, int (&)[2], int (&)[2]);
 
 int dis(int (&)[2], int (&)[2]);
 
-void backtrack(int (&)[N][2], int, int (&)[2], int (&)[2], int (&)[N], int &, int, int, int);
+void backtrack(int (&)[N][2], int, int (&)[2], int (&)[N], int &, int, int, int);
 
 using namespace std;
 int main(int argc, char **argv) {
@@ -40,7 +40,7 @@ int solve(int (&coords)[N][2], int n, int (&S)[2], int (&D)[2]) {
     for (int i = 0; i < n; i++) {
         visited[i] = 1;
         int currDis = dis(S, coords[i]);
-        backtrack(coords, n, S, D, visited, ans, i, currDis, 1);
+        backtrack(coords, n, D, visited, ans, i, currDis, 1);
         visited[i] = 0;
     }
 
@@ -51,7 +51,7 @@ int dis(int (&A)[2], int (&B)[2]) {
     return abs(A[0] - B[0]) + abs(A[1] - B[1]);
 }
 
-void backtrack(int (&coords)[N][2], int n, int (&S)[2], int (&D)[2], int (&visited)[N], int &ans, int i, int currDis, int cnt) {
+void backtrack(int (&coords)[N][2], int n, int (&D)[2], int (&visited)[N], int &ans, int i, int currDis, int cnt) {
     if (currDis > ans)
         return;
 
@@ -59,7 +59,6 @@ void backtrack(int (&coords)[N][2], int n, int (&S)[2], int (&D)[2], int (&visit
         int totalDis = currDis + dis(coords[i], D);
         if (totalDis < ans)
             ans = totalDis;
-
         return;
     }
 
@@ -67,7 +66,7 @@ void backtrack(int (&coords)[N][2], int n, int (&S)[2], int (&D)[2], int (&visit
         if (!visited[j]) {
             visited[j] = 1;
             int nextDis = currDis + dis(coords[j], coords[i]);
-            backtrack(coords, n, S, D, visited, ans, j, nextDis, cnt + 1);
+            backtrack(coords, n, D, visited, ans, j, nextDis, cnt + 1);
             visited[j] = 0;
         }
     }
