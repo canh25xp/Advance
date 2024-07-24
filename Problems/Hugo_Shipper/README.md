@@ -13,7 +13,7 @@ Hãy giúp Hugo với nhé.
 
 `T` test case `T <= 50`
 
-Dòng đầu tiên chưa 4 số `Sx, Sy, Hx, Hy` tương ứng là vị trí của công ty và nhà của Hugo trên hệ trục tọa độ Oxy
+Dòng đầu tiên chưa 4 số `Sx, Sy, Dx, Dy` tương ứng là vị trí của công ty và nhà của Hugo trên hệ trục tọa độ Oxy
 
 Dòng tiếp theo bao gồm số `N` và `N` cặp số liên tiếp tương ứng là tọa độ các điểm mà Hugo cần giao pizza. `N <= 10`
 
