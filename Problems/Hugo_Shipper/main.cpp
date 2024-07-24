@@ -39,7 +39,7 @@ int solve(int (&coords)[N][2], int n, int (&S)[2], int (&H)[2]) {
 
     for (int i = 0; i < n; i++) {
         visited[i] = 1;
-        backtrack(coords, n, S, H, visited, ans, i, dis(S, coords[i]), n);
+        backtrack(coords, n, S, H, visited, ans, i, dis(S, coords[i]), 1);
         visited[i] = 0;
     }
 
@@ -50,11 +50,11 @@ int dis(int (&A)[2], int (&B)[2]) {
     return abs(A[0] - B[0]) + abs(A[1] - B[1]);
 }
 
-void backtrack(int (&coords)[N][2], int n, int (&S)[2], int (&H)[2], int (&visited)[N], int &ans, int i, int currDis, int nodeLeft) {
+void backtrack(int (&coords)[N][2], int n, int (&S)[2], int (&H)[2], int (&visited)[N], int &ans, int i, int currDis, int cnt) {
     if (currDis > ans)
         return;
 
-    if (nodeLeft <= 1) {
+    if (cnt == n) {
         int totalDis = currDis + dis(coords[i], H);
         if (totalDis < ans)
             ans = totalDis;
@@ -65,7 +65,7 @@ void backtrack(int (&coords)[N][2], int n, int (&S)[2], int (&H)[2], int (&visit
     for (int j = 0; j < n; j++) {
         if (!visited[j]) {
             visited[j] = 1;
-            backtrack(coords, n, S, H, visited, ans, j, currDis + dis(coords[j], coords[i]), nodeLeft - 1);
+            backtrack(coords, n, S, H, visited, ans, j, currDis + dis(coords[j], coords[i]), cnt + 1);
             visited[j] = 0;
         }
     }
