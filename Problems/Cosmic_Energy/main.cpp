@@ -37,10 +37,10 @@ int main(int argc, char **argv) {
             for (int j = 0; j < n; j++) {
                 cin >> adj[i][j];
                 if (i != j && !vst[i][j]) {
-                    adj[i][j] = solve(a,b,c, adj[i][j]);
-                    //adj[j][i] = adj[i][j];
+                    adj[i][j] = solve(a, b, c, adj[i][j]);
+                    // adj[j][i] = adj[i][j];
                     vst[i][j] = true;
-                    //vst[j][i] = true;
+                    // vst[j][i] = true;
                 }
             }
         }
@@ -95,7 +95,7 @@ double pow(double base, double exp) {
     return res;
 }
 
-double f(int a, int b, int c,  double x) {
+double f(int a, int b, int c, double x) {
     return a * pow(x, 3) + b * pow(x, 2) + c;
 }
 
@@ -104,7 +104,7 @@ double solve(int a, int b, int c, double rhs) {
 
     while (right - left > EPSILON) {
         double mid = left + (right - left) / 2.0;
-        double y = f(a,b,c, mid);
+        double y = f(a, b, c, mid);
         if (y == rhs)
             return mid;
         if (y > rhs)
@@ -115,4 +115,3 @@ double solve(int a, int b, int c, double rhs) {
 
     return left;
 }
-
