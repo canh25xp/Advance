@@ -2,8 +2,6 @@
 
 #define MAX_N 1000
 
-using namespace std;
-
 // Dãy N phần tử
 int N = 4;
 int arr[] = {11, 22, 33, 44};
@@ -24,6 +22,7 @@ int K;
 // cnt: số lượng phần tử đã được đưa vào chỉnh hợp
 void permutation(int i, int cnt);
 
+using namespace std;
 int main() {
     for (int i = 0; i < N; ++i)
         visited[i] = false;

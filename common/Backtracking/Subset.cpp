@@ -2,8 +2,6 @@
 
 #define MAX_N 1000
 
-using namespace std;
-
 // Dãy N phần tử
 int N = 3;
 int arr[] = {11, 22, 33};
@@ -24,6 +22,7 @@ void subset(int i, int cnt);
 // cnt: số lượng phần tử của tập con
 void subsetWithK(int i, int cnt);
 
+using namespace std;
 int main() {
     // in tất cả tập con
     subset(0, 0);
