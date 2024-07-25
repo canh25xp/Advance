@@ -5,7 +5,7 @@
 Jang keeps visiting and helping a number of departments right after he comes to work.
 
 There is a rule in his movement.
-He stays at a department exactly for 10 minutes.
+He stays at a department (dept) exactly for 10 minutes.
 
 You are given a probability graph of their movements.
 Fig. 1 is an example graph.
@@ -23,19 +23,19 @@ Given a probability graph and a time T(in minutes), generate a program that find
 
 In addition you have to report the corresponding probability.
 
-![fig2](fig2.jpg)
-
-In the Fig. 1 above, the department with the highest chance at time 10 is dept. 3 and the chance is 0.7.
+In the Fig. 1, the department with the highest chance at time 10 is dept. 3 and the chance is 0.7.
 At time 9, Jang does not start moving; so he is at dept. 1 with a probability of 1.
 
 Look at the situation at time 20.
 The chance of being at dept. 1 or dept. 2 is 0.
 He leaves dept. 1 exactly at time 10, and if he moves to dept. 2 then he leaves dept. 2 exactly at time 20.
 
-The chance of being at dept. 4 at time 20 is $0.3*1.0+0.7*0.8=0.86$.
+The chance of being at dept. 4 at time 20 is $0.3*1.0+0.7*0.7=0.79$.
 
 When he arrives at a department without any outgoing arrow, the department becomes the last one that he finally visits;
 he stays at the department for 10 minutes and leaves work.
+
+![fig2](fig2.jpg)
 
 With the graph of Fig. 2, Jang is not in work at time 50; in case of Fig. 1, he may stay at work forever if he keeps staying at the same department with a loop probability, e.g, departments 3, 4, or 6
 
@@ -44,7 +44,7 @@ In addition, there is another person, Kang, who moves in the same way as  Jang.
 Jang always comes to work at time 0, but Kang comes at another time later than time 0.
 You also have to report the same type of contents for Kang.
 
-If Kang�s arrival time is 4, answers related to him is computed exactly the same principle as  Jang�s except he starts working 4 minutes later than Jang; in this case with Fig. 2, Kang stays at dept. 1 from time 4 to time 13 while Jang stays at dept. 1 from time 0 to time 9.
+If Kang's arrival time is 4, answers related to him is computed exactly the same principle as  Jang�s except he starts working 4 minutes later than Jang; in this case with Fig. 2, Kang stays at dept. 1 from time 4 to time 13 while Jang stays at dept. 1 from time 0 to time 9.
 
 ## Input
 
