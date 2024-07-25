@@ -1,3 +1,5 @@
+#include "point.hpp"
+#include "queue.hpp"
 #include <iostream>
 
 const int N = 5;
@@ -7,44 +9,6 @@ const int INF = ~(1 << 31);
 // Direction : up, down, left, right
 const int di[4] = {-1, 1, 0, 0};
 const int dj[4] = {0, 0, -1, 1};
-
-struct Point {
-    int i, j;
-
-    Point() : i(), j() {}
-
-    Point(int i, int j) : i(i), j(j) {}
-
-    bool valid(const Point &Size) const {
-        return i >= 0 && j >= 0 && i < Size.i && j < Size.j;
-    }
-
-    bool valid(const int n, const int m) const {
-        return i >= 0 && j >= 0 && i < n && j < m;
-    }
-};
-
-template <typename T, int MAX>
-class Queue {
-public:
-    Queue() : front(-1), rear(-1) {}
-
-    void push(T a) {
-        data[++rear] = a;
-    }
-
-    T pop() {
-        return data[++front];
-    }
-
-    bool empty() const {
-        return front == rear;
-    }
-
-private:
-    int front, rear;
-    T data[MAX];
-};
 
 int solve(int (&)[N][M], int, int);
 
