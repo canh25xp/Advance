@@ -3,7 +3,7 @@
 #define EPSILON 1e-6
 #define INF 1.0e9
 
-const int N = 51;
+const int N = 50;
 
 double pow(double, double);
 double f(int, int, int, double);
