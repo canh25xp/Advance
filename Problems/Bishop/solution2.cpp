@@ -86,7 +86,7 @@ int Solution::BFS(Point src, Point dst) {
         int dir = s.d;
         for (int d = 0; d < 4; d++) {
             Point next(curr.i + di[d], curr.j + dj[d]);
-            while (next.valid(n, n) && obstacle[next.i][next.j] != 1 && visited[next.i][next.j] >= dir + 1) {
+            while (next.valid(n, n) && !obstacle[next.i][next.j] && visited[next.i][next.j] > dir) {
                 visited[next.i][next.j] = dir + 1;
                 q.push(State(next, dir + 1));
                 if (visited[dst.i][dst.j] != INF)
