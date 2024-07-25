@@ -1,10 +1,10 @@
 #include <iostream>
 
 const int N = 4;
-const int MAX_INT = ~ (1 << 31);
+const int INF = ~(1 << 31);
 
-const int di[4] = {1,0,-1,0};
-const int dj[4] = {0,1,0,-1};
+const int di[4] = {1, 0, -1, 0};
+const int dj[4] = {0, 1, 0, -1};
 
 int solve(int (&)[N][N]);
 
@@ -21,7 +21,7 @@ int main() {
     for (int t = 0; t < T; t++) {
         int mat[N][N] = {};
         for (int i = 0; i < N; i++) {
-            char c[N+1] = {};
+            char c[N + 1] = {};
             cin >> c;
             for (int j = 0; j < N; j++) {
                 if (c[j] == 'b')
@@ -39,10 +39,8 @@ int main() {
     return 0;
 }
 
-
-
 int solve(int (&mat)[N][N]) {
-    int ans = MAX_INT;
+    int ans = INF;
     int cnt[2] = {}; // count number of black and white
 
     for (int i = 0; i < N; i++)
@@ -51,7 +49,7 @@ int solve(int (&mat)[N][N]) {
 
     backtrack(mat, cnt, ans);
 
-    return ans == MAX_INT ? -1 : ans;
+    return ans == INF ? -1 : ans;
 }
 
 void backtrack(int (&mat)[N][N], int (&cnt)[2], int &ans, int number, int curr) {
@@ -63,13 +61,13 @@ void backtrack(int (&mat)[N][N], int (&cnt)[2], int &ans, int number, int curr) 
     if (number > ans)
         return;
 
-    if (curr == N*N)
+    if (curr == N * N)
         return;
 
     backtrack(mat, cnt, ans, number, curr + 1); // Do nothing
 
-    int i = curr/N;
-    int j = curr%N;
+    int i = curr / N;
+    int j = curr % N;
 
     doChange(mat, cnt, i, j);
     backtrack(mat, cnt, ans, number + 1, curr + 1);
