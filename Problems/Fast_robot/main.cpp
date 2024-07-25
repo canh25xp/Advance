@@ -1,10 +1,11 @@
-#include "deque.hpp"
 #include "point.hpp"
 #include "queue.hpp"
 #include <iostream>
 
+const int INF = 1000;
+
 const int N = 200;
-const int M = 200;
+const int M = N;
 
 const int di[4] = {0, -1, 0, 1};
 const int dj[4] = {1, 0, -1, 0};
@@ -17,7 +18,7 @@ struct State {
 };
 
 int solve(int (&)[N][M], int, int, Point, Point);
-int BFS(int (&)[N][M], int, int, Point, Point, int);
+int BFS(int (&)[N][M], int, int, Point, Point);
 
 using namespace std;
 int main(int argc, char **argv) {
@@ -49,47 +50,37 @@ int main(int argc, char **argv) {
     return 0;
 }
 
-int solve(int (&mat)[N][M], int n, int m, Point s, Point d) {
-    int res1 = BFS(mat, n, m, s, d, 0);
-    int res2 = BFS(mat, n, m, s, d, 1);
-    int res3 = BFS(mat, n, m, s, d, 2);
-    int res4 = BFS(mat, n, m, s, d, 3);
-
-    int res = min(min(res1, res2), min(res3, res4));
-
-    return res == INT_MAX ? -1 : res;
+int solve(int (&mat)[N][M], int n, int m, Point src, Point dst) {
+    return BFS(mat, n, m, src, dst);
 }
 
-int BFS(int (&mat)[N][M], int n, int m, Point src, Point dst, int dir) {
+int BFS(int (&mat)[N][M], int n, int m, Point src, Point dst) {
     int visited[N][M] = {};
 
     for (int i = 0; i < n; i++)
-        for (int j = 0; j < n; j++)
-            visited[i][j] = INT_MAX;
+        for (int j = 0; j < m; j++)
+            visited[i][j] = INF;
 
-    Deque<State, 10000> dq;
-    dq.push_back(State(src, dir));
+    static Queue<State, 500000> q;
+    q.clear();
+    q.push(State(src, 0));
     visited[src.i][src.j] = 0;
 
-    while (!dq.empty()) {
-        State t = dq.pop_front();
-        Point curr = t.p;
-        int dir = t.d;
-        for (int i = 0; i < 4; i++) {
-            Point next(curr.i + di[i], curr.j + dj[i]);
-            if (!next.valid(n, m) || mat[next.i][next.j])
-                continue;
-
-            int cost = (i == dir) ? 0 : 1;
-            if (visited[next.i][next.j] > visited[curr.i][curr.j] + cost) {
-                visited[next.i][next.j] = visited[curr.i][curr.j] + cost;
-                if (cost == 0)
-                    dq.push_front(State(next, i));
-                else
-                    dq.push_front(State(next, i));
+    while (!q.empty()) {
+        State s = q.pop();
+        Point curr = s.p;
+        int turns = s.d;
+        for (int d = 0; d < 4; d++) {
+            Point next(curr.i + di[d], curr.j + dj[d]);
+            while (next.valid(n, m) && !mat[next.i][next.j] && visited[next.i][next.j] > turns) {
+                visited[next.i][next.j] = turns + 1;
+                q.push(State(next, turns + 1));
+                if (visited[dst.i][dst.j] != INF)
+                    return turns;
+                next.i += di[d];
+                next.j += dj[d];
             }
         }
     }
-
-    return visited[dst.i][dst.j];
+    return -1;
 }
