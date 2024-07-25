@@ -1,6 +1,4 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
-
-#include <iostream>
+﻿#include <iostream>
 
 #define MAX_N 1000
 
@@ -9,8 +7,32 @@ using namespace std;
 // Dãy N phần tử
 int N = 3;
 int arr[] = {11, 22, 33};
+int K;
 
-// In mảng a với kích thước S
+void printArray(int a[], int S);
+
+// danh sách các phần tử của tập con
+int output[MAX_N];
+
+// Hàm backtrack để sinh tất cả các tập con
+// i: index của phần tử đang check
+// cnt: số lượng phần tử của tập con
+void subset(int i, int cnt);
+
+// Hàm backtrack để sinh tất cả các tập con có chính xác K phần tử (K <= N)
+// i: index của phần tử đang check
+// cnt: số lượng phần tử của tập con
+void subsetWithK(int i, int cnt);
+
+int main() {
+    // in tất cả tập con
+    subset(0, 0);
+    // in tất cả tập con có chính xác K phần tử
+    K = 2;
+    subsetWithK(0, 0);
+    return 0;
+}
+
 void printArray(int a[], int S) {
     cout << S << endl;
     if (S > 0) {
@@ -20,12 +42,6 @@ void printArray(int a[], int S) {
     }
 }
 
-// danh sách các phần tử của tập con
-int output[MAX_N];
-
-// Hàm backtrack để sinh tất cả các tập con
-// i: index của phần tử đang check
-// cnt: số lượng phần tử của tập con
 void subset(int i, int cnt) {
     // Một số trường hợp cắt nhánh sớm, ví dụ tổng hiện tại đã vượt qua minAnswer
     //  if (condition) {
@@ -46,10 +62,6 @@ void subset(int i, int cnt) {
     subset(i + 1, cnt + 1);
 }
 
-int K;
-// Hàm backtrack để sinh tất cả các tập con có chính xác K phần tử (K <= N)
-// i: index của phần tử đang check
-// cnt: số lượng phần tử của tập con
 void subsetWithK(int i, int cnt) {
     // Một số trường hợp cắt nhánh sớm, ví dụ tổng hiện tại đã vượt qua minAnswer
     //  if (condition) {
@@ -78,13 +90,4 @@ void subsetWithK(int i, int cnt) {
     // Cho arr[i] vào tập con
     output[cnt] = arr[i];
     subsetWithK(i + 1, cnt + 1);
-}
-
-int main() {
-    // in tất cả tập con
-    subset(0, 0);
-    // in tất cả tập con có chính xác K phần tử
-    K = 2;
-    subsetWithK(0, 0);
-    return 0;
 }
