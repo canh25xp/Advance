@@ -26,21 +26,21 @@ int main(int argc, char **argv) {
         int a, b, c;
         cin >> a >> b >> c;
 
-        int vst[N][N] = {};
-        double adj[N][N] = {};
+        int adj[N][N] = {};
 
         for (int i = 0; i < n; i++)
             for (int j = 0; j < n; j++)
                 cin >> adj[i][j];
 
+        double adj_solved[N][N] = {};
         for (int i = 0; i < n; i++) {
             for (int j = i + 1; j < n; j++) {
-                adj[i][j] = solve(a, b, c, adj[i][j]);
-                adj[j][i] = adj[i][j];
+                adj_solved[i][j] = solve(a, b, c, adj[i][j]);
+                adj_solved[j][i] = adj_solved[i][j];
             }
         }
 
-        cout << "#" << ti + 1 << " " << primMST(adj, n) << endl;
+        cout << "#" << ti + 1 << " " << primMST(adj_solved, n) << endl;
     }
 
     return 0;
@@ -83,7 +83,7 @@ int minKey(double (&arr)[N], bool (&vst)[N], int n) {
 }
 
 double pow(double base, double exp) {
-    double res = 1.0;
+    double res = 1;
     for (int i = 0; i < exp; i++)
         res *= base;
 
@@ -95,10 +95,10 @@ double f(int a, int b, int c, double x) {
 }
 
 double solve(int a, int b, int c, double rhs) {
-    double left = 0.0, right = rhs;
+    double left = 0, right = rhs;
 
     while (right - left > EPSILON) {
-        double mid = left + (right - left) / 2.0;
+        double mid = left + (right - left) / 2;
         double y = f(a, b, c, mid);
         if (y == rhs)
             return mid;
