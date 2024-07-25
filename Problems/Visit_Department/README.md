@@ -59,7 +59,8 @@ For each case, the first line provides `N` (the number of departments), `E` (the
 ```
 
 The next line enumerates `E` arrows.
-Each arrow is denoted by `source-dept destination-dept` probability.
+Each arrow is denoted by `source destination probability`
+
 The index for source dept. or destination dept. is an integer in 1 through 100, inclusive.
 
 The time integer `K` and `T` are in minutes.
