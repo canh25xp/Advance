@@ -6,13 +6,9 @@
 const int N = 51;
 
 double pow(double, double);
-
 double f(int, int, int, double);
-
 double solve(int, int, int, double);
-
 int minKey(double (&)[N], bool (&)[N], int);
-
 double primMST(double (&)[N][N], int);
 
 using namespace std;
@@ -30,18 +26,17 @@ int main(int argc, char **argv) {
         int a, b, c;
         cin >> a >> b >> c;
 
-        bool vst[N][N] = {};
+        int vst[N][N] = {};
         double adj[N][N] = {};
 
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < n; j++)
                 cin >> adj[i][j];
-                if (i != j && !vst[i][j]) {
-                    adj[i][j] = solve(a, b, c, adj[i][j]);
-                    // adj[j][i] = adj[i][j];
-                    vst[i][j] = true;
-                    // vst[j][i] = true;
-                }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                adj[i][j] = solve(a, b, c, adj[i][j]);
+                adj[j][i] = adj[i][j];
             }
         }
 
