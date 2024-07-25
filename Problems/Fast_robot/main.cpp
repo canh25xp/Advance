@@ -2,7 +2,7 @@
 #include "queue.hpp"
 #include <iostream>
 
-const int INF = 1000;
+const int INF = INT_MAX;
 
 const int N = 200;
 const int M = N;
@@ -71,14 +71,17 @@ int BFS(int (&mat)[N][M], int n, int m, Point src, Point dst) {
         Point curr = s.p;
         int turns = s.d;
         for (int d = 0; d < 4; d++) {
-            Point next(curr.i + di[d], curr.j + dj[d]);
-            while (next.valid(n, m) && !mat[next.i][next.j] && visited[next.i][next.j] > turns) {
+            Point next(curr.i, curr.j);
+            while (true) {
+                next.i += di[d];
+                next.j += dj[d];
+                if (!next.valid(n, m) || mat[next.i][next.j] || visited[next.i][next.j] <= turns)
+                    break;
+
                 visited[next.i][next.j] = turns + 1;
                 q.push(State(next, turns + 1));
                 if (visited[dst.i][dst.j] != INF)
                     return turns;
-                next.i += di[d];
-                next.j += dj[d];
             }
         }
     }
