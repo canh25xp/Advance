@@ -10,6 +10,8 @@ He stays at a department exactly for 10 minutes.
 You are given a probability graph of their movements.
 Fig. 1 is an example graph.
 
+![fig1](fig1.jpg)
+
 Jang stays at dept. 1 for 10 minutes; then he moves to dept. 2 with a probability of 0.3 (then stays there for 10 minutes) or moves to dept. 3 with a probability of 0.7 (then stays there for 10 minutes).
 We do not consider the time for moving between departments.
 
@@ -21,7 +23,7 @@ Given a probability graph and a time T(in minutes), generate a program that find
 
 In addition you have to report the corresponding probability.
 
-![fig1](fig1.jpg)
+![fig2](fig2.jpg)
 
 In the Fig. 1 above, the department with the highest chance at time 10 is dept. 3 and the chance is 0.7.
 At time 9, Jang does not start moving; so he is at dept. 1 with a probability of 1.
@@ -42,7 +44,7 @@ In addition, there is another person, Kang, who moves in the same way as  Jang.
 Jang always comes to work at time 0, but Kang comes at another time later than time 0.
 You also have to report the same type of contents for Kang.
 
-If Kang’s arrival time is 4, answers related to him is computed exactly the same principle as  Jang’s except he starts working 4 minutes later than Jang; in this case with Fig. 2, Kang stays at dept. 1 from time 4 to time 13 while Jang stays at dept. 1 from time 0 to time 9.
+If Kangï¿½s arrival time is 4, answers related to him is computed exactly the same principle as  Jangï¿½s except he starts working 4 minutes later than Jang; in this case with Fig. 2, Kang stays at dept. 1 from time 4 to time 13 while Jang stays at dept. 1 from time 0 to time 9.
 
 ## Input
 
