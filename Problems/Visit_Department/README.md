@@ -30,7 +30,7 @@ Look at the situation at time 20.
 The chance of being at dept. 1 or dept. 2 is 0.
 He leaves dept. 1 exactly at time 10, and if he moves to dept. 2 then he leaves dept. 2 exactly at time 20.
 
-The chance of being at dept. 4 at time 20 is $0.3*1.0+0.7*0.7=0.79$.
+The chance of being at dept. 4 at time 20 is $0.3*1.0+0.7*0.8=0.86$.
 
 When he arrives at a department without any outgoing arrow, the department becomes the last one that he finally visits;
 he stays at the department for 10 minutes and leaves work.
