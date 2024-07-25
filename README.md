@@ -27,7 +27,7 @@
 - [x] [Earning_Money_2](Problems/Earning_Money_2/README.md)
 - [x] [Electrical_System](Problems/Electrical_System/README.md)
 - [x] [Farm_Protect](Problems/Farm_Protect/README.md)
-- [ ] [Fast_robot](Problems/Fast_robot/README.md)
+- [x] [Fast_robot](Problems/Fast_robot/README.md)
 - [x] [Find_Cycle](Problems/Find_Cycle/README.md)
 - [x] [Finding_Mode](Problems/Finding_Mode/README.md)
 - [x] [Flatten](Problems/Flatten/README.md)
