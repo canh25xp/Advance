@@ -62,12 +62,14 @@ bool BFS(int (&mat)[N][M], int n, int m, Point S, Point D, int step) {
         for (int h = 0; h <= step; h++) {
             for (int i = 0; i < 4; i++) {
                 Point next(curr.i + di[i] * h, curr.j + dj[i]);
-                if (next.valid(n, m) && !visited[next.i][next.j] && mat[next.i][next.j]) {
-                    if (next == D)
-                        return true;
-                    q.push(next);
-                    visited[next.i][next.j] = 1;
-                }
+                if (!next.valid(n, m) || visited[next.i][next.j] || !mat[next.i][next.j])
+                    continue;
+
+                if (next == D)
+                    return true;
+
+                q.push(next);
+                visited[next.i][next.j] = 1;
             }
         }
     }
