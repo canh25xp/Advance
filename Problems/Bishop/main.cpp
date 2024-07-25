@@ -2,9 +2,9 @@
 #include "point.hpp"
 #include <iostream>
 
-const int LIMIT = 200;
+const int N = 200;
 const int MAX_QUEUE = 50000;
-const int A_VERY_LARGE_NUMBER = INT_MAX;
+const int INF = INT_MAX;
 
 // Direction: up-left, up-right, down-right, down-left
 const int di[4] = {-1, -1, 1, 1};
@@ -21,13 +21,13 @@ struct State {
 
 class Solution {
 public:
-    Solution(int n, int m, Point src, Point dst, int (&obstacle)[LIMIT][LIMIT]);
+    Solution(int n, int m, Point src, Point dst, int (&obstacle)[N][N]);
     int solve();
 
 private:
     Point src, dst;
     int n, m;
-    int (&obstacle)[LIMIT][LIMIT];
+    int (&obstacle)[N][N];
 
     int BFS(Point src, Point dst, int direction);
     int min(int a, int b);
@@ -45,12 +45,10 @@ int main(int argc, char **argv) { ////////////////////////////////////////////
         int n, m;
         Point src, dst;
         cin >> n >> m >> src.i >> src.j >> dst.i >> dst.j;
-        src.i--;
-        src.j--;
-        dst.i--;
-        dst.j--;
+        src--;
+        dst--;
 
-        int obstacle[LIMIT][LIMIT] = {};
+        int obstacle[N][N] = {};
         for (int i = 0; i < m; i++) {
             int r, c;
             cin >> r >> c;
@@ -65,7 +63,7 @@ int main(int argc, char **argv) { ////////////////////////////////////////////
     return 0;
 }; ////////////////////////////////////////////////////////////////////////////
 
-Solution::Solution(int n, int m, Point src, Point dst, int (&obstacle)[LIMIT][LIMIT]) : n(n), m(m), src(src), dst(dst), obstacle(obstacle) {}
+Solution::Solution(int n, int m, Point src, Point dst, int (&obstacle)[N][N]) : n(n), m(m), src(src), dst(dst), obstacle(obstacle) {}
 
 int Solution::solve() {
     int res1 = BFS(src, dst, 0);
@@ -75,15 +73,15 @@ int Solution::solve() {
 
     int res = min(min(res1, res2), min(res3, res4));
 
-    return res == A_VERY_LARGE_NUMBER ? -1 : res;
+    return res == INF ? -1 : res;
 }
 
 int Solution::BFS(Point src, Point dst, int direction) {
-    int visited[LIMIT][LIMIT] = {};
+    int visited[N][N] = {};
 
     for (int i = 0; i < n; i++)
         for (int j = 0; j < n; j++)
-            visited[i][j] = A_VERY_LARGE_NUMBER;
+            visited[i][j] = INF;
 
     Deque<State, MAX_QUEUE> dq;
     dq.push_back(State(src, direction));
