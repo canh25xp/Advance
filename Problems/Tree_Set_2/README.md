@@ -41,7 +41,6 @@ Với mỗi test case đưa ra các kết quả của các lệnh `contains`, `l
 In các kết quả trên cùng một dòng
 
 ```
-Case #1
-3 3 3 null true 1
+#1 3 3 3 null true 1
 ```
 
